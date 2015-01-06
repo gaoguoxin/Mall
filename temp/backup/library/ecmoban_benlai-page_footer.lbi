@@ -148,8 +148,6 @@ function check_email()
     {if $stats_code}
     <div align="center">{$stats_code}</div>
     {/if}
-	
-	
 </div>
  <div class="blank"></div>  
  </div>
@@ -183,7 +181,7 @@ function check_email()
   
    <!-- QQ 号码 {foreach from=$qq item=im} -->
       <!-- {if $im} -->
-       <li><a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a> </li>
+       <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2523562014&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a> </li>
       <!-- {/if} -->
       <!-- {/foreach} 结束QQ号码 -->
       <!-- 淘宝旺旺 {foreach from=$ww item=im} -->

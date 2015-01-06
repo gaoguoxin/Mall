@@ -12,7 +12,7 @@ require_once(ROOT_PATH . 'languages/' .$_CFG['lang']. '/user.php');
 /* 未登录处理 */
 if (empty($_SESSION['user_id']))
 {
-	ecs_header("Location: user.php\n");
+	ecs_header("Location: user.php?back_url=pifa.php\n");
 	exit;
 }
 
@@ -29,7 +29,7 @@ if (isset($_REQUEST['id']))
 }
 
 $page = isset($_REQUEST['page'])   && intval($_REQUEST['page'])  > 0 ? intval($_REQUEST['page'])  : 1;
-$size = 10;
+$size = 50;
 $sort = 'sort_order';
 $order = 'desc';
 /* 页面的缓存ID */

@@ -1,7 +1,3 @@
- 
- 
-    
-    
   <div id="category_tree">
   <div class="tit">所有商品分类</div>
   <dl class="clearfix" >

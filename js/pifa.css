@@ -191,3 +191,91 @@ h2.promoH2 {
 	line-height:17px;}
 	
 .fr { position:absolute; right:8px; bottom:8px; }	
+
+
+.alt_succ {
+  background: url("./images/alt_succ.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  height: 129px;
+  left: 50%;
+  margin-left: -170px;
+  padding: 7px;
+  position: absolute;
+  top: 500px;
+  width: 326px;
+  z-index: 999;
+}
+.alt_succ_box {
+  background: none repeat scroll 0 0 #fff;
+  border-radius: 5px;
+  height: 109px;
+  padding: 10px 20px;
+  width: 286px;
+}
+.sum {
+  font-family: "宋体";
+  padding-left: 50px;
+  position: relative;
+  width: 236px;
+}
+.conticon, .succ_close {
+  background: url("./images/lsp_bt2n.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.conticon {
+  background-position: 0 0;
+  height: 33px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 32px;
+}
+.succ_close {
+  background-position: 0 -99px;
+  cursor: pointer;
+  height: 18px;
+  position: absolute;
+  right: -15px;
+  top: -5px;
+  width: 19px;
+}
+h6 {
+  background: none repeat scroll 0 0 #f6f6f6;
+  border: 1px solid #fff;
+  color: #3f3f3f;
+  font-size: 12px;
+  height: 23px;
+  line-height: 23px;
+  padding-right: 10px;
+  text-align: left;
+}
+.sum h6 {
+  color: #333;
+  font-size: 14px;
+  line-height: 26px;
+}
+.sum p {
+  color: #666;
+  line-height: 38px;
+}
+.sum p span {
+  color: #ca1728;
+  font-weight: bold;
+  padding: 0 3px;
+}
+.sum p .contpay {
+  background: none repeat scroll 0 0 #ca1728;
+  border-radius: 3px;
+  color: #fff;
+  display: inline;
+  float: right;
+  height: 26px;
+  line-height: 26px;
+  margin: 5px 30px 0 0;
+  padding: 0 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 80px;
+}
+.sum p .contgo {
+  color: #ca1728;
+}

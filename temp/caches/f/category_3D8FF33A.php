@@ -1,41 +1,14 @@
-<?php exit;?>a:3:{s:8:"template";a:11:{i:0;s:59:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/goods.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/ur_here.lbi";i:3;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree.lbi";i:4;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/history.lbi";i:5;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/goods_gallery.lbi";i:6;s:72:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/goods_tags.lbi";i:7;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/goods_related.lbi";i:8;s:74:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/bought_goods.lbi";i:9;s:70:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/comments.lbi";i:10;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420514705;s:8:"maketime";i:1420511105;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:8:{i:0;s:62:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/category.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/ur_here.lbi";i:3;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree.lbi";i:4;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/history.lbi";i:5;s:72:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/goods_list.lbi";i:6;s:67:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/pages.lbi";i:7;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420559445;s:8:"maketime";i:1420555845;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=8">
 <meta name="Keywords" content="" />
-<meta name="Description" content="老窖青花 清秀典雅!" />
-<title>50°杜康老窖青花瓷500ml_奶制品_柏树庄美味厨房</title>
+<meta name="Description" content="" />
+<title>奶制品_柏树庄美味厨房</title>
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="themes/ecmoban_benlai/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/common.js"></script><script type="text/javascript" src="themes/ecmoban_benlai/js/action.js"></script>
-<script type="text/javascript" src="themes/ecmoban_benlai/js/mzp-packed-me.js"></script>
-<script type="text/javascript">
-function $id(element) {
-  return document.getElementById(element);
-}
-//切屏--是按钮，_v是内容平台，_h是内容库
-function reg(str){
-  var bt=$id(str+"_b").getElementsByTagName("h2");
-  for(var i=0;i<bt.length;i++){
-    bt[i].subj=str;
-    bt[i].pai=i;
-    bt[i].style.cursor="pointer";
-    bt[i].onclick=function(){
-      $id(this.subj+"_v").innerHTML=$id(this.subj+"_h").getElementsByTagName("blockquote")[this.pai].innerHTML;
-      for(var j=0;j<$id(this.subj+"_b").getElementsByTagName("h2").length;j++){
-        var _bt=$id(this.subj+"_b").getElementsByTagName("h2")[j];
-        var ison=j==this.pai;
-        _bt.className=(ison?"":"h2bg");
-      }
-    }
-  }
-  $id(str+"_h").className="none";
-  $id(str+"_v").innerHTML=$id(str+"_h").getElementsByTagName("blockquote")[0].innerHTML;
-}
-</script>
-</head>
+<script type="text/javascript" src="js/common.js"></script><script type="text/javascript" src="js/global.js"></script><script type="text/javascript" src="js/compare.js"></script><script type="text/javascript" src="js/transport.js"></script></head>
 <body>
 <link href="themes/ecmoban_benlai/qq/images/qq.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -162,11 +135,11 @@ var process_request = "正在处理您的请求...";
 蔬菜水果 <span></span>
 </a>
  
-   <a href="category.php?id=16"  >
+   <a href="category-16.html"  >
 粮油副食 <span></span>
 </a>
  
-   <a href="category.php?id=17"  >
+   <a href="category-17.html"  >
 肉禽蛋品 <span></span>
 </a>
  
@@ -202,6 +175,10 @@ var process_request = "正在处理您的请求...";
 瓜类 <span></span>
 </a>
  
+   <a href="category-6-b0.html"  >
+测试 <span></span>
+</a>
+ 
  </div> 
 </div>
 </div>
@@ -230,12 +207,10 @@ var process_request = "正在处理您的请求...";
 		}
 		
 </script>
- 
- 
   <div class="block box">
 <div class="blank"></div>
  <div id="ur_here">
-当前位置: <a href=".">首页</a> <code>&gt;</code> <a href="category.php?id=18">奶制品</a> <code>&gt;</code> 50°杜康老窖青花瓷500ml 
+当前位置: <a href=".">首页</a> <code>&gt;</code> <a href="category.php?id=18">奶制品</a> 
 </div>
 </div>
 <div class="blank"></div>
@@ -243,11 +218,7 @@ var process_request = "正在处理您的请求...";
   
   <div class="AreaL">
     
- 
- 
-    
-    
-  <div id="category_tree">
+<div id="category_tree">
   <div class="tit">所有商品分类</div>
   <dl class="clearfix" >
    <div class="box1 cate" id="cate">
@@ -404,9 +375,7 @@ function tab(id)
 			obj_img.item(id).src = "themes/ecmoban_benlai/images/btn_unfold.gif"
 		}
 }
-</script>
-    
-    <div class="box" id='history_div'> <div class="box_1">
+</script><div class="box" id='history_div'> <div class="box_1">
  <h3><span>浏览历史</span></h3>
  
   <div class="boxCenterList clearfix" id='history_list'>
@@ -431,257 +400,239 @@ function clear_history_Response(res)
 {
 document.getElementById('history_list').innerHTML = '您已清空最近浏览过的商品';
 }
-</script>  </div>
+</script>
+    
+  </div>
   
   
   <div class="AreaR">
+	 
+	  	  <div class="box">
+		 <div class="box_1">
+			<h3><span>商品筛选</span></h3>
+						<div class="screeBox">
+			  <strong>品牌：</strong>
+														<span>全部</span>
+																			<a href="category.php?id=18&amp;brand=1&amp;price_min=0&amp;price_max=0">诺基亚</a>&nbsp;
+												</div>
+											 </div>
+		</div>
+		<div class="blank"></div>
+	  	 
    
-   <div id="goodsInfo" class="clearfix">
-    
+<div class="box">
+ <div class="box_1">
+  <h3>
+  <span>商品列表</span>
+  <form method="GET" class="sort" name="listform" id="listform">
+  显示方式：
+  <a href="javascript:;" onClick="javascript:display_mode('list')"><img src="themes/ecmoban_benlai/images/display_mode_list.gif" alt=""></a>
+  <a href="javascript:;" onClick="javascript:display_mode('grid')"><img src="themes/ecmoban_benlai/images/display_mode_grid_act.gif" alt=""></a>
+  <a href="javascript:;" onClick="javascript:display_mode('text')"><img src="themes/ecmoban_benlai/images/display_mode_text.gif" alt=""></a>&nbsp;&nbsp;
      
-     <div class="imgInfo">
-     <a href="images/201501/goods_img/356_P_1420476451716.jpg" id="zoom1" class="MagicZoom MagicThumb" title="50°杜康老窖青花瓷500ml">
-      <img src="images/201501/goods_img/356_G_1420476451616.jpg" alt="50°杜康老窖青花瓷500ml" width="360px;" height="360px"/>
-     </a>
-     <div class="blank5"></div>
-    <div style="text-align:center; position:relative; width:100%;">
-               <a href="goods.php?id=363"><img style="position: absolute; left:0;" alt="prev" src="themes/ecmoban_benlai/images/up.gif" /></a>
-            <a href="javascript:;" onclick="window.open('gallery.php?id=356'); return false;"><img alt="zoom" src="themes/ecmoban_benlai/images/zoom.gif" /></a>
-            <a href="goods.php?id=355"><img style="position: absolute;right:0;"  alt="next" src="themes/ecmoban_benlai/images/down.gif" /></a>
+  <a href="category.php?category=18&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=goods_id&order=ASC#goods_list"><img src="themes/ecmoban_benlai/images/goods_id_DESC.gif" alt="按上架时间排序"></a>
+  <a href="category.php?category=18&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=shop_price&order=ASC#goods_list"><img src="themes/ecmoban_benlai/images/shop_price_default.gif" alt="按价格排序"></a>
+  <a href="category.php?category=18&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=last_update&order=DESC#goods_list"><img src="themes/ecmoban_benlai/images/last_update_default.gif" alt="按更新时间排序"></a>
+  <input type="hidden" name="category" value="18" />
+  <input type="hidden" name="display" value="grid" id="display" />
+  <input type="hidden" name="brand" value="0" />
+  <input type="hidden" name="price_min" value="0" />
+  <input type="hidden" name="price_max" value="0" />
+  <input type="hidden" name="filter_attr" value="0" />
+  <input type="hidden" name="page" value="1" />
+  <input type="hidden" name="sort" value="goods_id" />
+  <input type="hidden" name="order" value="DESC" />
+    </form>
+  </h3>
+      <form name="compareForm" action="compare.php" method="post" onSubmit="return compareGoods(this);">
+            <div class="clearfix goodsBox" style="border:none; padding:11px 0 10px 0px;">
+             <div class="goodsItem" >
+           <a href="goods.php?id=386"><img src="images/201312/thumb_img/386_thumb_G_1386785173204.jpg" alt="40°英国尊尼..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=386" title="40°英国尊尼获加黑方威士忌700ml">40°英国尊尼...</a></p>
+                                    市场价：<font class="market_s">￥117.6元</font><br />
+                                                                        本店价：<font class="shop_s">￥98.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=385"><img src="images/201312/thumb_img/385_thumb_G_1386785126424.jpg" alt="40°英国克兰..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=385" title="40°英国克兰格调配型苏格兰威士忌700ml">40°英国克兰...</a></p>
+                                    市场价：<font class="market_s">￥69.6元</font><br />
+                                                                        本店价：<font class="shop_s">￥58.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=384"><img src="images/201312/thumb_img/384_thumb_G_1386785090054.jpg" alt="40°美国杰克..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=384" title="40°美国杰克丹尼700ml ">40°美国杰克...</a></p>
+                                    市场价：<font class="market_s">￥81.6元</font><br />
+                                                                        本店价：<font class="shop_s">￥68.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=383"><img src="images/201312/thumb_img/383_thumb_G_1386785029246.jpg" alt="40°英国约翰..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=383" title="40°英国约翰巴尔混合苏格兰威士忌750ml">40°英国约翰...</a></p>
+                                    市场价：<font class="market_s">￥81.6元</font><br />
+                                                                        本店价：<font class="shop_s">￥68.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=382"><img src="images/201312/thumb_img/382_thumb_G_1386784971174.jpg" alt="40°皇盾男爵..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=382" title="40°皇盾男爵威士忌150ml">40°皇盾男爵...</a></p>
+                                    市场价：<font class="market_s">￥42.0元</font><br />
+                                                                        本店价：<font class="shop_s">￥35.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=381"><img src="images/201312/thumb_img/381_thumb_G_1386784877354.jpg" alt="40°法国马爹..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=381" title="40°法国马爹利名士干邑700ml">40°法国马爹...</a></p>
+                                    市场价：<font class="market_s">￥426.0元</font><br />
+                                                                        本店价：<font class="shop_s">￥355.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=380"><img src="images/201312/thumb_img/380_thumb_G_1386784819357.jpg" alt="40°英国剑威..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=380" title="40°英国剑威苏格兰威士忌700ml ">40°英国剑威...</a></p>
+                                    市场价：<font class="market_s">￥825.6元</font><br />
+                                                                        本店价：<font class="shop_s">￥688.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=379"><img src="images/201312/thumb_img/379_thumb_G_1386784752646.jpg" alt="20.1°真露..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=379" title="20.1°真露竹炭酒（6瓶套装）">20.1°真露...</a></p>
+                                    市场价：<font class="market_s">￥105.6元</font><br />
+                                                                        促销价：<font class="shop_s">￥68.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=378"><img src="images/201311/thumb_img/378_thumb_G_1385673610568.jpg" alt="46°牛栏山珍..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=378" title="46°牛栏山珍品三十年500ml">46°牛栏山珍...</a></p>
+                                    市场价：<font class="market_s">￥28.7元</font><br />
+                                                                        本店价：<font class="shop_s">￥24.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=377"><img src="images/201311/thumb_img/377_thumb_G_1385674857389.jpg" alt="68°红星甑流..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=377" title="68°红星甑流酒2000ml ">68°红星甑流...</a></p>
+                                    市场价：<font class="market_s">￥30.0元</font><br />
+                                                                        本店价：<font class="shop_s">￥25.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=376"><img src="images/201311/thumb_img/376_thumb_G_1385673497671.jpg" alt="46°牛栏山珍..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=376" title="46°牛栏山珍品三十年500ml ">46°牛栏山珍...</a></p>
+                                    市场价：<font class="market_s">￥43.1元</font><br />
+                                                                        本店价：<font class="shop_s">￥36.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=375"><img src="images/201311/thumb_img/375_thumb_G_1385673426583.jpg" alt="38°红星御酒..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=375" title="38°红星御酒450ml">38°红星御酒...</a></p>
+                                    市场价：<font class="market_s">￥42.0元</font><br />
+                                                                        本店价：<font class="shop_s">￥35.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=374"><img src="images/201311/thumb_img/374_thumb_G_1385673348926.jpg" alt="53°红星蓝瓶..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=374" title="53°红星蓝瓶二锅头750ml">53°红星蓝瓶...</a></p>
+                                    市场价：<font class="market_s">￥38.4元</font><br />
+                                                                        促销价：<font class="shop_s">￥22.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=373"><img src="images/201311/thumb_img/373_thumb_G_1385673256041.jpg" alt="46°红星二锅..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=373" title="46°红星二锅头四合院500ml">46°红星二锅...</a></p>
+                                    市场价：<font class="market_s">￥36.0元</font><br />
+                                                                        本店价：<font class="shop_s">￥30.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=372"><img src="images/201311/thumb_img/372_thumb_G_1384985459066.jpg" alt="42°精酿竹叶..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=372" title="42°精酿竹叶青500ml">42°精酿竹叶...</a></p>
+                                    市场价：<font class="market_s">￥67.2元</font><br />
+                                                                        本店价：<font class="shop_s">￥56.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=371"><img src="images/201312/thumb_img/371_thumb_G_1386626681037.jpg" alt="40°英国皇家..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=371" title="40°英国皇家礼炮21年1500ml">40°英国皇家...</a></p>
+                                    市场价：<font class="market_s">￥1468.8元</font><br />
+                                                                        本店价：<font class="shop_s">￥1224.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=370"><img src="images/201311/thumb_img/370_thumb_G_1384985313780.jpg" alt="43°英国百龄..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=370" title="43°英国百龄坛15年苏格兰威士忌700ml">43°英国百龄...</a></p>
+                                    市场价：<font class="market_s">￥1154.3元</font><br />
+                                                                        本店价：<font class="shop_s">￥962.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=369"><img src="images/201311/thumb_img/369_thumb_G_1384985251231.jpg" alt="40°人头马天..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=369" title="40°人头马天醇XO干邑700ml ">40°人头马天...</a></p>
+                                    市场价：<font class="market_s">￥782.4元</font><br />
+                                                                        本店价：<font class="shop_s">￥652.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=368"><img src="images/201311/thumb_img/368_thumb_G_1384985206054.jpg" alt="韩国海特啤酒3..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=368" title="韩国海特啤酒355ml（24瓶套装）">韩国海特啤酒3...</a></p>
+                                    市场价：<font class="market_s">￥309.5元</font><br />
+                                                                        本店价：<font class="shop_s">￥258.0元</font><br />
+                        			 
+        </div>
+                 <div class="goodsItem" >
+           <a href="goods.php?id=367"><img src="images/201312/thumb_img/367_thumb_G_1386626809943.jpg" alt="40°轩尼诗V..." class="goodsimg" /></a><br />
+           <p><a href="goods.php?id=367" title="40°轩尼诗VSOP干邑白兰地700ml">40°轩尼诗V...</a></p>
+                                    市场价：<font class="market_s">￥549.6元</font><br />
+                                                                        本店价：<font class="shop_s">￥458.0元</font><br />
+                        			 
+        </div>
             </div>
-      
- 
-         <div class="blank"></div>
-           
-      <div class="picture" id="imglist">
-		
-                          
-                         
-           <a  href="images/201501/goods_img/356_P_1420476451716.jpg"
-    	rel="zoom1" 
-        rev="images/201501/goods_img/356_P_1420476451716.jpg"
-        title="">
-        <img src="images/201501/thumb_img/356_thumb_P_1420476451446.jpg" alt="50°杜康老窖青花瓷500ml" class="onbg" /></a>
-                                  
+        </form>
+  
+ </div>
 </div>
- 
+<div class="blank5"></div>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+//-->
+</script>
 <script type="text/javascript">
-	mypicBg();
-</script>     
-         
-     </div>
-     
-     <div class="textInfo">
-     <form action="javascript:addToCart(356)" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
-	  <h1 class="clearfix" >
-      50°杜康老窖青花瓷500ml      </h1> 
- 
-        
-	   
-	  
-	  <ul class="ul2 clearfix">
-        <li class="clearfix" style="width:100%">
-       <dd>
- 
-       
-       <strong>本店售价：</strong><font class="shop" id="ECS_SHOPPRICE">￥56.0元</font> 
-   
-	   
-	          <font class="market">￥67.2元</font> 
-              </dd>
-       </li>
-      
-      
-      
-      
-             <li class="clearfix">
-       <dd>
-       <strong>商品货号：</strong>ECS000356      
-       </dd>
-       </li> 
-                      <li class="clearfix">
-       <dd>
-      
-                  <strong>商品库存：</strong>
-          10000              
-       </dd>
-       </li>  
-                             <li class="clearfix">
-       <dd>
-       
-       <strong>商品重量：</strong>0克       
-       </dd>
-      </li>
-        
-             <li class="clearfix">
-       <dd>
-    
-      <strong>上架时间：</strong>2013-11-21      
-       </dd>
-       </li>
-              <li class="clearfix">
-       <dd>
-       
-       <strong>商品点击数：</strong>11       </dd>
-      </li>
-	  </ul>
-	  
-	  
-	  <ul>
-     
-        
-      
-            <script type="text/javascript" src="js/lefttime.js"></script>      <li class="padd loop" style="margin-bottom:5px; border-bottom:1px dashed #ccc;">
-      <strong>促销价：</strong><font class="shop">￥42.0元</font><br />
-      <strong>剩余时间：</strong>
-      <font class="f4" id="leftTime">请稍等, 正在载入中...</font><br />
-      </li>
-        
-  
-  <li class="clearfix">
-       <dd >
-  
-              注册用户：<font class="f1" id="ECS_RANKPRICE_1" style=" padding-right:10px;">￥56.0元</font> 
-              经销商：<font class="f1" id="ECS_RANKPRICE_4" style=" padding-right:10px;">￥56.0元</font> 
-              
-        <a href="javascript:collect(356)">收藏</a> |  
-              <a href="user.php?act=affiliate&goodsid=356" >推荐</a>
-         </dd>
-      </li>
-  
-               
-      
-                            </ul>
-         <ul class="bnt_ul">
-     
-      
+window.onload = function()
+{
+  Compare.init();
+  fixpng();
+}
+var button_compare = '';
+var exist = "您已经选择了%s";
+var count_limit = "最多只能选择4个商品进行对比";
+var goods_type_different = "\"%s\"和已选择商品类型不同无法进行对比";
+var compare_no_goods = "您没有选定任何需要比较的商品或者比较的商品数少于 2 个。";
+var btn_buy = "购买";
+var is_cancel = "取消";
+var select_spe = "请选择商品属性";
+</script><form name="selectPageForm" action="/category.php" method="get">
+ <div id="pager" class="pagebar">
+  <span class="f_l " style="margin-right:10px;">总计 <b>75</b>  个记录</span>
+                      <span class="page_now">1</span>
+                      <a href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=goods_id&amp;order=DESC">[2]</a>
+                      <a href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=3&amp;sort=goods_id&amp;order=DESC">[3]</a>
+                      <a href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=4&amp;sort=goods_id&amp;order=DESC">[4]</a>
             
-      
-           <li class="clearfix">
-       <dd>
-       <strong>购买数量：</strong>
-        <input name="number" type="text" id="number" value="1" size="4" onblur="changePrice()" style="border:1px solid #ccc; "/> <strong>商品总价：</strong><font id="ECS_GOODS_AMOUNT" class="f1"></font>
-       </dd>
-       </li>
-      
-      <li class="padd">
-      <a href="javascript:addToCart(356)"><img src="themes/ecmoban_benlai/images/goumai2.gif" /></a>
-     
-      </li>
-     
-      </ul>
-      </form>
-     </div>
-   </div>
-   <div class="blank"></div>
-   
-   
-     <div class="box">
- 
-      <div style="padding:0 0px;">
-        <div id="com_b" class="history clearfix">
-        <h2>商品描述</h2>
-        <h2 class="h2bg">商品属性</h2>
-         <h2 class="h2bg">商品标签</h2>
-           <h2 class="h2bg">相关商品</h2>
-                </div>
-      </div>    <div class="box_1">
-      <div id="com_v" class="  " style="padding:6px;"></div>
-      <div id="com_h">
-       <blockquote>
-               </blockquote> 
-       
-       <blockquote>
-      <table class="table" width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#dddddd">
-              </table>
-     </blockquote>
-     <blockquote>
-   
-     <div class="box">
-     <div class="box_1">
-      <h3><span class="text">商品标签</span></h3>
-      <div class="boxCenterList clearfix ie6">
-       <form name="tagForm" action="javascript:;" onSubmit="return submitTag(this)" id="tagForm">
-        <p id="ECS_TAGS" style="margin-bottom:5px;">
-                  </p>
-        <p>
-          <input type="text" name="tag" id="tag" class="inputBg" size="35" />
-          <input type="submit" value="添 加" class="bnt_blue" style="border:none;" />
-          <input type="hidden" name="goods_id" value="356"  />
-        </p>
-                <script type="text/javascript">
-                //<![CDATA[
-                
-                /**
-                 * 用户添加标记的处理函数
-                 */
-                function submitTag(frm)
-                {
-                  try
-                  {
-                    var tag = frm.elements['tag'].value;
-                    var idx = frm.elements['goods_id'].value;
-                    if (tag.length > 0 && parseInt(idx) > 0)
-                    {
-                      Ajax.call('user.php?act=add_tag', "id=" + idx + "&tag=" + tag, submitTagResponse, "POST", "JSON");
-                    }
-                  }
-                  catch (e) {alert(e);}
-                  return false;
-                }
-                function submitTagResponse(result)
-                {
-                  var div = document.getElementById('ECS_TAGS');
-                  if (result.error > 0)
-                  {
-                    alert(result.message);
-                  }
-                  else
-                  {
-                    try
-                    {
-                      div.innerHTML = '';
-                      var tags = result.content;
-                      for (i = 0; i < tags.length; i++)
-                      {
-                        div.innerHTML += '<a href="search.php?keywords='+tags[i].word+'" style="color:#006ace; text-decoration:none; margin-right:5px;">' +tags[i].word + '[' + tags[i].count + ']<\/a>&nbsp;&nbsp; ';
-                      }
-                    }
-                    catch (e) {alert(e);}
-                  }
-                }
-                
-                //]]>
-                </script>
-              </form>
-      </div>
-     </div>
-    </div>
-    <div class="blank5"></div>
-     </blockquote>
-     
-     
-    
-          
-     
-     <blockquote>
-   
- 
-     </blockquote>
-     
-      </div>
-     </div>
-    </div>
-    <script type="text/javascript">
-    <!--
-    reg("com");
-    //-->
-    </script>
-  <div class="blank"></div>
-  
-   
-<script type="text/javascript" src="js/transport.js"></script><script type="text/javascript" src="js/utils.js"></script><div id="ECS_COMMENT"> 554fcae493e564ee0dc75bdf2ebf94cacomments|a:3:{s:4:"name";s:8:"comments";s:4:"type";i:0;s:2:"id";i:356;}554fcae493e564ee0dc75bdf2ebf94ca</div>
-  </div>
+  <a class="next" href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=goods_id&amp;order=DESC">下一页</a>    </div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+//-->
+</script>
+  </div>  
   
 </div>
 <div id="VjiaFooter" class="block"> 
@@ -859,7 +810,9 @@ function check_email()
   
   
   
-                <li><a href="http://wpa.qq.com/msgrd?V=1&amp;Uin=564126197&amp;Site=柏味网&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:564126197:4" height="16" border="0" alt="QQ" /> 564126197</a> </li>
+                <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=20789606&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:20789606:4" height="16" border="0" alt="QQ" /> 20789606</a> </li>
+                         <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=822487296&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:822487296:4" height="16" border="0" alt="QQ" /> 822487296</a> </li>
+                         <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=627405722&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:627405722:4" height="16" border="0" alt="QQ" /> 627405722</a> </li>
                                                                                
     
   
@@ -948,50 +901,5 @@ return; //结束函式
 document.getElementById("divMenu").style.display = "block";
 document.getElementById("divOnline").style.display = "none";
 }
-</script>
- 
-</body>
-<script type="text/javascript">
-var goods_id = 356;
-var goodsattr_style = 1;
-var gmt_end_time = 1421740800;
-var day = "天";
-var hour = "小时";
-var minute = "分钟";
-var second = "秒";
-var end = "结束";
-var goodsId = 356;
-var now_time = 1420482305;
-onload = function(){
-  changePrice();
-  fixpng();
-  try {onload_leftTime();}
-  catch (e) {}
-}
-/**
- * 点选可选属性或改变数量时修改商品价格的函数
- */
-function changePrice()
-{
-  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
-  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
-  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
-}
-/**
- * 接收返回的信息
- */
-function changePriceResponse(res)
-{
-  if (res.err_msg.length > 0)
-  {
-    alert(res.err_msg);
-  }
-  else
-  {
-    document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
-    if (document.getElementById('ECS_GOODS_AMOUNT'))
-      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
-  }
-}
-</script>
+</script></body>
 </html>

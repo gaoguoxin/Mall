@@ -19,7 +19,6 @@ var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item']; ?>";
 </script>
 </head>
 <body>
-
 <h1>
 <?php if ($this->_var['action_link']): ?>
 <span class="action-span"><a href="<?php echo $this->_var['action_link']['href']; ?>"><?php echo $this->_var['action_link']['text']; ?></a></span>
