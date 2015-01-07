@@ -1,10 +1,10 @@
-<?php exit;?>a:3:{s:8:"template";a:8:{i:0;s:62:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/category.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/ur_here.lbi";i:3;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree.lbi";i:4;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/history.lbi";i:5;s:72:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/goods_list.lbi";i:6;s:67:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/pages.lbi";i:7;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420559445;s:8:"maketime";i:1420555845;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:8:{i:0;s:62:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/category.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/ur_here.lbi";i:3;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree.lbi";i:4;s:69:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/history.lbi";i:5;s:72:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/goods_list.lbi";i:6;s:67:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/pages.lbi";i:7;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420639652;s:8:"maketime";i:1420636052;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
-<title>奶制品_柏树庄美味厨房</title>
+<title>粮油副食_柏树庄美味厨房</title>
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="themes/ecmoban_benlai/style.css" rel="stylesheet" type="text/css" />
@@ -135,7 +135,7 @@ var process_request = "正在处理您的请求...";
 蔬菜水果 <span></span>
 </a>
  
-   <a href="category-16.html"  >
+   <a href="category-16.html"   class="cur">
 粮油副食 <span></span>
 </a>
  
@@ -143,7 +143,7 @@ var process_request = "正在处理您的请求...";
 肉禽蛋品 <span></span>
 </a>
  
-   <a href="category.php?id=18"   class="cur">
+   <a href="category.php?id=18"  >
 奶制品 <span></span>
 </a>
  
@@ -207,10 +207,12 @@ var process_request = "正在处理您的请求...";
 		}
 		
 </script>
+ 
+ 
   <div class="block box">
 <div class="blank"></div>
  <div id="ur_here">
-当前位置: <a href=".">首页</a> <code>&gt;</code> <a href="category.php?id=18">奶制品</a> 
+当前位置: <a href=".">首页</a> <code>&gt;</code> <a href="category.php?id=16">粮油副食</a> 
 </div>
 </div>
 <div class="blank"></div>
@@ -407,17 +409,6 @@ document.getElementById('history_list').innerHTML = '您已清空最近浏览过
   
   <div class="AreaR">
 	 
-	  	  <div class="box">
-		 <div class="box_1">
-			<h3><span>商品筛选</span></h3>
-						<div class="screeBox">
-			  <strong>品牌：</strong>
-														<span>全部</span>
-																			<a href="category.php?id=18&amp;brand=1&amp;price_min=0&amp;price_max=0">诺基亚</a>&nbsp;
-												</div>
-											 </div>
-		</div>
-		<div class="blank"></div>
 	  	 
    
 <div class="box">
@@ -430,163 +421,23 @@ document.getElementById('history_list').innerHTML = '您已清空最近浏览过
   <a href="javascript:;" onClick="javascript:display_mode('grid')"><img src="themes/ecmoban_benlai/images/display_mode_grid_act.gif" alt=""></a>
   <a href="javascript:;" onClick="javascript:display_mode('text')"><img src="themes/ecmoban_benlai/images/display_mode_text.gif" alt=""></a>&nbsp;&nbsp;
      
-  <a href="category.php?category=18&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=goods_id&order=ASC#goods_list"><img src="themes/ecmoban_benlai/images/goods_id_DESC.gif" alt="按上架时间排序"></a>
-  <a href="category.php?category=18&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=shop_price&order=ASC#goods_list"><img src="themes/ecmoban_benlai/images/shop_price_default.gif" alt="按价格排序"></a>
-  <a href="category.php?category=18&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=last_update&order=DESC#goods_list"><img src="themes/ecmoban_benlai/images/last_update_default.gif" alt="按更新时间排序"></a>
-  <input type="hidden" name="category" value="18" />
+  <a href="category.php?category=16&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=goods_id&order=DESC#goods_list"><img src="themes/ecmoban_benlai/images/goods_id_default.gif" alt="按上架时间排序"></a>
+  <a href="category.php?category=16&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=shop_price&order=ASC#goods_list"><img src="themes/ecmoban_benlai/images/shop_price_default.gif" alt="按价格排序"></a>
+  <a href="category.php?category=16&display=grid&brand=0&price_min=0&price_max=0&filter_attr=0&page=1&sort=last_update&order=DESC#goods_list"><img src="themes/ecmoban_benlai/images/last_update_ASC.gif" alt="按更新时间排序"></a>
+  <input type="hidden" name="category" value="16" />
   <input type="hidden" name="display" value="grid" id="display" />
   <input type="hidden" name="brand" value="0" />
   <input type="hidden" name="price_min" value="0" />
   <input type="hidden" name="price_max" value="0" />
   <input type="hidden" name="filter_attr" value="0" />
   <input type="hidden" name="page" value="1" />
-  <input type="hidden" name="sort" value="goods_id" />
-  <input type="hidden" name="order" value="DESC" />
+  <input type="hidden" name="sort" value="last_update" />
+  <input type="hidden" name="order" value="ASC" />
     </form>
   </h3>
       <form name="compareForm" action="compare.php" method="post" onSubmit="return compareGoods(this);">
             <div class="clearfix goodsBox" style="border:none; padding:11px 0 10px 0px;">
-             <div class="goodsItem" >
-           <a href="goods.php?id=386"><img src="images/201312/thumb_img/386_thumb_G_1386785173204.jpg" alt="40°英国尊尼..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=386" title="40°英国尊尼获加黑方威士忌700ml">40°英国尊尼...</a></p>
-                                    市场价：<font class="market_s">￥117.6元</font><br />
-                                                                        本店价：<font class="shop_s">￥98.0元</font><br />
-                        			 
         </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=385"><img src="images/201312/thumb_img/385_thumb_G_1386785126424.jpg" alt="40°英国克兰..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=385" title="40°英国克兰格调配型苏格兰威士忌700ml">40°英国克兰...</a></p>
-                                    市场价：<font class="market_s">￥69.6元</font><br />
-                                                                        本店价：<font class="shop_s">￥58.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=384"><img src="images/201312/thumb_img/384_thumb_G_1386785090054.jpg" alt="40°美国杰克..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=384" title="40°美国杰克丹尼700ml ">40°美国杰克...</a></p>
-                                    市场价：<font class="market_s">￥81.6元</font><br />
-                                                                        本店价：<font class="shop_s">￥68.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=383"><img src="images/201312/thumb_img/383_thumb_G_1386785029246.jpg" alt="40°英国约翰..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=383" title="40°英国约翰巴尔混合苏格兰威士忌750ml">40°英国约翰...</a></p>
-                                    市场价：<font class="market_s">￥81.6元</font><br />
-                                                                        本店价：<font class="shop_s">￥68.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=382"><img src="images/201312/thumb_img/382_thumb_G_1386784971174.jpg" alt="40°皇盾男爵..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=382" title="40°皇盾男爵威士忌150ml">40°皇盾男爵...</a></p>
-                                    市场价：<font class="market_s">￥42.0元</font><br />
-                                                                        本店价：<font class="shop_s">￥35.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=381"><img src="images/201312/thumb_img/381_thumb_G_1386784877354.jpg" alt="40°法国马爹..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=381" title="40°法国马爹利名士干邑700ml">40°法国马爹...</a></p>
-                                    市场价：<font class="market_s">￥426.0元</font><br />
-                                                                        本店价：<font class="shop_s">￥355.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=380"><img src="images/201312/thumb_img/380_thumb_G_1386784819357.jpg" alt="40°英国剑威..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=380" title="40°英国剑威苏格兰威士忌700ml ">40°英国剑威...</a></p>
-                                    市场价：<font class="market_s">￥825.6元</font><br />
-                                                                        本店价：<font class="shop_s">￥688.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=379"><img src="images/201312/thumb_img/379_thumb_G_1386784752646.jpg" alt="20.1°真露..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=379" title="20.1°真露竹炭酒（6瓶套装）">20.1°真露...</a></p>
-                                    市场价：<font class="market_s">￥105.6元</font><br />
-                                                                        促销价：<font class="shop_s">￥68.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=378"><img src="images/201311/thumb_img/378_thumb_G_1385673610568.jpg" alt="46°牛栏山珍..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=378" title="46°牛栏山珍品三十年500ml">46°牛栏山珍...</a></p>
-                                    市场价：<font class="market_s">￥28.7元</font><br />
-                                                                        本店价：<font class="shop_s">￥24.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=377"><img src="images/201311/thumb_img/377_thumb_G_1385674857389.jpg" alt="68°红星甑流..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=377" title="68°红星甑流酒2000ml ">68°红星甑流...</a></p>
-                                    市场价：<font class="market_s">￥30.0元</font><br />
-                                                                        本店价：<font class="shop_s">￥25.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=376"><img src="images/201311/thumb_img/376_thumb_G_1385673497671.jpg" alt="46°牛栏山珍..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=376" title="46°牛栏山珍品三十年500ml ">46°牛栏山珍...</a></p>
-                                    市场价：<font class="market_s">￥43.1元</font><br />
-                                                                        本店价：<font class="shop_s">￥36.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=375"><img src="images/201311/thumb_img/375_thumb_G_1385673426583.jpg" alt="38°红星御酒..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=375" title="38°红星御酒450ml">38°红星御酒...</a></p>
-                                    市场价：<font class="market_s">￥42.0元</font><br />
-                                                                        本店价：<font class="shop_s">￥35.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=374"><img src="images/201311/thumb_img/374_thumb_G_1385673348926.jpg" alt="53°红星蓝瓶..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=374" title="53°红星蓝瓶二锅头750ml">53°红星蓝瓶...</a></p>
-                                    市场价：<font class="market_s">￥38.4元</font><br />
-                                                                        促销价：<font class="shop_s">￥22.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=373"><img src="images/201311/thumb_img/373_thumb_G_1385673256041.jpg" alt="46°红星二锅..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=373" title="46°红星二锅头四合院500ml">46°红星二锅...</a></p>
-                                    市场价：<font class="market_s">￥36.0元</font><br />
-                                                                        本店价：<font class="shop_s">￥30.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=372"><img src="images/201311/thumb_img/372_thumb_G_1384985459066.jpg" alt="42°精酿竹叶..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=372" title="42°精酿竹叶青500ml">42°精酿竹叶...</a></p>
-                                    市场价：<font class="market_s">￥67.2元</font><br />
-                                                                        本店价：<font class="shop_s">￥56.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=371"><img src="images/201312/thumb_img/371_thumb_G_1386626681037.jpg" alt="40°英国皇家..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=371" title="40°英国皇家礼炮21年1500ml">40°英国皇家...</a></p>
-                                    市场价：<font class="market_s">￥1468.8元</font><br />
-                                                                        本店价：<font class="shop_s">￥1224.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=370"><img src="images/201311/thumb_img/370_thumb_G_1384985313780.jpg" alt="43°英国百龄..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=370" title="43°英国百龄坛15年苏格兰威士忌700ml">43°英国百龄...</a></p>
-                                    市场价：<font class="market_s">￥1154.3元</font><br />
-                                                                        本店价：<font class="shop_s">￥962.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=369"><img src="images/201311/thumb_img/369_thumb_G_1384985251231.jpg" alt="40°人头马天..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=369" title="40°人头马天醇XO干邑700ml ">40°人头马天...</a></p>
-                                    市场价：<font class="market_s">￥782.4元</font><br />
-                                                                        本店价：<font class="shop_s">￥652.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=368"><img src="images/201311/thumb_img/368_thumb_G_1384985206054.jpg" alt="韩国海特啤酒3..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=368" title="韩国海特啤酒355ml（24瓶套装）">韩国海特啤酒3...</a></p>
-                                    市场价：<font class="market_s">￥309.5元</font><br />
-                                                                        本店价：<font class="shop_s">￥258.0元</font><br />
-                        			 
-        </div>
-                 <div class="goodsItem" >
-           <a href="goods.php?id=367"><img src="images/201312/thumb_img/367_thumb_G_1386626809943.jpg" alt="40°轩尼诗V..." class="goodsimg" /></a><br />
-           <p><a href="goods.php?id=367" title="40°轩尼诗VSOP干邑白兰地700ml">40°轩尼诗V...</a></p>
-                                    市场价：<font class="market_s">￥549.6元</font><br />
-                                                                        本店价：<font class="shop_s">￥458.0元</font><br />
-                        			 
-        </div>
-            </div>
         </form>
   
  </div>
@@ -614,15 +465,12 @@ var compare_no_goods = "您没有选定任何需要比较的商品或者比较�
 var btn_buy = "购买";
 var is_cancel = "取消";
 var select_spe = "请选择商品属性";
-</script><form name="selectPageForm" action="/category.php" method="get">
+</script>
+<form name="selectPageForm" action="/category.php" method="get">
  <div id="pager" class="pagebar">
-  <span class="f_l " style="margin-right:10px;">总计 <b>75</b>  个记录</span>
-                      <span class="page_now">1</span>
-                      <a href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=goods_id&amp;order=DESC">[2]</a>
-                      <a href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=3&amp;sort=goods_id&amp;order=DESC">[3]</a>
-                      <a href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=4&amp;sort=goods_id&amp;order=DESC">[4]</a>
-            
-  <a class="next" href="category.php?id=18&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=goods_id&amp;order=DESC">下一页</a>    </div>
+  <span class="f_l " style="margin-right:10px;">总计 <b>0</b>  个记录</span>
+      
+      </div>
 </form>
 <script type="Text/Javascript" language="JavaScript">
 <!--
@@ -901,5 +749,6 @@ return; //结束函式
 document.getElementById("divMenu").style.display = "block";
 document.getElementById("divOnline").style.display = "none";
 }
-</script></body>
+</script>
+ </body>
 </html>
