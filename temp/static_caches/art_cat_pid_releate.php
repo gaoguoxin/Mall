@@ -1,0 +1,108 @@
+<?php
+$data = array (
+  0 => 
+  array (
+    'cat_id' => '1',
+    'cat_name' => '系统分类',
+    'cat_type' => '2',
+    'keywords' => '',
+    'cat_desc' => '系统保留分类',
+    'sort_order' => '50',
+    'show_in_nav' => '0',
+    'parent_id' => '0',
+    'has_children' => '2',
+    'aricle_num' => '0',
+  ),
+  1 => 
+  array (
+    'cat_id' => '2',
+    'cat_name' => '网店信息',
+    'cat_type' => '3',
+    'keywords' => '',
+    'cat_desc' => '网店信息分类',
+    'sort_order' => '50',
+    'show_in_nav' => '0',
+    'parent_id' => '1',
+    'has_children' => '0',
+    'aricle_num' => '5',
+  ),
+  2 => 
+  array (
+    'cat_id' => '3',
+    'cat_name' => '网店帮助分类',
+    'cat_type' => '4',
+    'keywords' => '',
+    'cat_desc' => '网店帮助分类',
+    'sort_order' => '50',
+    'show_in_nav' => '0',
+    'parent_id' => '1',
+    'has_children' => '5',
+    'aricle_num' => '0',
+  ),
+  3 => 
+  array (
+    'cat_id' => '5',
+    'cat_name' => '新手上路 ',
+    'cat_type' => '5',
+    'keywords' => '新手上路 ',
+    'cat_desc' => '新手上路 ',
+    'sort_order' => '50',
+    'show_in_nav' => '0',
+    'parent_id' => '3',
+    'has_children' => '0',
+    'aricle_num' => '3',
+  ),
+  4 => 
+  array (
+    'cat_id' => '8',
+    'cat_name' => '服务保证 ',
+    'cat_type' => '5',
+    'keywords' => '服务保证 ',
+    'cat_desc' => '服务保证 ',
+    'sort_order' => '51',
+    'show_in_nav' => '0',
+    'parent_id' => '3',
+    'has_children' => '0',
+    'aricle_num' => '3',
+  ),
+  5 => 
+  array (
+    'cat_id' => '9',
+    'cat_name' => '联系我们 ',
+    'cat_type' => '5',
+    'keywords' => '',
+    'cat_desc' => '联系我们 ',
+    'sort_order' => '52',
+    'show_in_nav' => '0',
+    'parent_id' => '3',
+    'has_children' => '0',
+    'aricle_num' => '3',
+  ),
+  6 => 
+  array (
+    'cat_id' => '10',
+    'cat_name' => '会员中心',
+    'cat_type' => '5',
+    'keywords' => '会员中心',
+    'cat_desc' => '会员中心',
+    'sort_order' => '53',
+    'show_in_nav' => '0',
+    'parent_id' => '3',
+    'has_children' => '0',
+    'aricle_num' => '3',
+  ),
+  7 => 
+  array (
+    'cat_id' => '7',
+    'cat_name' => '配送与支付 ',
+    'cat_type' => '5',
+    'keywords' => '',
+    'cat_desc' => '配送与支付 ',
+    'sort_order' => '54',
+    'show_in_nav' => '0',
+    'parent_id' => '3',
+    'has_children' => '0',
+    'aricle_num' => '3',
+  ),
+);
+?>

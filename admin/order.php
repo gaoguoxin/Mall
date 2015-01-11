@@ -4870,6 +4870,9 @@ function order_list()
         $filter['user_id'] = empty($_REQUEST['user_id']) ? 0 : intval($_REQUEST['user_id']);
         $filter['user_name'] = empty($_REQUEST['user_name']) ? '' : trim($_REQUEST['user_name']);
         $filter['composite_status'] = isset($_REQUEST['composite_status']) ? intval($_REQUEST['composite_status']) : -1;
+		
+		$filter['user_rank'] = isset($_REQUEST['user_rank']) ? intval($_REQUEST['user_rank']) : -1;
+		
         $filter['group_buy_id'] = isset($_REQUEST['group_buy_id']) ? intval($_REQUEST['group_buy_id']) : 0;
 
         $filter['sort_by'] = empty($_REQUEST['sort_by']) ? 'add_time' : trim($_REQUEST['sort_by']);
@@ -4993,6 +4996,18 @@ function order_list()
                     $where .= " AND o.order_status = '$filter[composite_status]' ";
                 }
         }
+		
+		switch($filter['user_rank'])
+		{
+			case 1:
+				$where .= " AND u.user_rank <> 4 ";
+				break;
+			case 4:
+				$where .= " AND u.user_rank = 4 ";
+				break;
+			default:
+				break;
+		}
 
         /* 团购订单 */
         if ($filter['group_buy_id'])
@@ -5025,15 +5040,15 @@ function order_list()
         }
 
         /* 记录总数 */
-        if ($filter['user_name'])
-        {
+        //if ($filter['user_name'])
+       // {
             $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('order_info') . " AS o ,".
                    $GLOBALS['ecs']->table('users') . " AS u " . $where;
-        }
-        else
-        {
-            $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('order_info') . " AS o ". $where;
-        }
+       // }
+       // else
+       // {
+       //     $sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('order_info') . " AS o ". $where;
+       // }
 
         $filter['record_count']   = $GLOBALS['db']->getOne($sql);
         $filter['page_count']     = $filter['record_count'] > 0 ? ceil($filter['record_count'] / $filter['page_size']) : 1;
@@ -5042,7 +5057,7 @@ function order_list()
         $sql = "SELECT o.order_id, o.order_sn, o.add_time, o.order_status, o.shipping_status, o.order_amount, o.money_paid," .
                     "o.pay_status, o.consignee, o.address, o.email, o.tel, o.extension_code, o.extension_id, " .
                     "(" . order_amount_field('o.') . ") AS total_fee, " .
-                    "IFNULL(u.user_name, '" .$GLOBALS['_LANG']['anonymous']. "') AS buyer ".
+                    "IFNULL(u.user_name, '" .$GLOBALS['_LANG']['anonymous']. "') AS buyer,u.user_rank ".
                 " FROM " . $GLOBALS['ecs']->table('order_info') . " AS o " .
                 " LEFT JOIN " .$GLOBALS['ecs']->table('users'). " AS u ON u.user_id=o.user_id ". $where .
                 " ORDER BY $filter[sort_by] $filter[sort_order] ".

@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:10:{i:0;s:59:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/index.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree_index.lbi";i:3;s:70:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/index_ad.lbi";i:4;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_promotion.lbi";i:5;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_new.lbi";i:6;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_hot.lbi";i:7;s:76:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_best.lbi";i:8;s:66:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/help.lbi";i:9;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420559452;s:8:"maketime";i:1420555852;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:10:{i:0;s:59:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/index.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree_index.lbi";i:3;s:70:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/index_ad.lbi";i:4;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_promotion.lbi";i:5;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_new.lbi";i:6;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_hot.lbi";i:7;s:76:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_best.lbi";i:8;s:66:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/help.lbi";i:9;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420637103;s:8:"maketime";i:1420633503;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -712,27 +712,27 @@ window.onload=function(){
       <div class="clearfix">
                  
            <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=347"><img src="images/201312/thumb_img/347_thumb_G_1386626939932.jpg" border="0" alt="52°泸州老窖陈坛老窖珍坛500ml" class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=347" title="52°泸州老窖陈坛老窖珍坛500ml">52°泸州老窖...</a></p>
-           促销价：<font class="f1">￥520.0元</font></li>
+           <li class="goodsimg"><a href="goods.php?id=359"><img src="images/201311/thumb_img/359_thumb_G_1384982958312.jpg" border="0" alt="52°酒鬼酒酝酿真藏版500ml " class="B_blue"/></a></li>
+			<li> <p><a href="goods.php?id=359" title="52°酒鬼酒酝酿真藏版500ml ">52°酒鬼酒酝...</a></p>
+           促销价：<font class="f1">￥86.0元</font></li>
            </ul>
                  
            <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=256"><img src="images/201310/thumb_img/256_thumb_G_1383176200187.jpg" border="0" alt="中国越千年4A级赤霞珠干红" class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=256" title="中国越千年4A级赤霞珠干红">中国越千年4A...</a></p>
-           促销价：<font class="f1">￥130.0元</font></li>
+           <li class="goodsimg"><a href="goods.php?id=356"><img src="images/201501/thumb_img/356_thumb_G_1420476451799.jpg" border="0" alt="50°杜康老窖青花瓷500ml" class="B_blue"/></a></li>
+			<li> <p><a href="goods.php?id=356" title="50°杜康老窖青花瓷500ml">50°杜康老窖...</a></p>
+           促销价：<font class="f1">￥42.0元</font></li>
            </ul>
                  
            <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=362"><img src="images/201311/thumb_img/362_thumb_G_1384983171266.jpg" border="0" alt="52°酒鬼湘品•银钻500ml" class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=362" title="52°酒鬼湘品•银钻500ml">52°酒鬼湘品...</a></p>
-           促销价：<font class="f1">￥68.0元</font></li>
-           </ul>
-                 
-           <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=251"><img src="images/201312/thumb_img/251_thumb_G_1387215655739.jpg" border="0" alt="52°五粮液股份公司金六福双" class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=251" title="52°五粮液股份公司金六福双">52°五粮液股...</a></p>
+           <li class="goodsimg"><a href="goods.php?id=358"><img src="images/201311/thumb_img/358_thumb_G_1384982901334.jpg" border="0" alt="53°茅台王子酒酱门经典500ml " class="B_blue"/></a></li>
+			<li> <p><a href="goods.php?id=358" title="53°茅台王子酒酱门经典500ml ">53°茅台王子...</a></p>
            促销价：<font class="f1">￥120.0元</font></li>
+           </ul>
+                 
+           <ul class="clearfix">
+           <li class="goodsimg"><a href="goods.php?id=374"><img src="images/201311/thumb_img/374_thumb_G_1385673348926.jpg" border="0" alt="53°红星蓝瓶二锅头750ml" class="B_blue"/></a></li>
+			<li> <p><a href="goods.php?id=374" title="53°红星蓝瓶二锅头750ml">53°红星蓝瓶...</a></p>
+           促销价：<font class="f1">￥22.0元</font></li>
            </ul>
                 </div>
  </div>
@@ -744,38 +744,38 @@ window.onload=function(){
 <div id="show_new_area" class="clearfix">
       <div class="goodsItem">
        
-           <a href="goods.php?id=251"><img src="images/201312/thumb_img/251_thumb_G_1387215655739.jpg" alt="52°五粮液股份公司金六福双" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=251" title="52°五粮液股份公司金六福双">52°五粮液股...</a></p>
+           <a href="goods.php?id=378"><img src="images/201311/thumb_img/378_thumb_G_1385673610568.jpg" alt="46°牛栏山珍品三十年500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=378" title="46°牛栏山珍品三十年500ml">46°牛栏山珍...</a></p>
            
            
- 市场价：<font class="market">￥156.0元</font> <br/>
+ 市场价：<font class="market">￥28.7元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥120.0元                     </font>      
+                     ￥24.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=340"><img src="images/201312/thumb_img/340_thumb_G_1387215849205.jpg" alt="58°百年牛栏山清香白酒500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=340" title="58°百年牛栏山清香白酒500ml">58°百年牛栏...</a></p>
+           <a href="goods.php?id=351"><img src="images/201312/thumb_img/351_thumb_G_1387216051501.jpg" alt="53°富贵江南30礼盒500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=351" title="53°富贵江南30礼盒500ml">53°富贵江南...</a></p>
            
            
- 市场价：<font class="market">￥225.6元</font> <br/>
+ 市场价：<font class="market">￥698.4元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥188.0元                     </font>      
+                     ￥582.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=361"><img src="images/201312/thumb_img/361_thumb_G_1386626849122.jpg" alt="40°人头马VSOP干邑350ml " class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=361" title="40°人头马VSOP干邑350ml ">40°人头马V...</a></p>
+           <a href="goods.php?id=342"><img src="images/201312/thumb_img/342_thumb_G_1387215893548.jpg" alt="60°汾酒集团原浆一坛香1500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=342" title="60°汾酒集团原浆一坛香1500ml">60°汾酒集团...</a></p>
            
            
- 市场价：<font class="market">￥1158.0元</font> <br/>
+ 市场价：<font class="market">￥316.8元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥965.0元                     </font>      
+                     ￥264.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
@@ -792,14 +792,14 @@ window.onload=function(){
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=317"><img src="images/201312/thumb_img/317_thumb_G_1386627162395.jpg" alt="法国波尔多珍藏干红葡萄酒" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=317" title="法国波尔多珍藏干红葡萄酒">法国波尔多珍藏...</a></p>
+           <a href="goods.php?id=333"><img src="images/201312/thumb_img/333_thumb_G_1386626999118.jpg" alt="46°典藏牛栏山二锅头十二年陈酿500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=333" title="46°典藏牛栏山二锅头十二年陈酿500ml">46°典藏牛栏...</a></p>
            
            
- 市场价：<font class="market">￥294.0元</font> <br/>
+ 市场价：<font class="market">￥542.4元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥245.0元                     </font>      
+                     ￥452.0元                     </font>      
 		    
         </div>
    
@@ -811,62 +811,62 @@ window.onload=function(){
 <div id="show_hot_area" class="clearfix">
       <div class="goodsItem">
        
-           <a href="goods.php?id=251"><img src="images/201312/thumb_img/251_thumb_G_1387215655739.jpg" alt="52°五粮液股份公司金六福双" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=251" title="52°五粮液股份公司金六福双">52°五粮液股...</a></p>
+           <a href="goods.php?id=377"><img src="images/201311/thumb_img/377_thumb_G_1385674857389.jpg" alt="68°红星甑流酒2000ml " class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=377" title="68°红星甑流酒2000ml ">68°红星甑流...</a></p>
            
            
- 市场价：<font class="market">￥156.0元</font> <br/>
+ 市场价：<font class="market">￥30.0元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥120.0元                     </font>      
+                     ￥25.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=255"><img src="images/201312/thumb_img/255_thumb_G_1387215740848.jpg" alt="52°泸州老窖老窖名酿八年500" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=255" title="52°泸州老窖老窖名酿八年500">52°泸州老窖...</a></p>
+           <a href="goods.php?id=357"><img src="images/201311/thumb_img/357_thumb_G_1384982802892.jpg" alt="38°典藏牛栏山二锅头500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=357" title="38°典藏牛栏山二锅头500ml">38°典藏牛栏...</a></p>
            
            
- 市场价：<font class="market">￥52.8元</font> <br/>
+ 市场价：<font class="market">￥70.8元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥44.0元                     </font>      
+                     ￥49.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=359"><img src="images/201311/thumb_img/359_thumb_G_1384982958312.jpg" alt="52°酒鬼酒酝酿真藏版500ml " class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=359" title="52°酒鬼酒酝酿真藏版500ml ">52°酒鬼酒酝...</a></p>
+           <a href="goods.php?id=366"><img src="images/201311/thumb_img/366_thumb_G_1384985102589.jpg" alt="43°英国百龄苏格兰威士忌700ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=366" title="43°英国百龄苏格兰威士忌700ml">43°英国百龄...</a></p>
            
            
- 市场价：<font class="market">￥115.1元</font> <br/>
+ 市场价：<font class="market">￥698.4元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥86.0元                     </font>      
+                     ￥582.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=332"><img src="images/201312/thumb_img/332_thumb_G_1386627046626.jpg" alt="法国卡门王子红葡萄酒750ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=332" title="法国卡门王子红葡萄酒750ml">法国卡门王子红...</a></p>
+           <a href="goods.php?id=336"><img src="images/201311/thumb_img/336_thumb_G_1383262495652.jpg" alt="意大利基昂帝尚品红葡萄酒750ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=336" title="意大利基昂帝尚品红葡萄酒750ml">意大利基昂帝尚...</a></p>
            
            
- 市场价：<font class="market">￥308.4元</font> <br/>
+ 市场价：<font class="market">￥120.0元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥257.0元                     </font>      
+                     ￥100.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=256"><img src="images/201310/thumb_img/256_thumb_G_1383176200187.jpg" alt="中国越千年4A级赤霞珠干红" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=256" title="中国越千年4A级赤霞珠干红">中国越千年4A...</a></p>
+           <a href="goods.php?id=322"><img src="images/201311/thumb_img/322_thumb_G_1383259024365.jpg" alt="52°茅台集团国隆国品8年500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=322" title="52°茅台集团国隆国品8年500ml">52°茅台集团...</a></p>
            
            
- 市场价：<font class="market">￥136.7元</font> <br/>
+ 市场价：<font class="market">￥548.4元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥130.0元                     </font>      
+                     ￥457.0元                     </font>      
 		    
         </div>
    
@@ -877,62 +877,62 @@ window.onload=function(){
 <div id="show_best_area" class="clearfix">
       <div class="goodsItem">
        
-           <a href="goods.php?id=378"><img src="images/201311/thumb_img/378_thumb_G_1385673610568.jpg" alt="46°牛栏山珍品三十年500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=378" title="46°牛栏山珍品三十年500ml">46°牛栏山珍...</a></p>
+           <a href="goods.php?id=377"><img src="images/201311/thumb_img/377_thumb_G_1385674857389.jpg" alt="68°红星甑流酒2000ml " class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=377" title="68°红星甑流酒2000ml ">68°红星甑流...</a></p>
            
            
- 市场价：<font class="market">￥28.7元</font> <br/>
+ 市场价：<font class="market">￥30.0元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥24.0元                     </font>      
+                     ￥25.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=259"><img src="images/201312/thumb_img/259_thumb_G_1387215772947.jpg" alt="50°伊力特传世经典500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=259" title="50°伊力特传世经典500ml">50°伊力特传...</a></p>
+           <a href="goods.php?id=365"><img src="images/201311/thumb_img/365_thumb_G_1384985049547.jpg" alt="英国爱力士苏格兰威士忌700ml " class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=365" title="英国爱力士苏格兰威士忌700ml ">英国爱力士苏格...</a></p>
            
            
- 市场价：<font class="market">￥132.0元</font> <br/>
+ 市场价：<font class="market">￥698.4元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥110.0元                     </font>      
+                     ￥582.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=318"><img src="images/201312/thumb_img/318_thumb_G_1386721650477.jpg" alt="53º醉卿典藏1988(绵柔版)5" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=318" title="53º醉卿典藏1988(绵柔版)5">53º醉卿典藏...</a></p>
+           <a href="goods.php?id=358"><img src="images/201311/thumb_img/358_thumb_G_1384982901334.jpg" alt="53°茅台王子酒酱门经典500ml " class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=358" title="53°茅台王子酒酱门经典500ml ">53°茅台王子...</a></p>
            
            
- 市场价：<font class="market">￥288.0元</font> <br/>
+ 市场价：<font class="market">￥222.0元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥240.0元                     </font>      
+                     ￥120.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=319"><img src="images/201310/thumb_img/319_thumb_G_1383176916463.jpg" alt="52°茅台集团国隆原浆窖藏" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=319" title="52°茅台集团国隆原浆窖藏">52°茅台集团...</a></p>
+           <a href="goods.php?id=324"><img src="images/201311/thumb_img/324_thumb_G_1383259176883.jpg" alt="法国传世圣蒙2009干红葡萄酒" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=324" title="法国传世圣蒙2009干红葡萄酒">法国传世圣蒙2...</a></p>
            
            
- 市场价：<font class="market">￥67.2元</font> <br/>
+ 市场价：<font class="market">￥300.0元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥56.0元                     </font>      
+                     ￥250.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=256"><img src="images/201310/thumb_img/256_thumb_G_1383176200187.jpg" alt="中国越千年4A级赤霞珠干红" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=256" title="中国越千年4A级赤霞珠干红">中国越千年4A...</a></p>
+           <a href="goods.php?id=327"><img src="images/201311/thumb_img/327_thumb_G_1383260201189.jpg" alt="西班牙斯文诺加西亚黄金冰葡萄酒500ml" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=327" title="西班牙斯文诺加西亚黄金冰葡萄酒500ml">西班牙斯文诺加...</a></p>
            
            
- 市场价：<font class="market">￥136.7元</font> <br/>
+ 市场价：<font class="market">￥697.1元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥130.0元                     </font>      
+                     ￥581.0元                     </font>      
 		    
         </div>
    
