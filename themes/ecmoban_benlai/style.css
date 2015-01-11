@@ -358,11 +358,12 @@ font-size: 16px;font-family:微软雅黑;}
 	#category_tree  .cate ul a{ font-weight:normal;padding-left:21px;color:#000;}
    
    
-   #category_tree dd{padding:3px 10px 3px 10px; line-height:24px; position:absolute; left:213px; top:-1px; width:600px;   background:#fff;border:1px solid #669934; z-index:-1;}
-   #category_tree dd .over_3{color:#000; text-decoration:none; padding:0 10px; float:left; margin:0 10px;}
+   #category_tree dd{padding:3px 10px 3px 10px; line-height:24px; position:absolute; left:213px; top:-1px; width:500px;   background:#fff;border:1px solid #669934; z-index:-1;}
+   #category_tree .over_3_wrap{float:left;width:400px;}
+   #category_tree dd .over_3{color:#000; text-decoration:none; padding:0 10px; float:left; margin:0 10px 5px 0px;;background:#ccc;}
    #category_tree dd .clearfix{ border-bottom:1px dotted #679936; line-height:30px;}
    #category_tree dd .over_3:hover{color:#EB6100; text-decoration:underline;}
-    #category_tree dd .over_2{ display:block; height:30px; line-height:30px; color:#333; font-weight:bold;padding-left:20px;}
+    #category_tree dd .over_2{ display:block;width:80px;float:left; height:30px; line-height:30px; color:#333; font-weight:bold;padding-left:20px;}
 	
   /*里页分类树*/	
 	
