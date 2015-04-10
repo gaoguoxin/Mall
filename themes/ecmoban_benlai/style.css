@@ -1123,5 +1123,38 @@ top: 0px;}
 .tel{ text-align:center; font-weight:bold; font-size:14px;}
 .tel span{padding-left:5px;}
 
+/*WANG 支付宝网银直连样式*/
 
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.payment-list {
+    background: none repeat scroll 0 0 #fff;
+}
+.payment-list li {
+    float: left;
+    padding: 10px 0;
+    width: 167px;
+}
+
+.payment-list li label {
+    cursor: pointer;
+}
+.payment-list li input {
+    vertical-align: middle;
+}
+.payment-list li img {
+    margin-left: 5px;
+	vertical-align:middle;
+}
 

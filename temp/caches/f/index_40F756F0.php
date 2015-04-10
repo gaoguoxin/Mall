@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:10:{i:0;s:59:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/index.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree_index.lbi";i:3;s:70:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/index_ad.lbi";i:4;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_promotion.lbi";i:5;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_new.lbi";i:6;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_hot.lbi";i:7;s:76:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_best.lbi";i:8;s:66:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/help.lbi";i:9;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1420637103;s:8:"maketime";i:1420633503;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:10:{i:0;s:59:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/index.dwt";i:1;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_header.lbi";i:2;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/category_tree_index.lbi";i:3;s:70:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/index_ad.lbi";i:4;s:81:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_promotion.lbi";i:5;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_new.lbi";i:6;s:75:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_hot.lbi";i:7;s:76:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/recommend_best.lbi";i:8;s:66:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/help.lbi";i:9;s:73:"/home/naitnix/progress/Mall/themes/ecmoban_benlai/library/page_footer.lbi";}s:7:"expires";i:1428629636;s:8:"maketime";i:1428626036;}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -135,52 +135,32 @@ var process_request = "正在处理您的请求...";
 <div class="block main_menu"> 
 <div class="menu">
   <a href="index.php" class="cur">首页<span></span></a>
-    <a href="category-6-b0.html"  >
-蔬菜水果 <span></span>
+    <a href="category.php?id=66"  >
+醋 <span></span>
 </a>
  
-   <a href="category-16.html"  >
-粮油副食 <span></span>
+   <a href="category.php?id=67"  >
+酱油 <span></span>
 </a>
  
-   <a href="category-17.html"  >
-肉禽蛋品 <span></span>
+   <a href="category-50.html"  >
+调味品 <span></span>
 </a>
  
-   <a href="category.php?id=18"  >
-奶制品 <span></span>
+   <a href="category-51.html"  >
+食用油 <span></span>
 </a>
  
-   <a href="category.php?id=1"  >
-水产海鲜 <span></span>
+   <a href="category.php?id=86"  >
+方便速食 <span></span>
 </a>
  
-   <a href="category.php?id=12"  >
-母婴童 <span></span>
+   <a href="category.php?id=85"  >
+米面杂粮 <span></span>
 </a>
  
-   <a href="category-26-b0.html"  >
-熟食面点 <span></span>
-</a>
- 
-   <a href="category-28-b0.html"  >
-有机食品 <span></span>
-</a>
- 
-   <a href="category-24-b0.html"  >
-休闲食品 <span></span>
-</a>
- 
-   <a href="category-25-b0.html"  >
-酒水茶饮 <span></span>
-</a>
- 
-   <a href="category-35-b0.html"  >
-瓜类 <span></span>
-</a>
- 
-   <a href="category-6-b0.html"  >
-测试 <span></span>
+   <a href="category-52.html"  >
+厨房用具 <span></span>
 </a>
  
  </div> 
@@ -214,267 +194,237 @@ var process_request = "正在处理您的请求...";
  
  
 <div class="block clearfix">
-  <div class="AreaL"> <script type="text/javascript">
-          //初始化主菜单
-            function sw_nav2(obj,tag)
-            {
-            var DisSub2 = document.getElementById("DisSub2_"+obj);
-            var HandleLI2= document.getElementById("HandleLI2_"+obj);
-                if(tag==1)
-                {
-                    DisSub2.style.display = "block";
-					HandleLI2.className="current";
-                }
-                else
-                {
-                    DisSub2.style.display = "none";
-					HandleLI2.className="";
-                }
-            }
-</script>
+  <div class="AreaL">   <script type="text/javascript">
+            //初始化主菜单
+              function sw_nav2(obj,tag)
+              {
+              var DisSub2 = document.getElementById("DisSub2_"+obj);
+              var HandleLI2= document.getElementById("HandleLI2_"+obj);
+                  if(tag==1)
+                  {
+                      DisSub2.style.display = "block";
+  					HandleLI2.className="current";
+                  }
+                  else
+                  {
+                      DisSub2.style.display = "none";
+  					HandleLI2.className="";
+                  }
+              }
+  </script>
  
-    
-    
   <div id="category_tree">
-  <div class="tit">所有商品分类</div>
-  <dl class="clearfix" >
-             <div  class="dt" onMouseOver="sw_nav2(1,1);" onMouseOut="sw_nav2(1,0);" 
+    <div class="tit">所有商品分类</div>
+      <dl class="clearfix" >
+                  <div  class="dt" >
+            <div id="HandleLI2_1">
+              <a class="a " href="category.php?id=66">
+                醋                              </a>
+            </div>
+                      </div>
+                  <div  class="dt" >
+            <div id="HandleLI2_2">
+              <a class="a t" href="category.php?id=67">
+                酱油                              </a>
+            </div>
+                      </div>
+                  <div  class="dt"  onMouseOver="sw_nav2(3,1);" onMouseOut="sw_nav2(3,0);" >
+            <div id="HandleLI2_3">
+              <a class="a " href="category.php?id=50">
+                调味品                                  <img src="themes/ecmoban_benlai/images/biao8.gif">
+                              </a>
+            </div>
+                          <dd  id=DisSub2_3 style="display:none"> 
+                                                      <a class="over_2" href="category.php?id=68">火锅/香锅料</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=69">调味酱</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=70">糖</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=71">酱菜</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=72">腐乳</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=73">鸡精/味精</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=74">调味汁</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=75">料酒</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=76">盐</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=54">调味料</a> 
+                     
+                              </dd> 
+                        </div>
+                  <div  class="dt"  onMouseOver="sw_nav2(4,1);" onMouseOut="sw_nav2(4,0);" >
+            <div id="HandleLI2_4">
+              <a class="a t" href="category.php?id=51">
+                食用油                                  <img src="themes/ecmoban_benlai/images/biao8.gif">
+                              </a>
+            </div>
+                          <dd  id=DisSub2_4 style="display:none"> 
+                                                      <a class="over_2" href="category.php?id=59">橄榄油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=77">花生油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=78">大豆油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=79">油菜籽油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=80">亚麻籽油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=81">稻米油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=82">葡萄籽油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=83">核桃油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=84">杏仁油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=60">葵花籽油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=61">玉米油</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=62">调和油</a> 
+                     
+                              </dd> 
+                        </div>
+                  <div  class="dt"  onMouseOver="sw_nav2(5,1);" onMouseOut="sw_nav2(5,0);" >
+            <div id="HandleLI2_5">
+              <a class="a " href="category.php?id=86">
+                方便速食                                  <img src="themes/ecmoban_benlai/images/biao8.gif">
+                              </a>
+            </div>
+                          <dd  id=DisSub2_5 style="display:none"> 
+                                                      <a class="over_2" href="category.php?id=87">罐头</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=88">火腿肠</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=89">速食汤/粥</a> 
+                     
+                              </dd> 
+                        </div>
+                  <div  class="dt"  onMouseOver="sw_nav2(6,1);" onMouseOut="sw_nav2(6,0);" >
+            <div id="HandleLI2_6">
+              <a class="a t" href="category.php?id=85">
+                米面杂粮                                  <img src="themes/ecmoban_benlai/images/biao8.gif">
+                              </a>
+            </div>
+                          <dd  id=DisSub2_6 style="display:none"> 
+                                                      <a class="over_2" href="category.php?id=90">大米</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=91">面粉</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=92">挂面</a> 
+                     
+                                                      <a class="over_2" href="category.php?id=93">杂粮</a> 
+                     
+                              </dd> 
+                        </div>
+                  <div  class="dt"  onMouseOver="sw_nav2(7,1);" onMouseOut="sw_nav2(7,0);" >
+            <div id="HandleLI2_7">
+              <a class="a " href="category.php?id=52">
+                厨房用具                                  <img src="themes/ecmoban_benlai/images/biao8.gif">
+                              </a>
+            </div>
+                          <dd  id=DisSub2_7 style="display:none"> 
+                                                    <div class='sub-wraper'>
+                    <a class="over_2" href="category.php?id=63">烹饪锅具</a>  
+                    <div class="over_3_wrap">
+                                              <a class="over_3" href="category.php?id=97">炒锅</a>
+                                              <a class="over_3" href="category.php?id=98">煎锅</a>
+                                              <a class="over_3" href="category.php?id=99">压力锅</a>
+                                              <a class="over_3" href="category.php?id=100">蒸锅</a>
+                                              <a class="over_3" href="category.php?id=101">汤锅</a>
+                                              <a class="over_3" href="category.php?id=102">奶锅</a>
+                                              <a class="over_3" href="category.php?id=103">锅具套装</a>
+                                              <a class="over_3" href="category.php?id=104">煲类</a>
+                                              <a class="over_3" href="category.php?id=105">水壶</a>
+                                              <a class="over_3" href="category.php?id=106">火锅</a>
+                                          </div>
+                  </div> 
+                     
+                                                    <div class='sub-wraper'>
+                    <a class="over_2" href="category.php?id=94">水具酒具</a>  
+                    <div class="over_3_wrap">
+                                              <a class="over_3" href="category.php?id=118">塑料杯</a>
+                                              <a class="over_3" href="category.php?id=119">运动水壶</a>
+                                              <a class="over_3" href="category.php?id=120">玻璃杯</a>
+                                              <a class="over_3" href="category.php?id=121">陶瓷/马克杯</a>
+                                              <a class="over_3" href="category.php?id=122">保温杯</a>
+                                              <a class="over_3" href="category.php?id=123">酒杯/酒具</a>
+                                              <a class="over_3" href="category.php?id=124">杯具套装</a>
+                                          </div>
+                  </div> 
+                     
+                                                    <div class='sub-wraper'>
+                    <a class="over_2" href="category.php?id=95">餐具</a>  
+                    <div class="over_3_wrap">
+                                              <a class="over_3" href="category.php?id=125">餐具套装</a>
+                                              <a class="over_3" href="category.php?id=126">碗/碟/盘</a>
+                                              <a class="over_3" href="category.php?id=127">筷勺/刀叉</a>
+                                              <a class="over_3" href="category.php?id=128">一次性用品</a>
+                                              <a class="over_3" href="category.php?id=129">果盘/果筐</a>
+                                          </div>
+                  </div> 
+                     
+                                                    <div class='sub-wraper'>
+                    <a class="over_2" href="category.php?id=96">茶具</a>  
+                    <div class="over_3_wrap">
+                                              <a class="over_3" href="category.php?id=130">整套茶具</a>
+                                              <a class="over_3" href="category.php?id=131">茶杯</a>
+                                              <a class="over_3" href="category.php?id=132">茶壶</a>
+                                              <a class="over_3" href="category.php?id=133">茶盘茶托</a>
+                                              <a class="over_3" href="category.php?id=134">茶叶罐</a>
+                                              <a class="over_3" href="category.php?id=135">茶具配件</a>
+                                              <a class="over_3" href="category.php?id=136">茶宠摆件</a>
+                                              <a class="over_3" href="category.php?id=137">其他</a>
+                                          </div>
+                  </div> 
+                     
+                                                    <div class='sub-wraper'>
+                    <a class="over_2" href="category.php?id=64">刀剪菜板</a>  
+                    <div class="over_3_wrap">
+                                              <a class="over_3" href="category.php?id=107">菜刀</a>
+                                              <a class="over_3" href="category.php?id=108">剪刀</a>
+                                              <a class="over_3" href="category.php?id=109">刀具套装</a>
+                                              <a class="over_3" href="category.php?id=110">砧板</a>
+                                              <a class="over_3" href="category.php?id=111">瓜果刀/刨</a>
+                                              <a class="over_3" href="category.php?id=112">多功能刀</a>
+                                          </div>
+                  </div> 
+                     
+                                                    <div class='sub-wraper'>
+                    <a class="over_2" href="category.php?id=65">厨房配件</a>  
+                    <div class="over_3_wrap">
+                                              <a class="over_3" href="category.php?id=113">保鲜盒</a>
+                                              <a class="over_3" href="category.php?id=114">烘培/烧烤</a>
+                                              <a class="over_3" href="category.php?id=115">饭盒/提锅</a>
+                                              <a class="over_3" href="category.php?id=116">储物/置物架</a>
+                                              <a class="over_3" href="category.php?id=117">小工具</a>
+                                          </div>
+                  </div> 
+                     
+                              </dd> 
+                        </div>
+                  <div  class="dt" >
+            <div id="HandleLI2_8">
+              <a class="a t" href="category.php?id=138">
+                差价                              </a>
+            </div>
+                      </div>
          
-        >
-        
-        <div id="HandleLI2_1">
-        <a    class="a    
-          
-"
- href="category.php?id=6">
- 蔬菜水果  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_1 style="display:none"> 
- <a class="over_2" href="category.php?id=29">蔬菜</a>  
-<div class="clearfix">
-<a class="over_3" href="category.php?id=31">豆角类</a>
-<a class="over_3" href="category.php?id=32">叶菜类</a>
-<a class="over_3" href="category.php?id=33">根茎类</a>
-<a class="over_3" href="category.php?id=34">茄果类</a>
-<a class="over_3" href="category.php?id=36">香辛类*葱姜</a>
-<a class="over_3" href="category.php?id=37">菌菇类</a>
-<a class="over_3" href="category.php?id=38">速冻蔬菜</a>
-<a class="over_3" href="category.php?id=39">香料类</a>
-<a class="over_3" href="category.php?id=40">花菜类</a>
-<a class="over_3" href="category.php?id=41">每日鲜蔬菜</a>
-<a class="over_3" href="category.php?id=42">礼盒</a>
-</div>   
-       
- <a class="over_2" href="category.php?id=30">水果</a>  
-<div class="clearfix">
-<a class="over_3" href="category.php?id=43">台湾水果</a>
-<a class="over_3" href="category.php?id=44">国产水果</a>
-<a class="over_3" href="category.php?id=45">速冻水果</a>
-<a class="over_3" href="category.php?id=46">进口水果</a>
-<a class="over_3" href="category.php?id=47">水果礼盒</a>
-</div>   
-       
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(2,1);" onMouseOut="sw_nav2(2,0);" 
-         
-        >
-        
-        <div id="HandleLI2_2">
-        <a    class="a    
-         t 
- 
-"
- href="category.php?id=17">
- 肉禽蛋品  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_2 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(3,1);" onMouseOut="sw_nav2(3,0);" 
-         
-        >
-        
-        <div id="HandleLI2_3">
-        <a    class="a    
-          
-"
- href="category.php?id=1">
- 水产海鲜  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_3 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(4,1);" onMouseOut="sw_nav2(4,0);" 
-         
-        >
-        
-        <div id="HandleLI2_4">
-        <a    class="a    
-         t 
- 
-"
- href="category.php?id=12">
- 母婴童  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_4 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(5,1);" onMouseOut="sw_nav2(5,0);" 
-         
-        >
-        
-        <div id="HandleLI2_5">
-        <a    class="a    
-          
-"
- href="category.php?id=18">
- 奶制品  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_5 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(6,1);" onMouseOut="sw_nav2(6,0);" 
-         
-        >
-        
-        <div id="HandleLI2_6">
-        <a    class="a    
-         t 
- 
-"
- href="category.php?id=35">
- 瓜类  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_6 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(7,1);" onMouseOut="sw_nav2(7,0);" 
-         
-        >
-        
-        <div id="HandleLI2_7">
-        <a    class="a    
-          
-"
- href="category.php?id=16">
- 粮油副食  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_7 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(8,1);" onMouseOut="sw_nav2(8,0);" 
-         
-        >
-        
-        <div id="HandleLI2_8">
-        <a    class="a    
-         t 
- 
-"
- href="category.php?id=24">
- 休闲食品  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_8 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(9,1);" onMouseOut="sw_nav2(9,0);" 
-         
-        >
-        
-        <div id="HandleLI2_9">
-        <a    class="a    
-          
-"
- href="category.php?id=25">
- 酒水茶饮  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_9 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(10,1);" onMouseOut="sw_nav2(10,0);" 
-         
-        >
-        
-        <div id="HandleLI2_10">
-        <a    class="a    
-         t 
- 
-"
- href="category.php?id=26">
- 熟食面点  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_10 style="display:none"> 
-</dd> 
-</div>
-        <div  class="dt" onMouseOver="sw_nav2(11,1);" onMouseOut="sw_nav2(11,0);" 
-         
-        >
-        
-        <div id="HandleLI2_11">
-        <a    class="a    
-          
-"
- href="category.php?id=28">
- 有机食品  <img src="themes/ecmoban_benlai/images/biao8.gif">
- </a>
-</div>
-        
-        
-        
-<dd  id=DisSub2_11 style="display:none"> 
-</dd> 
-</div>
- 
-</dl>
-</div>
-<div class="blank"></div> 
+      </dl>
+    </div>
+  <div class="blank"></div> 
     
     
   </div>
-  <div style="float:right; width:994px;"> <style type="text/css"> 
+  <div style="float:right; width:994px;">  
+<style type="text/css"> 
 .container, .container *{margin:0; padding:0;}
-.container{width:994px; height:410px; overflow:hidden;position:relative;}
+.container{width:994px; height:320px; overflow:hidden;position:relative;}
 .slider{position:absolute;}
 .slider li{list-style:none;display:inline;}
 .slider img{width:994px; height:410px; display:block;}
@@ -504,20 +454,16 @@ var process_request = "正在处理您的请求...";
 </style>
 <div class="container" id="idTransformView">
   <ul class="slider" id="idSlider">
-      <li><a href="http://" target="_blank"><img src="data/afficheimg/20141231bovdlg.jpg"/></a></li>
-        <li><a href="http://" target="_blank"><img src="data/afficheimg/20141231ynlzee.jpg"/></a></li>
-        <li><a href="http://" target="_blank"><img src="data/afficheimg/20141231yqrilr.jpg"/></a></li>
-        <li><a href="http://" target="_blank"><img src="data/afficheimg/20141231rwrwtl.jpg"/></a></li>
-        <li><a href="http://" target="_blank"><img src="data/afficheimg/20141231ealpuc.jpg"/></a></li>
+      <li><a href="http://" target="_blank"><img src="data/afficheimg/20150111ztcuzp.jpg"/></a></li>
+        <li><a href="http://" target="_blank"><img src="data/afficheimg/20150111jjaveu.jpg"/></a></li>
+        <li><a href="http://" target="_blank"><img src="data/afficheimg/20150111ouvgkg.jpg"/></a></li>
+        <li><a href="http://" target="_blank"><img src="data/afficheimg/20150111pniwec.jpg"/></a></li>
     
   </ul>
   <ul class="num" id="idNum">
  
     
           <li>
-    
-    </li> 
-         <li>
     
     </li> 
          <li>
@@ -706,36 +652,6 @@ window.onload=function(){
  
  <div class="blank5"></div>
 <div class="blank"></div> 
-<div class="sale_box clearfix">
-<div class="tit"><span>特价商品</span></div>
- 
-      <div class="clearfix">
-                 
-           <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=359"><img src="images/201311/thumb_img/359_thumb_G_1384982958312.jpg" border="0" alt="52°酒鬼酒酝酿真藏版500ml " class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=359" title="52°酒鬼酒酝酿真藏版500ml ">52°酒鬼酒酝...</a></p>
-           促销价：<font class="f1">￥86.0元</font></li>
-           </ul>
-                 
-           <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=356"><img src="images/201501/thumb_img/356_thumb_G_1420476451799.jpg" border="0" alt="50°杜康老窖青花瓷500ml" class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=356" title="50°杜康老窖青花瓷500ml">50°杜康老窖...</a></p>
-           促销价：<font class="f1">￥42.0元</font></li>
-           </ul>
-                 
-           <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=358"><img src="images/201311/thumb_img/358_thumb_G_1384982901334.jpg" border="0" alt="53°茅台王子酒酱门经典500ml " class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=358" title="53°茅台王子酒酱门经典500ml ">53°茅台王子...</a></p>
-           促销价：<font class="f1">￥120.0元</font></li>
-           </ul>
-                 
-           <ul class="clearfix">
-           <li class="goodsimg"><a href="goods.php?id=374"><img src="images/201311/thumb_img/374_thumb_G_1385673348926.jpg" border="0" alt="53°红星蓝瓶二锅头750ml" class="B_blue"/></a></li>
-			<li> <p><a href="goods.php?id=374" title="53°红星蓝瓶二锅头750ml">53°红星蓝瓶...</a></p>
-           促销价：<font class="f1">￥22.0元</font></li>
-           </ul>
-                </div>
- </div>
  </div>
   <div class="blank"></div>
   <div class="goodsBox_1"> 
@@ -744,62 +660,26 @@ window.onload=function(){
 <div id="show_new_area" class="clearfix">
       <div class="goodsItem">
        
-           <a href="goods.php?id=378"><img src="images/201311/thumb_img/378_thumb_G_1385673610568.jpg" alt="46°牛栏山珍品三十年500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=378" title="46°牛栏山珍品三十年500ml">46°牛栏山珍...</a></p>
+           <a href="goods.php?id=399"><img src="images/201501/thumb_img/399_thumb_G_1422417434086.jpg" alt="紫菜" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=399" title="紫菜">紫菜</a></p>
            
            
- 市场价：<font class="market">￥28.7元</font> <br/>
+ 市场价：<font class="market">￥6.0元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥24.0元                     </font>      
+                     ￥5.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=351"><img src="images/201312/thumb_img/351_thumb_G_1387216051501.jpg" alt="53°富贵江南30礼盒500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=351" title="53°富贵江南30礼盒500ml">53°富贵江南...</a></p>
+           <a href="goods.php?id=398"><img src="images/201501/thumb_img/398_thumb_G_1422380577205.jpg" alt="极品香醋" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=398" title="极品香醋">极品香醋</a></p>
            
            
- 市场价：<font class="market">￥698.4元</font> <br/>
+ 市场价：<font class="market">￥16.8元</font> <br/>
       
            本店价：<font class="f1">
-                     ￥582.0元                     </font>      
-		    
-        </div>
-    <div class="goodsItem">
-       
-           <a href="goods.php?id=342"><img src="images/201312/thumb_img/342_thumb_G_1387215893548.jpg" alt="60°汾酒集团原浆一坛香1500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=342" title="60°汾酒集团原浆一坛香1500ml">60°汾酒集团...</a></p>
-           
-           
- 市场价：<font class="market">￥316.8元</font> <br/>
-      
-           本店价：<font class="f1">
-                     ￥264.0元                     </font>      
-		    
-        </div>
-    <div class="goodsItem">
-       
-           <a href="goods.php?id=329"><img src="images/201312/thumb_img/329_thumb_G_1386626639351.jpg" alt="40°美国深蓝伏特加750ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=329" title="40°美国深蓝伏特加750ml">40°美国深蓝...</a></p>
-           
-           
- 市场价：<font class="market">￥548.4元</font> <br/>
-      
-           本店价：<font class="f1">
-                     ￥457.0元                     </font>      
-		    
-        </div>
-    <div class="goodsItem">
-       
-           <a href="goods.php?id=333"><img src="images/201312/thumb_img/333_thumb_G_1386626999118.jpg" alt="46°典藏牛栏山二锅头十二年陈酿500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=333" title="46°典藏牛栏山二锅头十二年陈酿500ml">46°典藏牛栏...</a></p>
-           
-           
- 市场价：<font class="market">￥542.4元</font> <br/>
-      
-           本店价：<font class="f1">
-                     ￥452.0元                     </font>      
+                     ￥14.0元                     </font>      
 		    
         </div>
    
@@ -811,62 +691,62 @@ window.onload=function(){
 <div id="show_hot_area" class="clearfix">
       <div class="goodsItem">
        
-           <a href="goods.php?id=377"><img src="images/201311/thumb_img/377_thumb_G_1385674857389.jpg" alt="68°红星甑流酒2000ml " class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=377" title="68°红星甑流酒2000ml ">68°红星甑流...</a></p>
+           <a href="goods.php?id=399"><img src="images/201501/thumb_img/399_thumb_G_1422417434086.jpg" alt="紫菜" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=399" title="紫菜">紫菜</a></p>
            
-           
- 市场价：<font class="market">￥30.0元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥6.0元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥25.0元                     </font>      
+                     ￥5.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=357"><img src="images/201311/thumb_img/357_thumb_G_1384982802892.jpg" alt="38°典藏牛栏山二锅头500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=357" title="38°典藏牛栏山二锅头500ml">38°典藏牛栏...</a></p>
+           <a href="goods.php?id=397"><img src="images/201501/thumb_img/397_thumb_G_1420935969824.jpg" alt="老才臣酱油" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=397" title="老才臣酱油">老才臣酱油</a></p>
            
-           
- 市场价：<font class="market">￥70.8元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥11.7元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥49.0元                     </font>      
+                     ￥9.8元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=366"><img src="images/201311/thumb_img/366_thumb_G_1384985102589.jpg" alt="43°英国百龄苏格兰威士忌700ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=366" title="43°英国百龄苏格兰威士忌700ml">43°英国百龄...</a></p>
+           <a href="goods.php?id=396"><img src="images/201501/thumb_img/396_thumb_G_1420935861490.jpg" alt="厨邦酱油" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=396" title="厨邦酱油">厨邦酱油</a></p>
            
-           
- 市场价：<font class="market">￥698.4元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥21.3元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥582.0元                     </font>      
+                     ￥17.8元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=336"><img src="images/201311/thumb_img/336_thumb_G_1383262495652.jpg" alt="意大利基昂帝尚品红葡萄酒750ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=336" title="意大利基昂帝尚品红葡萄酒750ml">意大利基昂帝尚...</a></p>
+           <a href="goods.php?id=394"><img src="images/201501/thumb_img/394_thumb_G_1420935631503.jpg" alt="六月鲜" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=394" title="六月鲜">六月鲜</a></p>
            
-           
- 市场价：<font class="market">￥120.0元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥23.7元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥100.0元                     </font>      
+                     ￥19.8元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=322"><img src="images/201311/thumb_img/322_thumb_G_1383259024365.jpg" alt="52°茅台集团国隆国品8年500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=322" title="52°茅台集团国隆国品8年500ml">52°茅台集团...</a></p>
+           <a href="goods.php?id=393"><img src="images/201501/thumb_img/393_thumb_G_1420935452058.jpg" alt="一品鲜酱油" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=393" title="一品鲜酱油">一品鲜酱油</a></p>
            
-           
- 市场价：<font class="market">￥548.4元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥8.7元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥457.0元                     </font>      
+                     ￥7.3元                     </font>      
 		    
         </div>
    
@@ -877,62 +757,62 @@ window.onload=function(){
 <div id="show_best_area" class="clearfix">
       <div class="goodsItem">
        
-           <a href="goods.php?id=377"><img src="images/201311/thumb_img/377_thumb_G_1385674857389.jpg" alt="68°红星甑流酒2000ml " class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=377" title="68°红星甑流酒2000ml ">68°红星甑流...</a></p>
+           <a href="goods.php?id=399"><img src="images/201501/thumb_img/399_thumb_G_1422417434086.jpg" alt="紫菜" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=399" title="紫菜">紫菜</a></p>
            
-           
- 市场价：<font class="market">￥30.0元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥6.0元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥25.0元                     </font>      
+                     ￥5.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=365"><img src="images/201311/thumb_img/365_thumb_G_1384985049547.jpg" alt="英国爱力士苏格兰威士忌700ml " class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=365" title="英国爱力士苏格兰威士忌700ml ">英国爱力士苏格...</a></p>
+           <a href="goods.php?id=398"><img src="images/201501/thumb_img/398_thumb_G_1422380577205.jpg" alt="极品香醋" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=398" title="极品香醋">极品香醋</a></p>
            
-           
- 市场价：<font class="market">￥698.4元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥16.8元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥582.0元                     </font>      
+                     ￥14.0元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=358"><img src="images/201311/thumb_img/358_thumb_G_1384982901334.jpg" alt="53°茅台王子酒酱门经典500ml " class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=358" title="53°茅台王子酒酱门经典500ml ">53°茅台王子...</a></p>
+           <a href="goods.php?id=390"><img src="images/201501/thumb_img/390_thumb_G_1420934877013.jpg" alt="米醋" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=390" title="米醋">米醋</a></p>
            
-           
- 市场价：<font class="market">￥222.0元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥11.7元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥120.0元                     </font>      
+                     ￥9.8元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=324"><img src="images/201311/thumb_img/324_thumb_G_1383259176883.jpg" alt="法国传世圣蒙2009干红葡萄酒" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=324" title="法国传世圣蒙2009干红葡萄酒">法国传世圣蒙2...</a></p>
+           <a href="goods.php?id=388"><img src="images/201501/thumb_img/388_thumb_G_1420934630160.jpg" alt="镇江香醋" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=388" title="镇江香醋">镇江香醋</a></p>
            
-           
- 市场价：<font class="market">￥300.0元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥8.1元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥250.0元                     </font>      
+                     ￥6.8元                     </font>      
 		    
         </div>
     <div class="goodsItem">
        
-           <a href="goods.php?id=327"><img src="images/201311/thumb_img/327_thumb_G_1383260201189.jpg" alt="西班牙斯文诺加西亚黄金冰葡萄酒500ml" class="goodsimg" /></a><br />
-           <p class="f1"><a href="goods.php?id=327" title="西班牙斯文诺加西亚黄金冰葡萄酒500ml">西班牙斯文诺加...</a></p>
+           <a href="goods.php?id=389"><img src="images/201501/thumb_img/389_thumb_G_1420934731400.jpg" alt="水塔陈醋" class="goodsimg" /></a><br />
+           <p class="f1"><a href="goods.php?id=389" title="水塔陈醋">水塔陈醋</a></p>
            
-           
- 市场价：<font class="market">￥697.1元</font> <br/>
-      
+ <!--          
+ 市场价：<font class="market">￥20.1元</font> <br/>
+ -->     
            本店价：<font class="f1">
-                     ￥581.0元                     </font>      
+                     ￥16.8元                     </font>      
 		    
         </div>
    
@@ -1048,7 +928,7 @@ function check_email()
     <img src="themes/ecmoban_benlai/images/index_pk04.gif" />
     <img src="themes/ecmoban_benlai/images/index_pk05.gif" />
 </div>
-<p class="tel"><img src="themes/ecmoban_benlai/images/tel2.gif" /><span>客服热线：400-887-2026（周一至周日 8:00-20:00）</span></p>
+<p class="tel"><img src="themes/ecmoban_benlai/images/tel2.gif" /><span>客服热线：400-887-2060（周一至周日 8:00-20:00）</span></p>
 <script type="text/javascript">
 	
 	function $$(cName){
@@ -1096,7 +976,8 @@ function check_email()
                  </div>
 <div style="line-height:22px;color:#000;">
  
-  &copy; 2005-2015 柏味网 版权所有，并保留所有权利。 凉州区黄羊镇黄羊村八组 <br /> 
+    ICP备案证书号:<a href="http://www.miibeian.gov.cn/" target="_blank">陇ICP备15000213号</a><br />
+  &copy; 2005-2015 柏树庄美味厨房 版权所有，并保留所有权利。 七里河区西津东路346号 <br /> 
     </div>
  <div class="blank"></div>  
  </div>
@@ -1118,6 +999,7 @@ function check_email()
                 <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=20789606&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:20789606:4" height="16" border="0" alt="QQ" /> 20789606</a> </li>
                          <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=822487296&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:822487296:4" height="16" border="0" alt="QQ" /> 822487296</a> </li>
                          <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=627405722&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:627405722:4" height="16" border="0" alt="QQ" /> 627405722</a> </li>
+                         <li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1159729171&amp;site=qq&amp;menu=yes target="_blank"><img src="http://wpa.qq.com/pa?p=1:1159729171:4" height="16" border="0" alt="QQ" /> 1159729171</a> </li>
                                                                                
     
   

@@ -96,7 +96,7 @@ if ($this->_foreach['no']['total'] > 0):
     <img src="themes/ecmoban_benlai/images/index_pk05.gif" />
 </div>
 
-<p class="tel"><img src="themes/ecmoban_benlai/images/tel2.gif" /><span>客服热线：400-887-2026（周一至周日 8:00-20:00）</span></p>
+<p class="tel"><img src="themes/ecmoban_benlai/images/tel2.gif" /><span>客服热线：400-887-2060（周一至周日 8:00-20:00）</span></p>
 
 <script type="text/javascript">
 
@@ -133,12 +133,12 @@ if ($this->_foreach['no']['total'] > 0):
 <div class="copyRight"> 
 <div class="f_nav">
    <?php if ($this->_var['navigator_list']['bottom']): ?>
-   <?php $_from = $this->_var['navigator_list']['bottom']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'nav_0_63142300_1420632807');$this->_foreach['nav_bottom_list'] = array('total' => count($_from), 'iteration' => 0);
+   <?php $_from = $this->_var['navigator_list']['bottom']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'nav_0_22923200_1428254253');$this->_foreach['nav_bottom_list'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['nav_bottom_list']['total'] > 0):
-    foreach ($_from AS $this->_var['nav_0_63142300_1420632807']):
+    foreach ($_from AS $this->_var['nav_0_22923200_1428254253']):
         $this->_foreach['nav_bottom_list']['iteration']++;
 ?>
-        <a href="<?php echo $this->_var['nav_0_63142300_1420632807']['url']; ?>" <?php if ($this->_var['nav_0_63142300_1420632807']['opennew'] == 1): ?> target="_blank" <?php endif; ?>><?php echo $this->_var['nav_0_63142300_1420632807']['name']; ?></a>
+        <a href="<?php echo $this->_var['nav_0_22923200_1428254253']['url']; ?>" <?php if ($this->_var['nav_0_22923200_1428254253']['opennew'] == 1): ?> target="_blank" <?php endif; ?>><?php echo $this->_var['nav_0_22923200_1428254253']['name']; ?></a>
          <?php if (! ($this->_foreach['nav_bottom_list']['iteration'] == $this->_foreach['nav_bottom_list']['total'])): ?>
            |
         <?php endif; ?>

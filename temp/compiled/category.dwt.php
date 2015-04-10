@@ -69,12 +69,12 @@
 			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 			</div>
 			<?php endif; ?>
-			<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_75892200_1420636052');if (count($_from)):
-    foreach ($_from AS $this->_var['filter_attr_0_75892200_1420636052']):
+			<?php $_from = $this->_var['filter_attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'filter_attr_0_43514400_1428262471');if (count($_from)):
+    foreach ($_from AS $this->_var['filter_attr_0_43514400_1428262471']):
 ?>
       <div class="screeBox">
-			<strong><?php echo htmlspecialchars($this->_var['filter_attr_0_75892200_1420636052']['filter_attr_name']); ?> :</strong>
-			<?php $_from = $this->_var['filter_attr_0_75892200_1420636052']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
+			<strong><?php echo htmlspecialchars($this->_var['filter_attr_0_43514400_1428262471']['filter_attr_name']); ?> :</strong>
+			<?php $_from = $this->_var['filter_attr_0_43514400_1428262471']['attr_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'attr');if (count($_from)):
     foreach ($_from AS $this->_var['attr']):
 ?>
 				<?php if ($this->_var['attr']['selected']): ?>

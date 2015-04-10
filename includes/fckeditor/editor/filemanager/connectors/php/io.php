@@ -251,29 +251,33 @@ function GetCurrentFolder()
 // Do a cleanup of the folder name to avoid possible problems
 function SanitizeFolderName( $sNewFolderName )
 {
-    $sNewFolderName = stripslashes( $sNewFolderName ) ;
+	$sNewFolderName = stripslashes( $sNewFolderName ) ;
 
-    // Remove . \ / | : ? * " < >
-    $sNewFolderName = preg_replace( '/\\.|\\\\|\\/|\\||\\:|\\?|\\*|"|<|>|[[:cntrl:]]/', '_', $sNewFolderName ) ;
+	// Remove . \ / | : ; . ? * " < >
+	$sNewFolderName = preg_replace( '/\\.|\\\\|\\;|\\/|\\||\\:|\\?|\\*|"|<|>|[[:cntrl:]]/', '_', $sNewFolderName ) ;
 
-    return $sNewFolderName ;
+	$sNewFolderName = preg_replace( '/\\.(asp|aspx|cer|asa|hdx|cdx|php|php5|php4|php3|phtml|shtml|jsp|jspx|xsp|cfm)$/i', '_', $sNewFolderName ) ;
+
+	return $sNewFolderName ;
 }
 
 // Do a cleanup of the file name to avoid possible problems
 function SanitizeFileName( $sNewFileName )
 {
-    global $Config ;
+	global $Config ;
 
-    $sNewFileName = stripslashes( $sNewFileName ) ;
+	$sNewFileName = stripslashes( $sNewFileName ) ;
 
-    // Replace dots in the name with underscores (only one dot can be there... security issue).
-    if ( $Config['ForceSingleExtension'] )
-        $sNewFileName = preg_replace( '/\\.(?![^.]*$)/', '_', $sNewFileName ) ;
+	// Replace dots in the name with underscores (only one dot can be there... security issue).
+	if ( $Config['ForceSingleExtension'] )
+		$sNewFileName = preg_replace( '/\\.(?![^.]*$)/', '_', $sNewFileName ) ;
 
-    // Remove \ / | : ? * " < >
-    $sNewFileName = preg_replace( '/\\\\|\\/|\\||\\:|\\?|\\*|"|<|>|[[:cntrl:]]/', '_', $sNewFileName ) ;
+	// Remove \ / | : ? * " < >
+	$sNewFileName = preg_replace( '/\\\\|\\/|\\||\\:|\\;|\\?|\\*|"|<|>|[[:cntrl:]]/', '_', $sNewFileName ) ;
 
-    return $sNewFileName ;
+	$sNewFileName = preg_replace( '/\\.(asp|aspx|cer|asa|hdx|cdx|php|php5|php4|php3|phtml|shtml|jsp|jspx|xsp|cfm)(;|$)/i', '_', $sNewFileName ) ;
+
+	return $sNewFileName ;
 }
 
 // This is the function that sends the results of the uploading process.

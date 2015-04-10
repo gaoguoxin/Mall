@@ -3,7 +3,7 @@
 <style type="text/css"> 
 .container, .container *{margin:0; padding:0;}
 
-.container{width:994px; height:410px; overflow:hidden;position:relative;}
+.container{width:994px; height:320px; overflow:hidden;position:relative;}
 
 .slider{position:absolute;}
 .slider li{ list-style:none;display:inline;}

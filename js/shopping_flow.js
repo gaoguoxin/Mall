@@ -478,11 +478,31 @@ function checkOrderForm(frm)
     {
       shippingSelected = true;
     }
-
+/*
     if (frm.elements[i].name == 'payment' && frm.elements[i].checked)
     {
       paymentSelected = true;
     }
+*/
+
+    if (frm.elements[i].name == 'payment' && frm.elements[i].checked)
+    {
+        if(frm.elements[i].id=='alipay_bank' && frm.elements[i].checked)
+        {
+            var checkbanks=document.getElementsByName('alipay_bank');
+            for(var i=0;i<checkbanks.length;i++)
+            {
+                if(checkbanks[i].checked)
+                {
+                    paymentSelected = true;
+                }
+            }
+        }
+        else
+        {
+            paymentSelected = true;
+        }
+    }    
   }
 
   if ( ! shippingSelected)

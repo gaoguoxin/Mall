@@ -4,22 +4,22 @@
 <h4 class="title"><span>热卖商品</span> <a class="more" href="search.php?intro=hot">更多</a></h4>
 <div id="show_hot_area" class="clearfix">
   <?php endif; ?>
-  <?php $_from = $this->_var['hot_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_93146000_1420633503');if (count($_from)):
-    foreach ($_from AS $this->_var['goods_0_93146000_1420633503']):
+  <?php $_from = $this->_var['hot_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_0_83536300_1428255369');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_0_83536300_1428255369']):
 ?>
   <div class="goodsItem">
        
-           <a href="<?php echo $this->_var['goods_0_93146000_1420633503']['url']; ?>"><img src="<?php echo $this->_var['goods_0_93146000_1420633503']['thumb']; ?>" alt="<?php echo htmlspecialchars($this->_var['goods_0_93146000_1420633503']['name']); ?>" class="goodsimg" /></a><br />
-           <p class="f1"><a href="<?php echo $this->_var['goods_0_93146000_1420633503']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['goods_0_93146000_1420633503']['name']); ?>"><?php echo $this->_var['goods_0_93146000_1420633503']['short_style_name']; ?></a></p>
+           <a href="<?php echo $this->_var['goods_0_83536300_1428255369']['url']; ?>"><img src="<?php echo $this->_var['goods_0_83536300_1428255369']['thumb']; ?>" alt="<?php echo htmlspecialchars($this->_var['goods_0_83536300_1428255369']['name']); ?>" class="goodsimg" /></a><br />
+           <p class="f1"><a href="<?php echo $this->_var['goods_0_83536300_1428255369']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['goods_0_83536300_1428255369']['name']); ?>"><?php echo $this->_var['goods_0_83536300_1428255369']['short_style_name']; ?></a></p>
            
-           
- 市场价：<font class="market"><?php echo $this->_var['goods_0_93146000_1420633503']['market_price']; ?></font> <br/>
-      
+ <!--          
+ 市场价：<font class="market"><?php echo $this->_var['goods_0_83536300_1428255369']['market_price']; ?></font> <br/>
+ -->     
            本店价：<font class="f1">
-           <?php if ($this->_var['goods_0_93146000_1420633503']['promote_price'] != ""): ?>
-          <?php echo $this->_var['goods_0_93146000_1420633503']['promote_price']; ?>
+           <?php if ($this->_var['goods_0_83536300_1428255369']['promote_price'] != ""): ?>
+          <?php echo $this->_var['goods_0_83536300_1428255369']['promote_price']; ?>
           <?php else: ?>
-          <?php echo $this->_var['goods_0_93146000_1420633503']['shop_price']; ?>
+          <?php echo $this->_var['goods_0_83536300_1428255369']['shop_price']; ?>
           <?php endif; ?>
            </font>      
 		    

@@ -683,10 +683,32 @@ function get_order_detail($order_id, $user_id = 0)
             $order['pay_desc']  = $payment_info['pay_desc'];
 
             /* 调用相应的支付方式文件 */
+            /*
             include_once(ROOT_PATH . 'includes/modules/payment/' . $payment_info['pay_code'] . '.php');
-
+            */
             /* 取得在线支付方式的支付按钮 */
+            /*
             $pay_obj    = new $payment_info['pay_code'];
+            */
+            
+            if($payment_info['pay_code']=='alipay_bank')
+            {
+              /* 调用相应的支付方式文件 */
+              include_once(ROOT_PATH . 'includes/modules/payment/alipay_payment/' . $order['pay_code'] . '.php');
+
+              $pay_obj    = new $order['pay_code'];
+            }
+            else
+            {
+              /* 调用相应的支付方式文件 */
+              include_once(ROOT_PATH . 'includes/modules/payment/' . $payment_info['pay_code'] . '.php');
+
+              /* 取得在线支付方式的支付按钮 */
+              $pay_obj    = new $payment_info['pay_code'];
+            }
+
+
+
             $order['pay_online'] = $pay_obj->get_code($order, $payment);
         }
     }
