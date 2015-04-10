@@ -1,23 +1,28 @@
 <?php if ($this->_var['bought_goods']): ?>
-     <div class="box">
-     <div class="box_1">
-      <h3><span class="text"><?php echo $this->_var['lang']['shopping_and_other']; ?></span></h3>
-      <div class="boxCenterList clearfix ie6" style="padding:2px;">
-       <?php $_from = $this->_var['bought_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'bought_goods_data');if (count($_from)):
-    foreach ($_from AS $this->_var['bought_goods_data']):
-?>
-        <div class="goodsItem">
-         <a href="<?php echo $this->_var['bought_goods_data']['url']; ?>"><img src="<?php echo $this->_var['bought_goods_data']['goods_thumb']; ?>" alt="<?php echo $this->_var['bought_goods_data']['goods_name']; ?>"  class="goodsimg" /></a><br />
-         <p><a href="<?php echo $this->_var['bought_goods_data']['url']; ?>" title="<?php echo $this->_var['bought_goods_data']['goods_name']; ?>"><?php echo $this->_var['bought_goods_data']['short_name']; ?></a></p> 
-         <?php if ($this->_var['bought_goods_data']['promote_price'] != 0): ?>
-        <font class="shop_s"><?php echo $this->_var['bought_goods_data']['formated_promote_price']; ?></font>
-        <?php else: ?>
-        <font class="shop_s"><?php echo $this->_var['bought_goods_data']['shop_price']; ?></font>
-        <?php endif; ?>
-        </div>
-        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-      </div>
-     </div>
+<div>
+  <div id="buy-buy" class="m m2 related-buy" style="display: block; ">
+    <div class="mt">
+      <h2>购买了该商品的用户还购买了</h2>
     </div>
-    <div class="blank5"></div>
-    <?php endif; ?>
+    <div class="mc">
+      <ul>
+        <?php $_from = $this->_var['bought_goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'bought_goods_data');$this->_foreach['bought_goods'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['bought_goods']['total'] > 0):
+    foreach ($_from AS $this->_var['bought_goods_data']):
+        $this->_foreach['bought_goods']['iteration']++;
+?>
+        <li class="fore<?php echo $this->_foreach['bought_goods']['iteration']; ?>">
+          <div class="p-img"> <a target="_blank" title="<?php echo $this->_var['bought_goods_data']['goods_name']; ?>" href="<?php echo $this->_var['bought_goods_data']['url']; ?>"><img height="100" width="100" alt="<?php echo $this->_var['bought_goods_data']['goods_name']; ?>" src="<?php echo $this->_var['bought_goods_data']['goods_thumb']; ?>" class="loading-style2"></a> </div>
+          <div class="p-name"> <a target="_blank" title="<?php echo $this->_var['bought_goods_data']['goods_name']; ?>" href="<?php echo $this->_var['bought_goods_data']['url']; ?>"><?php echo $this->_var['bought_goods_data']['short_name']; ?></a> </div>
+          <div class="p-price"> <strong class="J-p-718196"><?php if ($this->_var['bought_goods_data']['promote_price'] != 0): ?> 
+            <?php echo $this->_var['bought_goods_data']['formated_promote_price']; ?> 
+            <?php else: ?> 
+            <?php echo $this->_var['bought_goods_data']['shop_price']; ?> 
+            <?php endif; ?></strong> </div>
+        </li>
+        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+      </ul>
+    </div>
+  </div>
+</div>
+<?php endif; ?>

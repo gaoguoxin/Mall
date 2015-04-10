@@ -1,36 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="<?php echo $this->_var['keywords']; ?>" />
 <meta name="Description" content="<?php echo $this->_var['description']; ?>" />
 
 <title><?php echo $this->_var['page_title']; ?></title>
 
+
+
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="animated_favicon.gif" type="image/gif" />
 <link href="<?php echo $this->_var['ecs_css_path']; ?>" rel="stylesheet" type="text/css" />
 
-<?php echo $this->smarty_insert_scripts(array('files'=>'utils.js,common.js,global.js,compare.js,transport.js')); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'jquery-1.9.1.min.js,jquery.json.js')); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'utils.js,common.js,global.js,compare.js')); ?>
 </head>
 <body>
-<?php echo $this->fetch('library/page_header.lbi'); ?>
-  <?php echo $this->fetch('library/ur_here.lbi'); ?>
-<div class="block clearfix">
-  
-  <div class="AreaL">
-    
- 
-    <?php echo $this->fetch('library/category_tree.lbi'); ?>
-    
-    
-    
-    
-    <?php echo $this->fetch('library/history.lbi'); ?>
-  </div>
-  
-  
-  <div class="AreaR">
+<?php echo $this->fetch('library/page_header.lbi'); ?> <?php echo $this->smarty_insert_scripts(array('files'=>'jd_category.js')); ?> <?php echo $this->fetch('library/ur_here.lbi'); ?>
+<div class="w main">
+
+  <div class="right-extra"> 
   <?php if ($this->_var['action'] == "form"): ?>
   
   <div class="box">
@@ -127,36 +118,18 @@
   </div>
   <div class="blank5"></div>
   <?php endif; ?>
+  <?php if ($this->_var['goods_list']): ?>
+  <DIV style="float:right; margin-right:20px;"> 
 
-   <?php if (isset ( $this->_var['goods_list'] )): ?>
-     <div class="box">
-     <div class="box_1">
-      <h3>
-    
-        <?php if ($this->_var['intromode'] == 'best'): ?>
-         <span><?php echo $this->_var['lang']['best_goods']; ?></span>
-         <?php elseif ($this->_var['intromode'] == 'new'): ?>
-         <span><?php echo $this->_var['lang']['new_goods']; ?></span>
-         <?php elseif ($this->_var['intromode'] == 'hot'): ?>
-         <span><?php echo $this->_var['lang']['hot_goods']; ?></span>
-         <?php elseif ($this->_var['intromode'] == 'promotion'): ?>
-         <span><?php echo $this->_var['lang']['promotion_goods']; ?></span>
-         <?php else: ?>
-         <span><?php echo $this->_var['lang']['search_result']; ?></span>
-         <?php endif; ?>
-          <?php if ($this->_var['goods_list']): ?>
+
           <form action="search.php" method="post" class="sort" name="listform" id="form">
-          <?php echo $this->_var['lang']['btn_display']; ?>：
-          <a href="javascript:;" onClick="javascript:display_mode('list')"><img src="themes/ecmoban_benlai/images/display_mode_list<?php if ($this->_var['pager']['display'] == 'list'): ?>_act<?php endif; ?>.gif" alt="<?php echo $this->_var['lang']['display']['list']; ?>"></a>
-          <a href="javascript:;" onClick="javascript:display_mode('grid')"><img src="themes/ecmoban_benlai/images/display_mode_grid<?php if ($this->_var['pager']['display'] == 'grid'): ?>_act<?php endif; ?>.gif" alt="<?php echo $this->_var['lang']['display']['grid']; ?>"></a>
-          <a href="javascript:;" onClick="javascript:display_mode('text')"><img src="themes/ecmoban_benlai/images/display_mode_text<?php if ($this->_var['pager']['display'] == 'text'): ?>_act<?php endif; ?>.gif" alt="<?php echo $this->_var['lang']['display']['text']; ?>"></a>&nbsp;&nbsp;
-               <select name="sort">
+              <select name="sort">
               <?php echo $this->html_options(array('options'=>$this->_var['lang']['sort'],'selected'=>$this->_var['pager']['search']['sort'])); ?>
               </select>
               <select name="order">
               <?php echo $this->html_options(array('options'=>$this->_var['lang']['order'],'selected'=>$this->_var['pager']['search']['order'])); ?>
               </select>
-              <input type="image" name="imageField" src="themes/ecmoban_benlai/images/bnt_go.gif" alt="go"/>
+              <input type="image" name="imageField" src="themes/jingdong2014/images/bnt_go.gif" alt="go"/>
               <input type="hidden" name="page" value="<?php echo $this->_var['pager']['page']; ?>" />
               <input type="hidden" name="display" value="<?php echo $this->_var['pager']['display']; ?>" id="display" />
               <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
@@ -171,140 +144,56 @@
               <?php endif; ?>
               <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
             </form>
-          <?php endif; ?>
-           </h3>
-        <?php if ($this->_var['goods_list']): ?>
 
-          <form action="compare.php" method="post" name="compareForm" id="compareForm" onsubmit="return compareGoods(this);">
-          <?php if ($this->_var['pager']['display'] == 'list'): ?>
-              <div class="goodsList">
-                <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['goods_list'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['goods_list']['total'] > 0):
+            </DIV>
+            <div class="clr"></div>
+          <?php endif; ?>
+    <?php if ($this->_var['goods_list']): ?>
+    <form action="compare.php" method="post" name="compareForm" id="compareForm" onsubmit="return compareGoods(this);">
+     
+      <div id="plist" class="m plist-n7a ordinary-prebuy">
+        <ul class="list-h">
+          <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');if (count($_from)):
     foreach ($_from AS $this->_var['goods']):
-        $this->_foreach['goods_list']['iteration']++;
-?>
-                <?php if ($this->_var['goods']['goods_id']): ?>
-                <ul class="clearfix bgcolor"<?php if (($this->_foreach['goods_list']['iteration'] - 1) % 2 == 0): ?>id=""<?php else: ?>id="bgcolor"<?php endif; ?>>
-               
-                <li class="thumb"><a href="<?php echo $this->_var['goods']['url']; ?>"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" alt="<?php echo $this->_var['goods']['goods_name']; ?>" /></a></li>
-                <li class="goodsName">
-                <div class="div_name">
-                <a href="<?php echo $this->_var['goods']['url']; ?>" class="f6">
-                    <?php if ($this->_var['goods']['goods_style_name']): ?>
-                    <?php echo $this->_var['goods']['goods_style_name']; ?><br />
-                    <?php else: ?>
-                    <?php echo $this->_var['goods']['goods_name']; ?><br />
-                    <?php endif; ?>
-                  </a>
-                 <?php if ($this->_var['goods']['goods_brief']): ?>
-                <?php echo $this->_var['lang']['goods_brief']; ?><?php echo $this->_var['goods']['goods_brief']; ?><br />
-                <?php endif; ?> 
-                </div>
-                <div>
-                 <a href="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)" ><img src="themes/ecmoban_benlai/images/goumai.gif"></a>
-    <a href="javascript:collect(<?php echo $this->_var['goods']['goods_id']; ?>);"><img src="themes/ecmoban_benlai/images/shoucang.gif"></a> 
-    </div>
-    
-                </li>
-              
-             
-               
-                <li class="action">
-                <?php if ($this->_var['show_marketprice']): ?>
-                <?php echo $this->_var['lang']['market_price']; ?><font class="market"><?php echo $this->_var['goods']['market_price']; ?></font><br />
-                <?php endif; ?>
-                <?php if ($this->_var['goods']['promote_price'] != ""): ?>
-                <?php echo $this->_var['lang']['promote_price']; ?><font class="shop"><?php echo $this->_var['goods']['promote_price']; ?></font><br />
-                <?php else: ?>
-                <?php echo $this->_var['lang']['shop_price']; ?><font class="shop"><?php echo $this->_var['goods']['shop_price']; ?></font><br />
-                <?php endif; ?>
-                </li>
-                </ul>
-                <?php endif; ?>
-                <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-                </div>
-             <?php elseif ($this->_var['pager']['display'] == 'grid'): ?>
-         
-              <div class="clearfix goodsBox" style="border:none; padding:11px 0 10px 5px;">
-                <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');if (count($_from)):
-    foreach ($_from AS $this->_var['goods']):
-?>
-                <?php if ($this->_var['goods']['goods_id']): ?>
-                 <div class="goodsItem">
-                       <a href="<?php echo $this->_var['goods']['url']; ?>"><img src="<?php echo $this->_var['goods']['goods_thumb']; ?>" alt="<?php echo $this->_var['goods']['goods_name']; ?>" class="goodsimg" /></a><br />
-                       <p><a href="<?php echo $this->_var['goods']['url']; ?>" title="<?php echo htmlspecialchars($this->_var['goods']['name']); ?>"><?php echo $this->_var['goods']['goods_name']; ?></a></p>
-                       <?php if ($this->_var['show_marketprice']): ?>
-                        <?php echo $this->_var['lang']['market_prices']; ?>：<font class="market_s"><?php echo $this->_var['goods']['market_price']; ?></font><br />
-                        <?php endif; ?>
-                        <?php if ($this->_var['goods']['promote_price'] != ""): ?>
-                        <?php echo $this->_var['lang']['promote_price']; ?><font class="shop_s"><?php echo $this->_var['goods']['promote_price']; ?></font><br />
-                        <?php else: ?>
-                        <?php echo $this->_var['lang']['shop_prices']; ?>：<font class="shop_s"><?php echo $this->_var['goods']['shop_price']; ?></font><br />
-                        <?php endif; ?>
-						
-						<!-- 
-                        <a href="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)" ><img src="themes/ecmoban_benlai/images/goumai.gif"></a> &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="javascript:collect(<?php echo $this->_var['goods']['goods_id']; ?>);"><img src="themes/ecmoban_benlai/images/shoucang.gif"></a> 
-	-->
-	
-                    </div>
-                <?php endif; ?>
-                <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-                </div>
-               
-             <?php elseif ($this->_var['pager']['display'] == 'text'): ?>
-              <div class="goodsList">
-              <?php $_from = $this->_var['goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');if (count($_from)):
-    foreach ($_from AS $this->_var['goods']):
-?>
-               <ul class="clearfix bgcolor"<?php if (($this->_foreach['goods_list']['iteration'] - 1) % 2 == 0): ?>id=""<?php else: ?>id="bgcolor"<?php endif; ?>>
-              <li style="margin-right:15px;">
-              <a href="javascript:;" id="compareLink" onClick="Compare.add(<?php echo $this->_var['goods']['goods_id']; ?>,'<?php echo addslashes($this->_var['goods']['goods_name']); ?>','<?php echo $this->_var['goods']['type']; ?>')" class="f6"><?php echo $this->_var['lang']['compare']; ?></a>
-              </li>
-              <li class="goodsName">
-               <div class="div_name">
-              <a href="<?php echo $this->_var['goods']['url']; ?>" class="f6 f5">
-                  <?php if ($this->_var['goods']['goods_style_name']): ?>
-                  <?php echo $this->_var['goods']['goods_style_name']; ?><br />
-                  <?php else: ?>
-                  <?php echo $this->_var['goods']['goods_name']; ?><br />
-                  <?php endif; ?>
-                </a>
-               <?php if ($this->_var['goods']['goods_brief']): ?>
-              <?php echo $this->_var['lang']['goods_brief']; ?><?php echo $this->_var['goods']['goods_brief']; ?><br />
+?> 
+          <?php if ($this->_var['goods']['goods_id']): ?>
+          <li>
+            <div class="lh-wrap">
+              <div class="p-img"><a target="_blank" href="<?php echo $this->_var['goods']['url']; ?>"><img width="220" height="220" alt="<?php echo $this->_var['goods']['goods_name']; ?>" src="<?php echo $this->_var['goods']['goods_thumb']; ?>" title="<?php echo $this->_var['goods']['goods_name']; ?>"></a>
+                <?php if ($this->_var['goods']['is_new'] == 1 || $this->_var['goods']['is_best'] == 1 || $this->_var['goods']['is_hot'] == 1 || $this->_var['goods']['org_promote_price'] > 0): ?>
+            <?php if ($this->_var['goods']['is_new'] == 1): ?>
+              <div class="picon pi1"></div>
+              <?php elseif ($this->_var['goods']['is_hot'] == 1): ?>
+              <div class="picon pi2"></div>
+              <?php elseif ($this->_var['goods']['is_best'] == 1): ?>
+                <div class="picon pi8"></div>
+               <?php elseif ($this->_var['goods']['org_promote_price'] > 0): ?>
+               <div class="picon pi3"></div>
+              <?php endif; ?>
               <?php endif; ?>
               </div>
-               <div>
-              <a href="javascript:collect(<?php echo $this->_var['goods']['goods_id']; ?>);" class="bnt_blue">加入收藏</a>
-    <a href="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)" class="bnt_blue">立即购买</a>
-              </div>
-              </li>
-              <li>
-              <?php if ($this->_var['show_marketprice']): ?>
-              <?php echo $this->_var['lang']['market_price']; ?><font class="market"><?php echo $this->_var['goods']['market_price']; ?></font><br />
-              <?php endif; ?>
-              <?php if ($this->_var['goods']['promote_price'] != ""): ?>
-              <?php echo $this->_var['lang']['promote_price']; ?><font class="shop"><?php echo $this->_var['goods']['promote_price']; ?></font><br />
-              <?php else: ?>
-              <?php echo $this->_var['lang']['shop_price']; ?><font class="shop"><?php echo $this->_var['goods']['shop_price']; ?></font><br />
-              <?php endif; ?>
-              </li>
-              <li class="action">
-              
-              </li>
-              </ul>
-              <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-              </div>
-             <?php endif; ?>
-          </form>
-          <script type="text/javascript">
+              <div class="p-name"><a target="_blank" href="<?php echo $this->_var['goods']['url']; ?>" title="<?php echo $this->_var['goods']['goods_name']; ?>"><?php echo $this->_var['goods']['goods_name']; ?><font style="color: #ff0000;" class="adwords"><?php echo $this->_var['goods']['goods_brief']; ?></font></a></div>
+              <div class="p-price"><strong> <?php if ($this->_var['goods']['promote_price'] != ""): ?><?php echo $this->_var['goods']['promote_price']; ?> <?php else: ?><?php echo $this->_var['goods']['shop_price']; ?><?php endif; ?></strong><span></span></div>
+              <div class="extra"><span class="evaluate"><a target="_blank" href="<?php echo $this->_var['goods']['url']; ?>">已有<?php echo $this->_var['goods']['comments_number']; ?>人评价</a></span></div>
+              <div class="stocklist" style="display:none;"><span class="st33">上海有货</span></div>
+              <div class="btns"><a href="javascript:addToCart(<?php echo $this->_var['goods']['goods_id']; ?>)" class="btn-buy">加入购物车</a><a id="coll647948" href="javascript:collect(<?php echo $this->_var['goods']['goods_id']; ?>);" class="btn-coll">关注</a><a id="comp_647948" onClick="Compare.add(<?php echo $this->_var['goods']['goods_id']; ?>,'<?php echo htmlspecialchars($this->_var['goods']['goods_name']); ?>','<?php echo $this->_var['goods']['type']; ?>')" class="btn-compare btn-compare-s"><span></span>对比</a></div>
+            </div>
+          </li>
+          <?php endif; ?> 
+          <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+          
+        </ul>
+      </div>
+
+    </form>
+    <script type="text/javascript">
         <?php $_from = $this->_var['lang']['compare_js']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
     foreach ($_from AS $this->_var['key'] => $this->_var['item']):
 ?>
         var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item']; ?>";
         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 
-				<?php $_from = $this->_var['lang']['compare_js']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
+                                <?php $_from = $this->_var['lang']['compare_js']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item');if (count($_from)):
     foreach ($_from AS $this->_var['key'] => $this->_var['item']):
 ?>
         <?php if ($this->_var['key'] != 'button_compare'): ?>
@@ -321,23 +210,27 @@ if ($this->_foreach['goods_list']['total'] > 0):
           Compare.init();
           fixpng();
         }
-	var btn_buy = "<?php echo $this->_var['lang']['btn_buy']; ?>";
-	var is_cancel = "<?php echo $this->_var['lang']['is_cancel']; ?>";
-	var select_spe = "<?php echo $this->_var['lang']['select_spe']; ?>";
-        </script>
-        <?php else: ?>
-        <div style="padding:20px 0px; text-align:center" class="f5" ><?php echo $this->_var['lang']['no_search_result']; ?></div>
-        <?php endif; ?>
-        </div>
-      </div>
-      <div class="blank"></div>
-      <?php echo $this->fetch('library/pages.lbi'); ?>
-   <?php endif; ?>
-
+        var btn_buy = "<?php echo $this->_var['lang']['btn_buy']; ?>";
+        var is_cancel = "<?php echo $this->_var['lang']['is_cancel']; ?>";
+        var select_spe = "<?php echo $this->_var['lang']['select_spe']; ?>";
+        </script> 
+    <?php else: ?>
+    <div style="padding:20px 0px; text-align:center" class="f5" ><?php echo $this->_var['lang']['no_search_result']; ?></div>
+    <?php endif; ?> 
+    
+    <?php echo $this->fetch('library/pages.lbi'); ?> </div>
+  <div class="left">  <?php echo $this->fetch('library/recommend_best.lbi'); ?>  
+    
+    
+    <div id="finalbuy" class="hide m m0"></div>
+    <?php echo $this->fetch('library/top10.lbi'); ?> 
+    
+    <div id="alsobuy" class="hide m m0"></div>
+    <div id="da211x261-1" class="m"></div>
   </div>
-  
+  <span class="clr"></span>
+  <div id="Collect_Tip" class="Tip360 w260"></div>
 </div>
-
-<?php echo $this->fetch('library/page_footer.lbi'); ?>
+<?php echo $this->fetch('library/help.lbi'); ?> <?php echo $this->fetch('library/page_footer.lbi'); ?>
 </body>
 </html>

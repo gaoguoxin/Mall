@@ -1,4 +1,4 @@
-<?php echo $this->smarty_insert_scripts(array('files'=>'transport.js,utils.js')); ?>
+<?php echo $this->smarty_insert_scripts(array('files'=>'transport_jquery.js,utils.js')); ?>
 <div id="ECS_COMMENT"> <?php 
 $k = array (
   'name' => 'comments',

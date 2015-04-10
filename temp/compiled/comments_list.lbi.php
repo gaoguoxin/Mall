@@ -1,71 +1,71 @@
-
-     <div class="box">
-     <div class="box_1">
-      <h3><span class="text"><?php echo $this->_var['lang']['user_comment']; ?></span>(<?php echo $this->_var['lang']['total']; ?><font class="f1"><?php echo $this->_var['pager']['record_count']; ?></font><?php echo $this->_var['lang']['user_comment_num']; ?>)</h3>
-      <div class="boxCenterList clearfix" style="height:1%;">
-       <ul class="comments">
-       <?php if ($this->_var['comments']): ?>
-       <?php $_from = $this->_var['comments']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'comment');if (count($_from)):
+<div id="comments-list" class="m">
+  <div class="mt">
+    <ul class="tab">
+      <li class="curr"><a href="javascript:;">全部评价<em>(<?php echo $this->_var['pager']['record_count']; ?>)</em></a></li>
+      <li class="tab-last"></li>
+    </ul>
+  </div>
+  <div id="comment-0" class="mc"> 
+    <?php if ($this->_var['comments']): ?> 
+    <?php $_from = $this->_var['comments']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'comment');if (count($_from)):
     foreach ($_from AS $this->_var['comment']):
 ?>
-        <li class="word">
-        <font class="f2"><?php if ($this->_var['comment']['username']): ?><?php echo htmlspecialchars($this->_var['comment']['username']); ?><?php else: ?><?php echo $this->_var['lang']['anonymous']; ?><?php endif; ?></font> <font class="f3">( <?php echo $this->_var['comment']['add_time']; ?> )</font><br />
-        <img src="themes/ecmoban_benlai/images/stars<?php echo $this->_var['comment']['rank']; ?>.gif" alt="<?php echo $this->_var['comment']['comment_rank']; ?>" />
-        <p><?php echo $this->_var['comment']['content']; ?></p>
-				<?php if ($this->_var['comment']['re_content']): ?>
-        <p><font class="f1"><?php echo $this->_var['lang']['admin_username']; ?></font><?php echo $this->_var['comment']['re_content']; ?></p>
-				<?php endif; ?>
-        </li>
-        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-        <?php else: ?>
-        <li><?php echo $this->_var['lang']['no_comments']; ?></li>
-        <?php endif; ?>
-       </ul>
-       
-       <div id="pagebar" class="f_r">
+    <div class="item">
+      <div class="user">
+        <div class="u-icon"><img height="50" width="50" src="themes/jingdong2014/images/b50.gif"> </div>
+        <div class="u-name" style="color:#005AA0;"><?php if ($this->_var['comment']['username']): ?><?php echo htmlspecialchars($this->_var['comment']['username']); ?><?php else: ?><?php echo $this->_var['lang']['anonymous']; ?><?php endif; ?></div>
+        <span class="u-level"><span style="color:#088000"></span></span> </div>
+      <div class="i-item">
+        <div class="o-topic"> <span class="star sa<?php echo $this->_var['comment']['rank']; ?>"></span><span>
+          <div class="date-comment"><?php echo $this->_var['comment']['add_time']; ?></div>
+          <em class="fr hl_blue"></em></span> <strong class="topic"></strong> </div>
+        <div class="comment-content">
+          <dl>
+            <dt>心得：</dt>
+            <dd><?php echo $this->_var['comment']['content']; ?></dd>
+          </dl>
+          <s class="clr"></s> </div>
+        <div class="btns" style="height:30px;"> </div>
+        <?php if ($this->_var['comment']['re_content']): ?>
+        <div class="item-reply hide-default">
+          <div class="reply-list">
+            <div class="reply-con"> <span class="u-name"><?php echo $this->_var['lang']['admin_username']; ?><b></b></span><span class="u-con"><?php echo $this->_var['comment']['re_content']; ?></span> </div>
+          </div>
+        </div>
+        <?php endif; ?> 
+      </div>
+      <div class="corner tl"></div>
+    </div>
+    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?> 
+    <?php else: ?> 
+    <?php echo $this->_var['lang']['no_comments']; ?> 
+    <?php endif; ?>
+    
+    <div class="clearfix">
+      <div class="pagin fr" id="commentsPage0" style="margin-top:8px;">
         <form name="selectPageForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
-        <?php if ($this->_var['pager']['styleid'] == 0): ?>
-        <div id="pager">
-          <?php echo $this->_var['lang']['pager_1']; ?><?php echo $this->_var['pager']['record_count']; ?><?php echo $this->_var['lang']['pager_2']; ?><?php echo $this->_var['lang']['pager_3']; ?><?php echo $this->_var['pager']['page_count']; ?><?php echo $this->_var['lang']['pager_4']; ?> <span> <a href="<?php echo $this->_var['pager']['page_first']; ?>"><?php echo $this->_var['lang']['page_first']; ?></a> <a href="<?php echo $this->_var['pager']['page_prev']; ?>"><?php echo $this->_var['lang']['page_prev']; ?></a> <a href="<?php echo $this->_var['pager']['page_next']; ?>"><?php echo $this->_var['lang']['page_next']; ?></a> <a href="<?php echo $this->_var['pager']['page_last']; ?>"><?php echo $this->_var['lang']['page_last']; ?></a> </span>
-            <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_43652600_1428620832');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_43652600_1428620832']):
+          <?php if ($this->_var['pager']['page_prev']): ?><a href="<?php echo $this->_var['pager']['page_prev']; ?>" class="prev"><?php echo $this->_var['lang']['page_prev']; ?></a><?php endif; ?> 
+          <?php $_from = $this->_var['pager']['page_number']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_51501100_1408520398');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_51501100_1408520398']):
+?> 
+          <?php if ($this->_var['pager']['page'] == $this->_var['key']): ?> 
+          <a href="javascript:void(0)" class="current"><?php echo $this->_var['key']; ?></a> 
+          <?php else: ?> 
+          <a href="<?php echo $this->_var['item_0_51501100_1408520398']; ?>"><?php echo $this->_var['key']; ?></a> 
+          <?php endif; ?> 
+          <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?> 
+          <?php if ($this->_var['pager']['page_next']): ?><a href="<?php echo $this->_var['pager']['page_next']; ?>" class="next"><?php echo $this->_var['lang']['page_next']; ?></a><?php endif; ?><br>
+          <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_51547400_1408520398');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_51547400_1408520398']):
 ?>
-            <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_43652600_1428620832']; ?>" />
-            <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-        </div>
-        <?php else: ?>
-
-        
-         <div id="pager" class="pagebar">
-          <span class="f_l f6" style="margin-right:10px;"><?php echo $this->_var['lang']['total']; ?> <b><?php echo $this->_var['pager']['record_count']; ?></b> <?php echo $this->_var['lang']['user_comment_num']; ?></span>
-          <?php if ($this->_var['pager']['page_first']): ?><a href="<?php echo $this->_var['pager']['page_first']; ?>">1 ...</a><?php endif; ?>
-          <?php if ($this->_var['pager']['page_prev']): ?><a class="prev" href="<?php echo $this->_var['pager']['page_prev']; ?>"><?php echo $this->_var['lang']['page_prev']; ?></a><?php endif; ?>
-          <?php $_from = $this->_var['pager']['page_number']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_43678100_1428620832');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_43678100_1428620832']):
-?>
-                <?php if ($this->_var['pager']['page'] == $this->_var['key']): ?>
-                <span class="page_now"><?php echo $this->_var['key']; ?></span>
-                <?php else: ?>
-                <a href="<?php echo $this->_var['item_0_43678100_1428620832']; ?>">[<?php echo $this->_var['key']; ?>]</a>
-                <?php endif; ?>
-            <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-
-          <?php if ($this->_var['pager']['page_next']): ?><a class="next" href="<?php echo $this->_var['pager']['page_next']; ?>"><?php echo $this->_var['lang']['page_next']; ?></a><?php endif; ?>
-          <?php if ($this->_var['pager']['page_last']): ?><a class="last" href="<?php echo $this->_var['pager']['page_last']; ?>">...<?php echo $this->_var['pager']['page_count']; ?></a><?php endif; ?>
-          <?php if ($this->_var['pager']['page_kbd']): ?>
-            <?php $_from = $this->_var['pager']['search']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_43714200_1428620832');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_43714200_1428620832']):
-?>
-            <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_43714200_1428620832']; ?>" />
-            <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-            <kbd style="float:left; margin-left:8px; position:relative; bottom:3px;"><input type="text" name="page" onkeydown="if(event.keyCode==13)selectPage(this)" size="3" class="B_blue" /></kbd>
-            <?php endif; ?>
-        </div>
-        
-
-        <?php endif; ?>
+          <input type="hidden" name="<?php echo $this->_var['key']; ?>" value="<?php echo $this->_var['item_0_51547400_1408520398']; ?>" />
+          <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
         </form>
-        <script type="Text/Javascript" language="JavaScript">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="Text/Javascript" language="JavaScript">
         <!--
         
         function selectPage(sel)
@@ -74,68 +74,73 @@
         }
         
         //-->
-        </script>
-      </div>
-      
-      <div class="blank5"></div>
-      
-      <div class="commentsList">
+        </script> 
+
+
+
+<div id="comment_show">
+  <div class="comment_wrap">
+    <h2 id="easyDialogTitle">发表评论<a class="thickclose" href="javascript:void(0);"></a></h2>
+    <div class="comment_from" >
       <form action="javascript:;" onsubmit="submitComment(this)" method="post" name="commentForm" id="commentForm">
-       <table width="710" border="0" cellspacing="5" cellpadding="0">
-        <tr>
-          <td width="64" align="right"><?php echo $this->_var['lang']['username']; ?>：</td>
-          <td width="631"<?php if (! $this->_var['enabled_captcha']): ?><?php endif; ?>><?php if ($_SESSION['user_name']): ?><?php echo $_SESSION['user_name']; ?><?php else: ?><?php echo $this->_var['lang']['anonymous']; ?><?php endif; ?></td>
-        </tr>
-        <tr>
-          <td align="right">E-mail：</td>
-          <td>
-          <input type="text" name="email" id="email"  maxlength="100" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" class="inputBorder"/>
-          </td>
-        </tr>
-        <tr>
-          <td align="right"><?php echo $this->_var['lang']['comment_rank']; ?>：</td>
-          <td>
-          <input name="comment_rank" type="radio" value="1" id="comment_rank1" /> <img src="themes/ecmoban_benlai/images/stars1.gif" />
-          <input name="comment_rank" type="radio" value="2" id="comment_rank2" /> <img src="themes/ecmoban_benlai/images/stars2.gif" />
-          <input name="comment_rank" type="radio" value="3" id="comment_rank3" /> <img src="themes/ecmoban_benlai/images/stars3.gif" />
-          <input name="comment_rank" type="radio" value="4" id="comment_rank4" /> <img src="themes/ecmoban_benlai/images/stars4.gif" />
-          <input name="comment_rank" type="radio" value="5" checked="checked" id="comment_rank5" /> <img src="themes/ecmoban_benlai/images/stars5.gif" />
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top"><?php echo $this->_var['lang']['comment_content']; ?>：</td>
-          <td>
-          <textarea name="content" class="inputBorder" style="height:50px; width:620px;"></textarea>
-          <input type="hidden" name="cmt_type" value="<?php echo $this->_var['comment_type']; ?>" />
-          <input type="hidden" name="id" value="<?php echo $this->_var['id']; ?>" />
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-          <?php if ($this->_var['enabled_captcha']): ?>
-          <div style="padding-left:15px; text-align:left; float:left;">
-          <?php echo $this->_var['lang']['comment_captcha']; ?>：<input type="text" name="captcha"  class="inputBorder" style="width:50px; margin-left:5px;"/>
-          <img src="captcha.php?<?php echo $this->_var['rand']; ?>" alt="captcha" onClick="this.src='captcha.php?'+Math.random()" class="captcha">
-          </div>
-          <?php endif; ?>
-               <input name="" type="submit"  value="评论咨询" class="f_r bnt_blue_1" style=" margin-right:8px;">
-          </td>
-        </tr>
-      </table>
+        <table width="660" border="0" cellspacing="5" cellpadding="0" >
+          <tr width="660">
+            <td width="70" align="right"><?php echo $this->_var['lang']['username']; ?>：</td>
+              <td<?php if (! $this->_var['enabled_captcha']): ?><?php endif; ?>>
+            <?php if ($_SESSION['user_name']): ?><?php echo $_SESSION['user_name']; ?><?php else: ?><?php echo $this->_var['lang']['anonymous']; ?><?php endif; ?>
+            
+              </td>
+          </tr>
+          <tr>
+            <td align="right">E-mail：</td>
+            <td><input type="text" name="email" id="email"  maxlength="100" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" class="inputBorder"/></td>
+          </tr>
+          <tr>
+            <td align="right"><?php echo $this->_var['lang']['comment_rank']; ?>：</td>
+            <td><input name="comment_rank" type="radio" value="1" id="comment_rank1" />
+              <span class="star sa1"></span>
+              <input name="comment_rank" type="radio" value="2" id="comment_rank2" />
+              <span class="star sa2"></span>
+              <input name="comment_rank" type="radio" value="3" id="comment_rank3" />
+              <span class="star sa3"></span>
+              <input name="comment_rank" type="radio" value="4" id="comment_rank4" />
+              <span class="star sa4"></span>
+              <input name="comment_rank" type="radio" value="5" checked="checked" id="comment_rank5" />
+              <span class="star sa5"></span></td>
+          </tr>
+          <tr>
+            <td align="right" valign="top"><?php echo $this->_var['lang']['comment_content']; ?>：</td>
+            <td><textarea name="content" class="inputBorder" style="height:100px; width:480px;"></textarea>
+              <input type="hidden" name="cmt_type" value="<?php echo $this->_var['comment_type']; ?>" />
+              <input type="hidden" name="id" value="<?php echo $this->_var['id']; ?>" /></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div class="clr" style="height:3px;"></div>
+              <div class="comment_captcha"> 
+                <?php if ($this->_var['enabled_captcha']): ?>
+                <Div class="captcha_left"> <?php echo $this->_var['lang']['comment_captcha']; ?>：
+                  <input type="text" name="captcha"  class="inputCaptcha"/>
+                  <img src="captcha.php?<?php echo $this->_var['rand']; ?>" alt="captcha" onClick="this.src='captcha.php?'+Math.random()" class="captcha"> </Div>
+                <?php endif; ?>
+                <div class="captcha_right">
+                  <input type="submit" class="comment_btns" value="提交评论">
+                </div>
+              </div></td>
+          </tr>
+        </table>
       </form>
-      </div>
-      
-      </div>
-     </div>
     </div>
-    <div class="blank5"></div>
-  
+  </div>
+</div>
+
+ 
+
 <script type="text/javascript">
 //<![CDATA[
-<?php $_from = $this->_var['lang']['cmt_lang']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_43754000_1428620832');if (count($_from)):
-    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_43754000_1428620832']):
+<?php $_from = $this->_var['lang']['cmt_lang']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('key', 'item_0_51624100_1408520398');if (count($_from)):
+    foreach ($_from AS $this->_var['key'] => $this->_var['item_0_51624100_1408520398']):
 ?>
-var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item_0_43754000_1428620832']; ?>";
+var <?php echo $this->_var['key']; ?> = "<?php echo $this->_var['item_0_51624100_1408520398']; ?>";
 <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 
 /**
@@ -194,7 +199,7 @@ function submitComment(frm)
       return false;
    }
 
-   Ajax.call('comment.php', 'cmt=' + cmt.toJSONString(), commentResponse, 'POST', 'JSON');
+   Ajax.call('comment.php', 'cmt=' + $.toJSON(cmt), commentResponse, 'POST', 'JSON');
    return false;
 }
 
