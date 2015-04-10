@@ -44,9 +44,10 @@ Compare = {
   },
   init : function(){
     this.data = new Object();
+	
     var cookieValue = document.getCookie("compareItems");
     if (cookieValue != null) {
-      this.data = cookieValue.parseJSON();
+      this.data = $.evalJSON(cookieValue);
     }
     if (!this.compareBox)
     {
@@ -59,12 +60,12 @@ Compare = {
       this.compareBox.align = "center";
       this.compareList.id = "compareList";
       submitBtn.type = "button";
-      submitBtn.value = button_compare;
+      submitBtn.value = "开始对比";
 			this.compareBox.appendChild(this.compareList);
       this.compareBox.appendChild(submitBtn);
       submitBtn.onclick = function() {
         var cookieValue = document.getCookie("compareItems");
-        var obj = cookieValue.parseJSON();
+        var obj = $.evalJSON(cookieValue);
         var url = document.location.href;
         url = url.substring(0,url.lastIndexOf('/')+1) + "compare.php";
         var i = 0;
@@ -105,15 +106,18 @@ Compare = {
       var delBtn = document.createElement("IMG");
       delBtn.src = "themes/default/images/drop.gif";
       delBtn.className = key;
+	  $("#comp_"+key).addClass("btn-compare-s-active");
       delBtn.onclick = function(){
         document.getElementById("compareList").removeChild(this.parentNode);
         delete self.data[this.className];
+		$("#comp_"+key).removeClass("btn-compare-s-active");
         self.save();
         self.init();
       }
       li.insertBefore(delBtn,li.childNodes[0]);
       this.compareList.appendChild(li);
     }
+	
     if (this.compareList.childNodes.length > 0)
     {
       this.compareBox.style.display = "";
@@ -130,7 +134,7 @@ Compare = {
   {
     var date = new Date();
     date.setTime(date.getTime() + 99999999);
-    document.setCookie("compareItems", this.data.toJSONString());
+    document.setCookie("compareItems", $.toJSON(this.data));
   },
   lastScrollY : 0
 }

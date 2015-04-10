@@ -229,7 +229,17 @@ if ($_REQUEST['act'] == 'check')
         /* 允许评论显示 */
         $sql = "UPDATE " .$ecs->table('comment'). " SET status = 1 WHERE comment_id = '$_REQUEST[id]'";
         $db->query($sql);
+		
+		$sql = 'SELECT id_value FROM '.$ecs->table('comment')." WHERE comment_id = '$_REQUEST[id]'";
+		$goods_id = $db->getOne($sql);
 
+		$sql = "SELECT COUNT(*) FROM ".$ecs->table('comment')." WHERE id_value = '$goods_id' AND comment_type = 0 AND status = 1 AND parent_id = 0 ";	
+		$count = $db->getOne($sql);
+	
+	
+		$sql = "UPDATE ".$ecs->table('goods'). " SET comments_number = '$count' WHERE goods_id = '$goods_id'";
+
+		$db->query($sql);
         //add_feed($_REQUEST['id'], COMMENT_GOODS);
 
         /* 清除缓存 */
@@ -243,6 +253,17 @@ if ($_REQUEST['act'] == 'check')
         /* 禁止评论显示 */
         $sql = "UPDATE " .$ecs->table('comment'). " SET status = 0 WHERE comment_id = '$_REQUEST[id]'";
         $db->query($sql);
+		
+		$sql = 'SELECT id_value FROM '.$ecs->table('comment')." WHERE comment_id = '$_REQUEST[id]'";
+		$goods_id = $db->getOne($sql);
+
+		$sql = "SELECT COUNT(*) FROM ".$ecs->table('comment')." WHERE id_value = '$goods_id' AND comment_type = 0 AND status = 1 AND parent_id = 0 ";	
+		$count = $db->getOne($sql);
+	
+	
+		$sql = "UPDATE ".$ecs->table('goods'). " SET comments_number = '$count' WHERE goods_id = '$goods_id'";
+
+		$db->query($sql);
 
         /* 清除缓存 */
         clear_cache_files();

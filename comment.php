@@ -284,7 +284,7 @@ function add_comment($cmt)
 
     $user_id = empty($_SESSION['user_id']) ? 0 : $_SESSION['user_id'];
     $email = empty($cmt->email) ? $_SESSION['email'] : trim($cmt->email);
-    $user_name = empty($cmt->username) ? $_SESSION['user_name'] : trim($cmt->username);
+    $user_name = empty($cmt->username) ? $_SESSION['user_name'] : '';
     $email = htmlspecialchars($email);
     $user_name = htmlspecialchars($user_name);
 
@@ -294,7 +294,26 @@ function add_comment($cmt)
            "('" .$cmt->type. "', '" .$cmt->id. "', '$email', '$user_name', '" .$cmt->content."', '".$cmt->rank."', ".gmtime().", '".real_ip()."', '$status', '0', '$user_id')";
 
     $result = $GLOBALS['db']->query($sql);
-    clear_cache_files('comments_list.lbi');
+    //zhouhuan start
+	if($result)
+	{
+		$goods_id = $cmt->id;
+		$sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('comment')." WHERE id_value = '$goods_id' AND comment_type = 0 AND status = 1 AND parent_id = 0 ";	
+		$count = $GLOBALS['db']->getOne($sql);
+			
+		if(empty($count))
+		{
+			$count = 0;
+		}
+	
+		$sql = "UPDATE ".$GLOBALS['ecs']->table('goods'). " SET comments_number = '$count' WHERE goods_id = '$goods_id'";
+			
+		$GLOBALS['db']->query($sql);
+
+	}
+		
+    clear_cache_files();
+	//zhouhuan end
     /*if ($status > 0)
     {
         add_feed($GLOBALS['db']->insert_id(), COMMENT_GOODS);

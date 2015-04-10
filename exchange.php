@@ -147,7 +147,7 @@ elseif ($_REQUEST['act'] == 'view')
         $smarty->assign('id',           $goods_id);
         $smarty->assign('type',         0);
         $smarty->assign('cfg',          $_CFG);
-
+        $smarty->assign('top_goods',        get_top10());                  // 销售排行
         /* 获得商品的信息 */
         $goods = get_exchange_goods_info($goods_id);
 
@@ -382,7 +382,7 @@ function exchange_get_goods($children, $min, $max, $ext, $size, $page, $sort, $o
     }
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, eg.exchange_integral, ' .
+    $sql = 'SELECT g.goods_id, g.goods_name, g.sales_volume, g.comments_number,g.goods_name_style, eg.exchange_integral, ' .
                 'g.goods_type, g.goods_brief, g.goods_thumb , g.goods_img, eg.is_hot ' .
             'FROM ' . $GLOBALS['ecs']->table('exchange_goods') . ' AS eg, ' .$GLOBALS['ecs']->table('goods') . ' AS g ' .
             "WHERE eg.goods_id = g.goods_id AND $where $ext ORDER BY $sort $order";
@@ -424,6 +424,8 @@ function exchange_get_goods($children, $min, $max, $ext, $size, $page, $sort, $o
         }
         $arr[$row['goods_id']]['name']              = $row['goods_name'];
         $arr[$row['goods_id']]['goods_brief']       = $row['goods_brief'];
+		$arr[$row['goods_id']]['sales_volume']      = $row['sales_volume'];
+		$arr[$row['goods_id']]['comments_number']      = $row['comments_number'];
         $arr[$row['goods_id']]['goods_style_name']  = add_style($row['goods_name'],$row['goods_name_style']);
         $arr[$row['goods_id']]['exchange_integral'] = $row['exchange_integral'];
         $arr[$row['goods_id']]['type']              = $row['goods_type'];

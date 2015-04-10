@@ -137,6 +137,7 @@ elseif ($_REQUEST['act'] == 'view')
         /* 取得团购商品信息 */
         $goods_id = $group_buy['goods_id'];
         $goods = goods_info($goods_id);
+		
         if (empty($goods))
         {
             ecs_header("Location: ./\n");
@@ -147,16 +148,23 @@ elseif ($_REQUEST['act'] == 'view')
 
         /* 取得商品的规格 */
         $properties = get_goods_properties($goods_id);
+	
+		$smarty->assign('properties',          $properties['pro']);                              // 商品属性
         $smarty->assign('specification', $properties['spe']); // 商品规格
+		
+		$gb_list = group_buy_list2(10,$group_buy_id);
+		
+        $smarty->assign('gb_list',  $gb_list);
+
 
         //模板赋值
         $smarty->assign('cfg', $_CFG);
         assign_template();
-
+		$smarty->assign('script_name',  'group');   
         $position = assign_ur_here(0, $goods['goods_name']);
         $smarty->assign('page_title', $position['title']);    // 页面标题
         $smarty->assign('ur_here',    $position['ur_here']);  // 当前位置
-
+		$smarty->assign('hot_goods',  get_recommend_goods('hot'));     // 最热商品
         $smarty->assign('categories', get_categories_tree()); // 分类树
         $smarty->assign('helps',      get_shop_help());       // 网店帮助
         $smarty->assign('top_goods',  get_top10());           // 销售排行
@@ -324,7 +332,7 @@ function group_buy_list($size, $page)
     /* 取得团购活动 */
     $gb_list = array();
     $now = gmtime();
-    $sql = "SELECT b.*, IFNULL(g.goods_thumb, '') AS goods_thumb, b.act_id AS group_buy_id, ".
+    $sql = "SELECT b.*,g.market_price, IFNULL(g.goods_thumb, '') AS goods_thumb,g.goods_img,g.shop_price, b.act_id AS group_buy_id, ".
                 "b.start_time AS start_date, b.end_time AS end_date " .
             "FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS b " .
                 "LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON b.goods_id = g.goods_id " .
@@ -345,6 +353,24 @@ function group_buy_list($size, $page)
 
         /* 处理价格阶梯 */
         $price_ladder = $group_buy['price_ladder'];
+		
+		/*团购节省和折扣计算 by ecmoban start*/
+		$price    = $group_buy['market_price']; //原价 
+		$nowprice = $group_buy['price_ladder'][0]['price']; //现价
+		$group_buy['jiesheng'] = $price-$nowprice; //节省金额 
+		if($nowprice > 0)
+		{
+			$group_buy['zhekou'] = round(10 / ($price / $nowprice), 1);
+		}
+		else 
+		{ 
+			$group_buy['zhekou'] = 0;
+		}
+	
+		$stat = group_buy_stat($group_buy['act_id'], $ext_info['deposit']);
+		$group_buy['cur_amount'] = $stat['valid_goods'];         // 当前数量
+		$group_buy['jiesheng'] = price_format($group_buy['shop_price'] - $price_ladder[0]['price']);	//by ecmoban修改 zhouH
+			
         if (!is_array($price_ladder) || empty($price_ladder))
         {
             $price_ladder = array(array('amount' => 0, 'price' => 0));
@@ -357,6 +383,8 @@ function group_buy_list($size, $page)
             }
         }
         $group_buy['price_ladder'] = $price_ladder;
+
+		
 
         /* 处理图片 */
         if (empty($group_buy['goods_thumb']))
@@ -372,4 +400,66 @@ function group_buy_list($size, $page)
     return $gb_list;
 }
 
+
+function group_buy_list2($limit,$id)
+{
+    /* 取得团购活动 */
+    $gb_list = array();
+    $now = gmtime();
+    $sql = "SELECT b.*, IFNULL(g.goods_thumb, '') AS goods_thumb,g.goods_img,g.shop_price, b.act_id AS group_buy_id, ".
+                "b.start_time AS start_date, b.end_time AS end_date " .
+            "FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS b " .
+                "LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON b.goods_id = g.goods_id " .
+            "WHERE b.act_type = '" . GAT_GROUP_BUY . "' " .
+            "AND b.start_time <= '$now' AND b.is_finished < 3 AND b.act_id !='$id' ORDER BY b.act_id DESC LIMIT ".$limit;
+ 	$res = $GLOBALS['db']->query($sql);
+
+    while ($group_buy = $GLOBALS['db']->fetchRow($res))
+    {
+		
+        $ext_info = unserialize($group_buy['ext_info']);
+        $group_buy = array_merge($group_buy, $ext_info);
+
+        /* 格式化时间 */
+        $group_buy['formated_start_date']   = local_date($GLOBALS['_CFG']['time_format'], $group_buy['start_date']);
+        $group_buy['formated_end_date']     = local_date($GLOBALS['_CFG']['time_format'], $group_buy['end_date']);
+
+        /* 格式化保证金 */
+        $group_buy['formated_deposit'] = price_format($group_buy['deposit'], false);
+
+        /* 处理价格阶梯 */
+        $price_ladder = $group_buy['price_ladder'];
+		
+		$stat = group_buy_stat($group_buy['act_id'], $ext_info['deposit']);
+		$group_buy['cur_amount'] = $stat['valid_goods'];         // 当前数量
+		$group_buy['jiesheng'] = price_format($group_buy['shop_price'] - $price_ladder[0]['price']);	//by ecmoban修改 zhouH
+			
+        if (!is_array($price_ladder) || empty($price_ladder))
+        {
+            $price_ladder = array(array('amount' => 0, 'price' => 0));
+        }
+        else
+        {
+            foreach ($price_ladder as $key => $amount_price)
+            {
+                $price_ladder[$key]['formated_price'] = price_format($amount_price['price']);
+            }
+        }
+        $group_buy['price_ladder'] = $price_ladder;
+
+		
+
+        /* 处理图片 */
+        if (empty($group_buy['goods_thumb']))
+        {
+            $group_buy['goods_thumb'] = get_image_path($group_buy['goods_id'], $group_buy['goods_thumb'], true);
+        }
+        /* 处理链接 */
+        $group_buy['url'] = build_uri('group_buy', array('gbid'=>$group_buy['group_buy_id']));
+        /* 加入数组 */
+        $gb_list[] = $group_buy;
+    }
+
+    return $gb_list;
+}
 ?>

@@ -47,6 +47,20 @@
           <input type="radio" name="show_in_nav" value="0" {if $cat_info.show_in_nav eq 0} checked="true"{/if} /> {$lang.no}
         </td>
       </tr>
+         <tr>
+        <td class="label">是否显示在顶级分类页:</td>
+        <td>
+          <input type="radio" name="is_on_top" value="1" {if $cat_info.is_on_top neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="is_on_top" value="0" {if $cat_info.is_on_top eq 0} checked="true"{/if} /> {$lang.no}
+        </td>
+      </tr>
+        <tr>
+        <td class="label">是否显示顶级分类样式:</td>
+        <td>
+          <input type="radio" name="is_top_style" value="1" {if $cat_info.is_top_style neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="is_top_style" value="0" {if $cat_info.is_top_style eq 0} checked="true"{/if} /> {$lang.no}
+        </td>
+      </tr>
       <tr>
         <td class="label">{$lang.show_in_index}:</td>
         <td>

@@ -313,10 +313,20 @@ function check_password( password )
 {
     if ( password.length < 6 )
     {
+		if($("#password_notice").hasClass("focus"))
+		{
+			$("#password_notice").removeClass("focus");
+		}
+		$("#password_notice").addClass("error");
         document.getElementById('password_notice').innerHTML = password_shorter;
     }
     else
     {
+		if($("#password_notice").hasClass("error"))
+		{
+			$("#password_notice").removeClass("error");
+		}
+		$("#password_notice").addClass("focus");
         document.getElementById('password_notice').innerHTML = msg_can_rg;
     }
 }
@@ -327,15 +337,30 @@ function check_conform_password( conform_password )
     
     if ( conform_password.length < 6 )
     {
+		if($("#conform_password_notice").hasClass("focus"))
+		{
+			$("#conform_password_notice").removeClass("focus");
+		}
+		$("#conform_password_notice").addClass("error");
         document.getElementById('conform_password_notice').innerHTML = password_shorter;
         return false;
     }
     if ( conform_password != password )
     {
+		if($("#conform_password_notice").hasClass("focus"))
+		{
+			$("#conform_password_notice").removeClass("focus");
+		}
+		$("#conform_password_notice").addClass("error");
         document.getElementById('conform_password_notice').innerHTML = confirm_password_invalid;
     }
     else
     {
+		if($("#conform_password_notice").hasClass("error"))
+		{
+			$("#conform_password_notice").removeClass("error");
+		}
+		$("#conform_password_notice").addClass("focus");
         document.getElementById('conform_password_notice').innerHTML = msg_can_rg;
     }
 }
@@ -348,22 +373,42 @@ function is_registered( username )
     if ( username == '' )
     {
         document.getElementById('username_notice').innerHTML = msg_un_blank;
+		if($("#username_notice").hasClass("focus"))
+		{
+			$("#username_notice").removeClass("focus");
+		}
+		$("#username_notice").addClass("error");
         var submit_disabled = true;
     }
 
     if ( !chkstr( username ) )
     {
         document.getElementById('username_notice').innerHTML = msg_un_format;
+		if($("#username_notice").hasClass("focus"))
+		{
+			$("#username_notice").removeClass("focus");
+		}
+		$("#username_notice").addClass("error");
         var submit_disabled = true;
     }
     if ( unlen < 3 )
     { 
         document.getElementById('username_notice').innerHTML = username_shorter;
+		if($("#username_notice").hasClass("focus"))
+		{
+			$("#username_notice").removeClass("focus");
+		}
+		$("#username_notice").addClass("error");
         var submit_disabled = true;
     }
     if ( unlen > 14 )
     {
         document.getElementById('username_notice').innerHTML = msg_un_length;
+		if($("#username_notice").hasClass("focus"))
+		{
+			$("#username_notice").removeClass("focus");
+		}
+		$("#username_notice").addClass("error");
         var submit_disabled = true;
     }
     if ( submit_disabled )
@@ -381,11 +426,21 @@ function registed_callback(result)
   if ( result == "true" )
   {
     document.getElementById('username_notice').innerHTML = msg_can_rg;
+	if($("#username_notice").hasClass("error"))
+	{
+		$("#username_notice").removeClass("error");
+	}
+	$("#username_notice").addClass("focus");
     document.forms['formUser'].elements['Submit'].disabled = '';
   }
   else
   {
     document.getElementById('username_notice').innerHTML = msg_un_registered;
+	if($("#username_notice").hasClass("focus"))
+	{
+		$("#username_notice").removeClass("focus");
+	}
+	$("#username_notice").addClass("error");
     document.forms['formUser'].elements['Submit'].disabled = 'disabled';
   }
 }
@@ -397,16 +452,31 @@ function checkEmail(email)
   if (email == '')
   {
     document.getElementById('email_notice').innerHTML = msg_email_blank;
+	if($("#email_notice").hasClass("focus"))
+	{
+		$("#email_notice").removeClass("focus");
+	}
+	$("#email_notice").addClass("error");
     submit_disabled = true;
   }
   else if (!Utils.isEmail(email))
   {
     document.getElementById('email_notice').innerHTML = msg_email_format;
+	if($("#email_notice").hasClass("focus"))
+	{
+		$("#email_notice").removeClass("focus");
+	}
+	$("#email_notice").addClass("error");
     submit_disabled = true;
   }
  
   if( submit_disabled )
   {
+	if($("#email_notice").hasClass("focus"))
+	{
+		$("#email_notice").removeClass("focus");
+	}
+	$("#email_notice").addClass("error");
     document.forms['formUser'].elements['Submit'].disabled = 'disabled';
     return false;
   }
@@ -417,12 +487,22 @@ function check_email_callback(result)
 {
   if ( result == 'ok' )
   {
+	if($("#email_notice").hasClass("error"))
+	{
+		$("#email_notice").removeClass("error");
+	}
+	$("#email_notice").addClass("focus");
     document.getElementById('email_notice').innerHTML = msg_can_rg;
     document.forms['formUser'].elements['Submit'].disabled = '';
   }
   else
   {
     document.getElementById('email_notice').innerHTML = msg_email_registered;
+	if($("#email_notice").hasClass("focus"))
+	{
+		$("#email_notice").removeClass("focus");
+	}
+	$("#email_notice").addClass("error");
     document.forms['formUser'].elements['Submit'].disabled = 'disabled';
   }
 }
@@ -775,25 +855,34 @@ function checkIntensity(pwd)
   switch(m)
   {
     case 1 :
-      Lcolor = "2px solid red";
-      Mcolor = Hcolor = "2px solid #DADADA";
+	  var a = $("#pwdstrength").attr("class");
+	  $("#pwdstrength").removeClass(a);
+
+	  $("#pwdstrength").addClass("strengthA");
+
     break;
     case 2 :
-      Mcolor = "2px solid #f90";
-      Lcolor = Hcolor = "2px solid #DADADA";
+      var a = $("#pwdstrength").attr("class");
+	  $("#pwdstrength").removeClass(a);
+	  $("#pwdstrength").addClass("strengthB");
     break;
     case 3 :
-      Hcolor = "2px solid #3c0";
-      Lcolor = Mcolor = "2px solid #DADADA";
+     var a = $("#pwdstrength").attr("class");
+	  $("#pwdstrength").removeClass(a);
+	  $("#pwdstrength").addClass("strengthC");
     break;
     case 4 :
-      Hcolor = "2px solid #3c0";
-      Lcolor = Mcolor = "2px solid #DADADA";
+      var a = $("#pwdstrength").attr("class");
+	  $("#pwdstrength").removeClass(a);
+	  $("#pwdstrength").addClass("strengthC");
     break;
     default :
-      Hcolor = Mcolor = Lcolor = "";
+      var a = $("#pwdstrength").attr("class");
+	  $("#pwdstrength").removeClass(a);
+	  $("#pwdstrength").addClass("strengthA");
     break;
   }
+
   if (document.getElementById("pwd_lower"))
   {
     document.getElementById("pwd_lower").style.borderBottom  = Lcolor;

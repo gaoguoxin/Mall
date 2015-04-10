@@ -98,6 +98,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
             'attr_values' => '',
             'attr_type' => 0,
             'is_linked' => 0,
+			'is_show_img' => 0 // EC模板修改 start by zhouH
         );
     }
     else
@@ -149,6 +150,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         'attr_index'      => $_POST['attr_index'],
         'attr_input_type' => $_POST['attr_input_type'],
         'is_linked'       => $_POST['is_linked'],
+		'is_show_img'       => $_POST['is_show_img'],//EC模板堂修改 by zhouH 
         'attr_values'     => isset($_POST['attr_values']) ? $_POST['attr_values'] : '',
         'attr_type'       => empty($_POST['attr_type']) ? '0' : intval($_POST['attr_type']),
         'attr_group'      => isset($_POST['attr_group']) ? intval($_POST['attr_group']) : 0

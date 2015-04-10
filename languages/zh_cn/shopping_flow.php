@@ -112,6 +112,7 @@ $_LANG['flow_js']['payment_not_null'] = '请您选择支付方式！';
 $_LANG['flow_js']['goodsattr_style'] = 1;
 $_LANG['flow_js']['tele_invaild'] = '电话号码不有效的号码';
 $_LANG['flow_js']['zip_not_num'] = '邮政编码只能填写数字';
+$_LANG['flow_js']['zip_not_null'] = '邮政编码不能为空！';
 $_LANG['flow_js']['mobile_invaild'] = '手机号码不是合法号码';
 
 $_LANG['new_consignee_address'] = '新收货地址';

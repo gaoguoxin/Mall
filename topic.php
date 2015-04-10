@@ -116,12 +116,14 @@ if (!$smarty->is_cached($templates, $cache_id))
 
     /* 模板赋值 */
     assign_template();
+	        $smarty->assign('categories',         get_categories_tree());  // 分类树
     $position = assign_ur_here();
     $smarty->assign('page_title',       $position['title']);       // 页面标题
     $smarty->assign('ur_here',          $position['ur_here'] . '> ' . $topic['title']);     // 当前位置
     $smarty->assign('show_marketprice', $_CFG['show_marketprice']);
     $smarty->assign('sort_goods_arr',   $sort_goods_arr);          // 商品列表
     $smarty->assign('topic',            $topic);                   // 专题信息
+	$smarty->assign('helps',           get_shop_help());       // 网店帮助
     $smarty->assign('keywords',         $topic['keywords']);       // 专题信息
     $smarty->assign('description',      $topic['description']);    // 专题信息
     $smarty->assign('title_pic',        $topic['title_pic']);      // 分类标题图片地址

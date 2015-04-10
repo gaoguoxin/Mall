@@ -22,6 +22,16 @@
     <td class="label">{$lang.schp_sort}</td>
     <td><input name="img_sort" type="text" value="{$rt.img_sort}" size="4" maxlength="3"/></td>
   </tr>
+  
+  <!-- 周欢改 start-->
+  <tr>
+    <td class="label">宽窄屏</td>
+    <td>
+    <input type="radio" value="0" name="width_screen" {if $rt.width_screen eq 0}checked="checked"{/if}>宽屏<input type="radio" value="1" name="width_screen" {if $rt.width_screen eq 1}checked="checked"{/if}>窄屏
+    </td>
+  </tr>
+  <!-- 周欢改 end-->
+  
   <tr align="center">
     <td colspan="2">
       <input type="hidden"  name="id"       value="{$rt.id}" />

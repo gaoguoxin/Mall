@@ -233,7 +233,7 @@ elseif ($_REQUEST['act'] == 'edit_ad_width')
     }
 
     /* 广告位宽度应在1-1024之间 */
-    if ($ad_width > 1024 || $ad_width < 1)
+    if ($ad_width < 1)
     {
         make_json_error($_LANG['width_value']);
     }
@@ -267,7 +267,7 @@ elseif ($_REQUEST['act'] == 'edit_ad_height')
     }
 
     /* 广告位宽度应在1-1024之间 */
-    if ($ad_height > 1024 || $ad_height < 1)
+    if ($ad_height < 1)
     {
         make_json_error($_LANG['height_value']);
     }

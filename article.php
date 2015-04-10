@@ -56,9 +56,11 @@ if (!$smarty->is_cached('article.dwt', $cache_id))
         exit;
     }
 
-    $smarty->assign('article_categories',   article_categories_tree($article_id)); //文章分类树
+    $smarty->assign('article_categories',   article_categories_tree()); //文章分类树
+
     $smarty->assign('categories',       get_categories_tree());  // 分类树
     $smarty->assign('helps',            get_shop_help()); // 网店帮助
+
     $smarty->assign('top_goods',        get_top10());    // 销售排行
     $smarty->assign('best_goods',       get_recommend_goods('best'));       // 推荐商品
     $smarty->assign('new_goods',        get_recommend_goods('new'));        // 最新商品

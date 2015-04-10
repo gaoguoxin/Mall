@@ -66,7 +66,7 @@ $default_display_type = $_CFG['show_order_type'] == '0' ? 'list' : ($_CFG['show_
 $default_sort_order_method = $_CFG['sort_order_method'] == '0' ? 'DESC' : 'ASC';
 $default_sort_order_type   = $_CFG['sort_order_type'] == '0' ? 'goods_id' : ($_CFG['sort_order_type'] == '1' ? 'shop_price' : 'last_update');
 
-$sort  = (isset($_REQUEST['sort'])  && in_array(trim(strtolower($_REQUEST['sort'])), array('goods_id', 'shop_price', 'last_update'))) ? trim($_REQUEST['sort'])  : $default_sort_order_type;
+$sort  = (isset($_REQUEST['sort'])  && in_array(trim(strtolower($_REQUEST['sort'])), array('goods_id', 'shop_price', 'last_update','sales_volume','comments_number'))) ? trim($_REQUEST['sort'])  : $default_sort_order_type;
 $order = (isset($_REQUEST['order']) && in_array(trim(strtoupper($_REQUEST['order'])), array('ASC', 'DESC')))                              ? trim($_REQUEST['order']) : $default_sort_order_method;
 $display  = (isset($_REQUEST['display']) && in_array(trim(strtolower($_REQUEST['display'])), array('list', 'grid', 'text'))) ? trim($_REQUEST['display'])  : (isset($_COOKIE['ECS']['display']) ? $_COOKIE['ECS']['display'] : $default_display_type);
 $display  = in_array($display, array('list', 'grid', 'text')) ? $display : 'text';
@@ -279,7 +279,7 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
     $cate_where = ($cate > 0) ? 'AND ' . get_children($cate) : '';
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
+    $sql = 'SELECT g.goods_id, g.goods_name, g.sales_volume, g.comments_number,g.market_price, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, " .
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .
@@ -287,7 +287,7 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
             "WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 AND g.brand_id = '$brand_id' $cate_where".
             "ORDER BY $sort $order";
-
+      
     $res = $GLOBALS['db']->selectLimit($sql, $size, ($page - 1) * $size);
 
     $arr = array();
@@ -311,6 +311,9 @@ function brand_get_goods($brand_id, $cate, $size, $page, $sort, $order)
         {
             $arr[$row['goods_id']]['goods_name']       = $row['goods_name'];
         }
+		$arr[$row['goods_id']]['sales_volume']      = $row['sales_volume'];
+		$arr[$row['goods_id']]['comments_number']      = $row['comments_number'];
+		
         $arr[$row['goods_id']]['market_price']  = price_format($row['market_price']);
         $arr[$row['goods_id']]['shop_price']    = price_format($row['shop_price']);
         $arr[$row['goods_id']]['promote_price'] = ($promote_price > 0) ? price_format($promote_price) : '';

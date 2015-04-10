@@ -11,6 +11,9 @@
     <th>{$lang.schp_imgurl}</th>
       <th>{$lang.schp_imgdesc}</th>
       <th>{$lang.schp_sort}</th>
+        <!-- 周欢改 start-->
+       <th>宽窄屏</th>
+       <!-- 周欢改 end-->
     <th width="70px">{$lang.handler}</th>
     </tr>
     {foreach from=$playerdb item=item key=key}
@@ -19,6 +22,9 @@
     <td align="left"><a href="{$item.url}" target="_blank">{$item.url}</a></td>
       <td align="left">{$item.text}</td>
       <td align="left">{$item.sort}</td>
+         <!-- 周欢改 start-->
+      <td align="left">{if $item.width_screen eq 0}宽{else}窄{/if}</td>
+      <!-- 周欢改 end-->
     <td align="center">
         <a href="flashplay.php?act=edit&id={$key}" title="{$lang.edit}"><img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
         <a href="flashplay.php?act=del&id={$key}" onclick="return check_del();" title="{$lang.trash_img}"><img src="images/icon_drop.gif" width="16" height="16" border="0" /></a>
@@ -46,6 +52,7 @@
   <tr>
     <td>{if $flashtpl.screenshot}<img src="{$flashtpl.screenshot}" border="0" style="cursor:pointer" onclick="setupFlashTpl('{$flashtpl.code}', this)" />{/if}</td>
   </tr>
+ 
   <tr>
     <td valign="top">{$flashtpl.desc}</td>
   </tr>

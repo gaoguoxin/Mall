@@ -43,6 +43,7 @@ $_LANG['template_files']['article'] = '文章内容模板';
 $_LANG['template_files']['article_cat'] = '文章分类模板';
 $_LANG['template_files']['brand'] = '品牌专区';
 //$_LANG['template_files']['catalog'] = '所有分类页';
+$_LANG['template_files']['category_top'] = '商品顶级分类页模板';
 $_LANG['template_files']['category'] = '商品分类页模板';
 $_LANG['template_files']['flow'] = '购物流程模板';
 $_LANG['template_files']['goods'] = '商品详情模板';

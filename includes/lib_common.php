@@ -17,7 +17,103 @@ if (!defined('IN_ECS'))
 {
     die('Hacking attempt');
 }
+/*评论百分比*/
+function comment_percent($goods_id)
+{
+	$sql = 'SELECT COUNT(*) AS haoping FROM '.$GLOBALS['ecs']->table('comment')." WHERE id_value = '$goods_id' AND comment_type=0 AND status = 1 AND parent_id = 0 AND (comment_rank = 4 OR comment_rank = 5)";
+	$haoping_count = $GLOBALS['db']->getOne($sql); 	
+	
+	$sql = 'SELECT COUNT(*) AS zhongping FROM '.$GLOBALS['ecs']->table('comment')." WHERE id_value = '$goods_id' AND comment_type=0 AND status = 1 AND parent_id = 0 AND (comment_rank = 2 OR comment_rank = 3)";
+	$zhongping_count = $GLOBALS['db']->getOne($sql); 
+	
+	$sql = 'SELECT COUNT(*) AS chaping FROM '.$GLOBALS['ecs']->table('comment')." WHERE id_value = '$goods_id' AND comment_type=0 AND status = 1 AND parent_id = 0 AND comment_rank = 1";
+	$chaping_count = $GLOBALS['db']->getOne($sql); 
+	
+	$sql = 'SELECT COUNT(*) AS comment_count FROM '.$GLOBALS['ecs']->table('comment')." WHERE id_value = '$goods_id' AND comment_type=0 AND status = 1 AND parent_id = 0";
+	$comment_count = $GLOBALS['db']->getOne($sql); 
+	
+	$arr['haoping_percent']   = @substr(number_format(($haoping_count/$comment_count)*100, 2, '.', ''), 0, -1);
+	$arr['zhongping_percent'] = @substr(number_format(($zhongping_count/$comment_count)*100, 2, '.', ''), 0, -1); 
+	$arr['chaping_percent']   = @substr(number_format(($chaping_count/$comment_count)*100, 2, '.', ''), 0, -1); 
+	$arr['comment_count']     = $comment_count ? $comment_count : 0; 
+	if($comment_count == 0)
+	{
+		$arr['haoping_percent'] = 100;
+	}
+	
+	foreach($arr as $key => $val)
+	{
+		if($val == 0.0)
+		{
+			$arr[$key] = 0;
+		}
+	}
+	
+	
+	
+	return $arr;
+}
+function get_related_cat($cat_id)
+{
+	$sql = 'SELECT parent_id FROM '.$GLOBALS['ecs']->table('category')." WHERE cat_id = '$cat_id' ";
+	$parent_id = $GLOBALS['db']->getOne($sql);
+	$sql = 'SELECT cat_id,cat_name FROM '.$GLOBALS['ecs']->table('category')." WHERE parent_id = '$parent_id' AND cat_id != '$cat_id'";
+	
+	$res = $GLOBALS['db']->getAll($sql);
+	$arr = array();
+	if($res != '')
+	{
+		foreach($res as $idx=>$row)
+		{
+			 $arr[$idx]['cat_name'] =  $row['cat_name'];
+			 $arr[$idx]['url'] = build_uri('category', array('cid' => $row['cat_id']), $row['cat_name']);
+		}
+	}
+	
+	return $arr;
+}
 
+function get_related_brand($cat_id)
+{
+	$children = get_children($cat_id);
+
+	/* 品牌筛选 */
+
+    $sql = "SELECT b.brand_id, b.brand_name,b.brand_logo, COUNT(*) AS goods_num ".
+            "FROM " . $GLOBALS['ecs']->table('brand') . "AS b, ".
+                $GLOBALS['ecs']->table('goods') . " AS g LEFT JOIN ". $GLOBALS['ecs']->table('goods_cat') . " AS gc ON g.goods_id = gc.goods_id " .
+            "WHERE g.brand_id = b.brand_id AND ($children OR " . 'gc.cat_id ' . db_create_in(array_unique(array_merge(array($cat_id), array_keys(cat_list($cat_id, 0, false))))) . ") AND b.is_show = 1 " .
+            " AND g.is_on_sale = 1 AND g.is_alone_sale = 1 AND g.is_delete = 0 ".
+            "GROUP BY b.brand_id HAVING goods_num > 0 ORDER BY b.sort_order, b.brand_id ASC";
+
+    $brands = $GLOBALS['db']->getAll($sql);
+
+    foreach ($brands AS $key => $val)
+    {
+        $temp_key = $key + 1;
+        $brands[$temp_key]['brand_name'] = $val['brand_name'];
+        $brands[$temp_key]['url'] = build_uri('category', array('cid' => $cat_id, 'bid' => $val['brand_id'], 'price_min'=>$price_min, 'price_max'=> $price_max, 'filter_attr'=>$filter_attr_str), $cat['cat_name']);
+
+        /* 判断品牌是否被选中 */
+        if ($brand == $brands[$key]['brand_id'])
+        {
+            $brands[$temp_key]['selected'] = 1;
+        }
+        else
+        {
+            $brands[$temp_key]['selected'] = 0;
+        }
+		$brands[$temp_key]['logo'] = !empty($val['brand_logo']) ? 'data/brandlogo/'.$val['brand_logo'] : '';
+    }
+	
+    $brands[0]['brand_name'] = $_LANG['all_attribute'];
+    $brands[0]['url'] = build_uri('category', array('cid' => $cat_id, 'bid' => 0, 'price_min'=>$price_min, 'price_max'=> $price_max, 'filter_attr'=>$filter_attr_str), $cat['cat_name']);
+    $brands[0]['selected'] = empty($brand) ? 1 : 0;
+
+	unset($brands[0]);
+	return $brands;
+
+}
 /**
  * 创建像这样的查询: "IN('a','b')";
  *
@@ -1795,30 +1891,6 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             }
 
             break;
-        case 'pifa':
-			if($acid){
-				$uri = 'pifa.php?id=' . $acid;
-			}else{
-				$uri = 'pifa.php?';
-			}
-			
-			if (!empty($page))
-			{
-				$uri .= '&amp;page=' . $page;
-			}
-			if (!empty($sort))
-			{
-				$uri .= '&amp;sort=' . $sort;
-			}
-			if (!empty($order))
-			{
-				$uri .= '&amp;order=' . $order;
-			}
-			if (!empty($keywords))
-			{
-				$uri .= '&amp;keywords=' . $keywords;
-			}
-			break;			
         default:
             return false;
             break;

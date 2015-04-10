@@ -15,6 +15,8 @@
 
 define('IN_ECS', true);
 
+
+
 require(dirname(__FILE__) . '/includes/init.php');
 
 if ((DEBUG_MODE & 2) != 2)
@@ -67,8 +69,6 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
 
     die($json->encode($res));
 }
-
-
 /*------------------------------------------------------ */
 //-- 商品购买记录ajax处理
 /*------------------------------------------------------ */
@@ -148,6 +148,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
     $smarty->assign('type',         0);
     $smarty->assign('cfg',          $_CFG);
     $smarty->assign('promotion',       get_promotion_info($goods_id));//促销信息
+	$smarty->assign('comment_percent',     comment_percent($goods_id));  //获取评分
     $smarty->assign('promotion_info', get_promotion_info());
 
     /* 获得商品的信息 */
@@ -190,7 +191,7 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('goods',              $goods);
         $smarty->assign('goods_id',           $goods['goods_id']);
         $smarty->assign('promote_end_time',   $goods['gmt_end_time']);
-        $smarty->assign('categories',         get_categories_tree($goods['cat_id']));  // 分类树
+        $smarty->assign('categories',         get_categories_tree());  // 分类树
 
         /* meta */
         $smarty->assign('keywords',           htmlspecialchars($goods['keywords']));
@@ -230,6 +231,8 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
 
         $smarty->assign('properties',          $properties['pro']);                              // 商品属性
         $smarty->assign('specification',       $properties['spe']);                              // 商品规格
+		
+		//print_r($properties['spe']);
         $smarty->assign('attribute_linked',    get_same_attribute_goods($properties));           // 相同属性的关联商品
         $smarty->assign('related_goods',       $linked_goods);                                   // 关联商品
         $smarty->assign('goods_article_list',  get_linked_articles($goods_id));                  // 关联文章
@@ -238,7 +241,34 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
         $smarty->assign('pictures',            get_goods_gallery($goods_id));                    // 商品相册
         $smarty->assign('bought_goods',        get_also_bought($goods_id));                      // 购买了该商品的用户还购买了哪些商品
         $smarty->assign('goods_rank',          get_goods_rank($goods_id));                       // 商品的销售排名
+		$smarty->assign('related_cat',         get_related_cat($goods['cat_id'])); 
+		
+		$smarty->assign('related_brand',         get_related_brand($goods['cat_id'])); 
+		
+		$smarty->assign('top10_brand',          get_top10_brand($goods['brand_id'])); 
+		
+		$smarty->assign('top10_category',       get_top10($goods['cat_id'])); 
+		
+		$smarty->assign('top10_price',       get_top10_price($goods['shop_price'])); 
+		
 
+	
+
+		//by mike start
+        //组合套餐名
+        $comboTabIndex = array(' ','一', '二', '三','四','五','六','七','八','九','十');
+        $smarty->assign('comboTab',$comboTabIndex);
+        //组合套餐组
+        $fittings_list = get_goods_fittings(array($goods_id));
+        if(is_array($fittings_list)){
+                foreach($fittings_list as $vo){
+                        $fittings_index[$vo['group_id']] = 1;//关联数组
+                }
+        }
+        ksort($fittings_index);//重新排序
+        $smarty->assign('fittings_tab_index', $fittings_index);//套餐数量
+        //by mike end
+		
         //获取tag
         $tag_array = get_tags($goods_id);
         $smarty->assign('tags',                $tag_array);                                       // 商品的标记

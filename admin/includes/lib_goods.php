@@ -376,7 +376,12 @@ function handle_gallery_image($goods_id, $image_files, $image_descs, $image_urls
 
             //定义原图路径
             $down_img = ROOT_PATH . 'temp/' . basename($image_url);
-
+			
+			if(is_array($group_goods_list)){ //by mike add
+				foreach($group_goods_list as $k=>$val){
+					$group_goods_list[$k]['goods_name'] = '[套餐'.$val['group_id'].']'.$val['goods_name'];	
+				}
+			}
             // 生成缩略图
             if ($proc_thumb)
             {
@@ -620,7 +625,7 @@ function get_attr_list($cat_id, $goods_id = 0)
     }
 
     // 查询属性值及商品的属性值
-    $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type, a.attr_values, v.attr_value, v.attr_price ".
+    $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type, a.attr_values, v.img_id,v.attr_value, v.attr_price ".
             "FROM " .$GLOBALS['ecs']->table('attribute'). " AS a ".
             "LEFT JOIN " .$GLOBALS['ecs']->table('goods_attr'). " AS v ".
             "ON v.attr_id = a.attr_id AND v.goods_id = '$goods_id' ".
@@ -668,6 +673,7 @@ function get_goods_type_specifications()
 function build_attr_html($cat_id, $goods_id = 0)
 {
     $attr = get_attr_list($cat_id, $goods_id);
+	
     $html = '<table width="100%" id="attrTable">';
     $spec = 0;
 
@@ -681,8 +687,9 @@ function build_attr_html($cat_id, $goods_id = 0)
                 "<a href='javascript:;' onclick='removeSpec(this)'>[-]</a>";
             $spec = $val['attr_id'];
         }
-
-        $html .= "$val[attr_name]</td><td><input type='hidden' name='attr_id_list[]' value='$val[attr_id]' />";
+		/*模板堂修改 start by zhouH*/
+        $html .= "$val[attr_name]</td><td><input type='hidden' name='attr_id_list[]' value='$val[attr_id]' /><input type='hidden' name='attr_img_id[]' value='".($val['img_id'])."' />";
+		/*模板堂修改 end by zhouH*/
 
         if ($val['attr_input_type'] == 0)
         {
@@ -709,12 +716,28 @@ function build_attr_html($cat_id, $goods_id = 0)
             }
             $html .= '</select> ';
         }
-
-        $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
-            $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
-            ' <input type="hidden" name="attr_price_list[]" value="0" />';
-
+		/*模板堂修改 start by zhouH*/
+		
+		$sql = 'SELECT is_show_img FROM '.$GLOBALS['ecs']->table('attribute').' WHERE attr_id = '.$val['attr_id'];
+		$is_show_img = $GLOBALS['db']->getOne($sql);
+	
+		if($is_show_img == 1)
+		{
+		
+			$html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
+				$GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" /> <input type="button" value="选择属性图片" class="button"onclick="show_goods_gallery('.$goods_id.',this);">' :
+			
+				' <input type="hidden" name="attr_price_list[]" value="0" />';
+				
+		}
+		else
+		{
+			$html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
+				$GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' : ' <input type="hidden" name="attr_price_list[]" value="0" />';
+		}
+		/*模板堂修改 end by zhouH*/
         $html .= '</td></tr>';
+	
     }
 
     $html .= '</table>';
@@ -763,7 +786,7 @@ function get_linked_goods($goods_id)
  */
 function get_group_goods($goods_id)
 {
-    $sql = "SELECT gg.goods_id, CONCAT(g.goods_name, ' -- [', gg.goods_price, ']') AS goods_name " .
+    $sql = "SELECT gg.goods_id, gg.group_id, CONCAT(g.goods_name, ' -- [', gg.goods_price, ']') AS goods_name " .
             "FROM " . $GLOBALS['ecs']->table('group_goods') . " AS gg, " .
                 $GLOBALS['ecs']->table('goods') . " AS g " .
             "WHERE gg.parent_id = '$goods_id' " .
@@ -772,6 +795,7 @@ function get_group_goods($goods_id)
     {
         $sql .= " AND gg.admin_id = '$_SESSION[admin_id]'";
     }
+	$sql .= " order by gg.group_id asc, g.goods_id asc"; //by mike add
     $row = $GLOBALS['db']->getAll($sql);
 
     return $row;

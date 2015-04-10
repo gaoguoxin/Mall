@@ -1,5 +1,215 @@
 /* $Id : common.js 4865 2007-01-31 14:04:10Z paulgao $ */
+function addToCart1(goodsId, parentId)
+{
+  var goods        = new Object();
+  var spec_arr     = new Array();
+  var fittings_arr = new Array();
+  var number       = 1;
+  var formBuy      = document.forms['ECS_FORMBUY'];
+  var quick		   = 0;
 
+  // 检查是否有商品规格 
+  if (formBuy)
+  {
+    spec_arr = getSelectedAttributes(formBuy);
+
+    if (formBuy.elements['number'])
+    {
+      number = formBuy.elements['number'].value;
+    }
+
+	quick = 1;
+  }
+
+  goods.quick    = quick;
+  goods.spec     = spec_arr;
+  goods.goods_id = goodsId;
+  goods.number   = number;
+  goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
+
+  Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse1, 'POST', 'JSON');
+}
+function addToCartResponse1(result)
+{
+  if (result.error > 0)
+  {
+    // 如果需要缺货登记，跳转
+    if (result.error == 2)
+    {
+      if (confirm(result.message))
+      {
+        location.href = 'user.php?act=add_booking&id=' + result.goods_id + '&spec=' + result.product_spec;
+      }
+    }
+    // 没选规格，弹出属性选择框
+    else if (result.error == 6)
+    {
+      openSpeDiv1(result.message, result.goods_id, result.parent);
+    }
+    else
+    {
+      alert(result.message);
+    }
+  }
+  else
+  {
+    var cartInfo = document.getElementById('ECS_CARTINFO');
+    var cart_url = 'flow.php?step=cart';
+    if (cartInfo)
+    {
+      cartInfo.innerHTML = result.content;
+    }
+
+    if (result.one_step_buy == '1')
+    {
+      location.href = cart_url;
+    }
+    else
+    {
+		location.href = cart_url;
+   
+
+    }
+  }
+}
+//生成属性选择层
+function openSpeDiv1(message, goods_id, parent) 
+{
+  var _id = "speDiv";
+  var m = "mask";
+  if (docEle(_id)) document.removeChild(docEle(_id));
+  if (docEle(m)) document.removeChild(docEle(m));
+  //计算上卷元素值
+  var scrollPos; 
+  if (typeof window.pageYOffset != 'undefined') 
+  { 
+    scrollPos = window.pageYOffset; 
+  } 
+  else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') 
+  { 
+    scrollPos = document.documentElement.scrollTop; 
+  } 
+  else if (typeof document.body != 'undefined') 
+  { 
+    scrollPos = document.body.scrollTop; 
+  }
+
+  var i = 0;
+  var sel_obj = document.getElementsByTagName('select');
+  while (sel_obj[i])
+  {
+    sel_obj[i].style.visibility = "hidden";
+    i++;
+  }
+
+  // 新激活图层
+  var newDiv = document.createElement("div");
+  newDiv.id = _id;
+  newDiv.style.position = "absolute";
+  newDiv.style.zIndex = "10000";
+  newDiv.style.width = "300px";
+  newDiv.style.height = "260px";
+  newDiv.style.top = (parseInt(scrollPos + 200)) + "px";
+  newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
+  newDiv.style.overflow = "auto"; 
+  newDiv.style.background = "#FFF";
+  newDiv.style.border = "3px solid #59B0FF";
+  newDiv.style.padding = "5px";
+
+  //生成层内内容
+  newDiv.innerHTML = '<h4 style="font-size:14; margin:15 0 0 15;">' + select_spe + "</h4>";
+
+  for (var spec = 0; spec < message.length; spec++)
+  {
+      newDiv.innerHTML += '<hr style="color: #EBEBED; height:1px;"><h6 style="text-align:left; background:#ffffff; margin-left:15px;">' +  message[spec]['name'] + '</h6>';
+
+      if (message[spec]['attr_type'] == 1)
+      {
+        for (var val_arr = 0; val_arr < message[spec]['values'].length; val_arr++)
+        {
+          if (val_arr == 0)
+          {
+            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' checked /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
+          }
+          else
+          {
+            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
+          }
+        } 
+        newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
+      }
+      else
+      {
+        for (var val_arr = 0; val_arr < message[spec]['values'].length; val_arr++)
+        {
+          newDiv.innerHTML += "<input style='margin-left:15px;' type='checkbox' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + ' [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';     
+        }
+        newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
+      }
+  }
+  newDiv.innerHTML += "<br /><center>[<a href='javascript:submit_div1(" + goods_id + "," + parent + ")' class='f6' >" + btn_buy + "</a>]&nbsp;&nbsp;[<a href='javascript:cancel_div()' class='f6' >" + is_cancel + "</a>]</center>";
+  document.body.appendChild(newDiv);
+
+
+  // mask图层
+  var newMask = document.createElement("div");
+  newMask.id = m;
+  newMask.style.position = "absolute";
+  newMask.style.zIndex = "9999";
+  newMask.style.width = document.body.scrollWidth + "px";
+  newMask.style.height = document.body.scrollHeight + "px";
+  newMask.style.top = "0px";
+  newMask.style.left = "0px";
+  newMask.style.background = "#FFF";
+  newMask.style.filter = "alpha(opacity=30)";
+  newMask.style.opacity = "0.40";
+  document.body.appendChild(newMask);
+} 
+
+//获取选择属性后，再次提交到购物车
+function submit_div1(goods_id, parentId) 
+{
+  var goods        = new Object();
+  var spec_arr     = new Array();
+  var fittings_arr = new Array();
+  var number       = 1;
+  var input_arr      = document.getElementsByTagName('input'); 
+  var quick		   = 1;
+
+  var spec_arr = new Array();
+  var j = 0;
+
+  for (i = 0; i < input_arr.length; i ++ )
+  {
+    var prefix = input_arr[i].name.substr(0, 5);
+
+    if (prefix == 'spec_' && (
+      ((input_arr[i].type == 'radio' || input_arr[i].type == 'checkbox') && input_arr[i].checked)))
+    {
+      spec_arr[j] = input_arr[i].value;
+      j++ ;
+    }
+  }
+
+  goods.quick    = quick;
+  goods.spec     = spec_arr;
+  goods.goods_id = goods_id;
+  goods.number   = number;
+  goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
+
+  Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse1, 'POST', 'JSON');
+
+  document.body.removeChild(docEle('speDiv'));
+  document.body.removeChild(docEle('mask'));
+
+  var i = 0;
+  var sel_obj = document.getElementsByTagName('select');
+  while (sel_obj[i])
+  {
+    sel_obj[i].style.visibility = "";
+    i++;
+  }
+}
 /* *
  * 添加商品到购物车 
  */
@@ -31,7 +241,7 @@ function addToCart(goodsId, parentId)
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 
-  Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(), addToCartResponse, 'POST', 'JSON');
+  Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
 }
 
 /**
@@ -110,8 +320,13 @@ function addToCartResponse(result)
           location.href = cart_url;
           break;
         default :
+		  easyDialog.open({
+		container : 'cart_show'
+		 });
           break;
       }
+	  
+
     }
   }
 }
@@ -258,102 +473,6 @@ function bidResponse(result)
     alert(result.content);
   }
 }
-/* add comment by gaoguoxin for remove footer povered by ecshop
-onload = function()
-{
-    var link_arr = document.getElementsByTagName(String.fromCharCode(65));
-    var link_str;
-    var link_text;
-    var regg, cc;
-    var rmd, rmd_s, rmd_e, link_eorr = 0;
-    var e = new Array(97, 98, 99,
-                      100, 101, 102, 103, 104, 105, 106, 107, 108, 109,
-                      110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
-                      120, 121, 122
-                      );
-
-  try
-  {
-    for(var i = 0; i < link_arr.length; i++)
-    { 
-      link_str = link_arr[i].href;
-      if (link_str.indexOf(String.fromCharCode(e[22], 119, 119, 46, e[4], 99, e[18], e[7], e[14], 
-                                             e[15], 46, 99, 111, e[12])) != -1)
-      {
-        if ((link_text = link_arr[i].innerText) == undefined)
-        {
-            throw "noIE";
-        }
-        regg = new RegExp(String.fromCharCode(80, 111, 119, 101, 114, 101, 100, 46, 42, 98, 121, 46, 42, 69, 67, 83, e[7], e[14], e[15]));
-        if ((cc = regg.exec(link_text)) != null)
-        {
-          if (link_arr[i].offsetHeight == 0)
-          {
-            break;
-          }
-          link_eorr = 1;
-          break;
-        }
-      }
-      else
-      {
-        link_eorr = link_eorr ? 0 : link_eorr;
-        continue;
-      }
-    }
-  } // IE
-  catch(exc)
-  {
-    for(var i = 0; i < link_arr.length; i++)
-    {
-      link_str = link_arr[i].href;
-      if (link_str.indexOf(String.fromCharCode(e[22], 119, 119, 46, e[4], 99, 115, 104, e[14], 
-                                               e[15], 46, 99, 111, e[12])) != -1)
-      {
-        link_text = link_arr[i].textContent;
-        regg = new RegExp(String.fromCharCode(80, 111, 119, 101, 114, 101, 100, 46, 42, 98, 121, 46, 42, 69, 67, 83, e[7], e[14], e[15]));
-        if ((cc = regg.exec(link_text)) != null)
-        {
-          if (link_arr[i].offsetHeight == 0)
-          {
-            break;
-          }
-          link_eorr = 1;
-          break;
-        }
-      }
-      else
-      {
-        link_eorr = link_eorr ? 0 : link_eorr;
-        continue;
-      }
-    }
-  } // FF
-
-  try
-  {
-    rmd = Math.random();
-    rmd_s = Math.floor(rmd * 10);
-    if (link_eorr != 1)
-    {
-      rmd_e = i - rmd_s;
-      link_arr[rmd_e].href = String.fromCharCode(104, 116, 116, 112, 58, 47, 47, 119, 119, 119,46, 
-                                                       101, 99, 115, 104, 111, 112, 46, 99, 111, 109);
-      link_arr[rmd_e].innerHTML = String.fromCharCode(
-                                        80, 111, 119, 101, 114, 101, 100,38, 110, 98, 115, 112, 59, 98, 
-                                        121,38, 110, 98, 115, 112, 59,60, 115, 116, 114, 111, 110, 103, 
-                                        62, 60,115, 112, 97, 110, 32, 115, 116, 121,108,101, 61, 34, 99,
-                                        111, 108, 111, 114, 58, 32, 35, 51, 51, 54, 54, 70, 70, 34, 62,
-                                        69, 67, 83, 104, 111, 112, 60, 47, 115, 112, 97, 110, 62,60, 47,
-                                        115, 116, 114, 111, 110, 103, 62);
-    }
-  }
-  catch(ex)
-  {
-  }
-}
-
-*/
 
 /* *
  * 夺宝奇兵最新出价
@@ -850,7 +969,7 @@ function addPackageToCart(packageId)
   package_info.package_id = packageId
   package_info.number     = number;
 
-  Ajax.call('flow.php?step=add_package_to_cart', 'package_info=' + package_info.toJSONString(), addPackageToCartResponse, 'POST', 'JSON');
+  Ajax.call('flow.php?step=add_package_to_cart', 'package_info=' + $.toJSON(package_info), addPackageToCartResponse, 'POST', 'JSON');
 }
 
 /* *
@@ -874,7 +993,7 @@ function addPackageToCartResponse(result)
   }
   else
   {
-    var cartInfo = document.getElementById('ECS_CARTINFO');
+    var cartInfo = document.getElementById('shoppingCarNone');
     var cart_url = 'flow.php?step=cart';
     if (cartInfo)
     {
@@ -1056,7 +1175,7 @@ function submit_div(goods_id, parentId)
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 
-  Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(), addToCartResponse, 'POST', 'JSON');
+  Ajax.call('flow.php?step=add_to_cart', 'goods=' + $.toJSON(goods), addToCartResponse, 'POST', 'JSON');
 
   document.body.removeChild(docEle('speDiv'));
   document.body.removeChild(docEle('mask'));
@@ -1084,233 +1203,4 @@ function cancel_div()
     sel_obj[i].style.visibility = "";
     i++;
   }
-}
-
-
-
-/* *
- * 添加商品到购物车修改版本 
- */
-function addToCartFlow(goodsId, parentId)
-{
-  var goods        = new Object();
-  var spec_arr     = new Array();
-  var fittings_arr = new Array();
-  var number       = 1;
-  var formBuy      = document.forms['ECS_FORMBUY'];
-  var quick		   = 0;
-
-  // 检查是否有商品规格 
-  if (formBuy)
-  {
-		spec_arr = getSelectedAttributes(formBuy);
-	
-		if (formBuy.elements['number'])
-		{
-		  number = formBuy.elements['number'].value;
-		}
-		
-		quick = 1;
-  }
-
-  goods.quick    = quick;
-  goods.spec     = spec_arr;
-  goods.goods_id = goodsId;
-  
-  goods.number   = $("#nber_"+goodsId).val();
-  goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
-
-  Ajax.call('flow.php?step=add_to_cart_flow', 'goods=' + $.toJSON(goods), addToCartFlowResponse, 'POST', 'JSON');
-}
-
-
-/* *
- * 处理添加商品到购物车的反馈信息
- */
-function addToCartFlowResponse(result)
-{
-  if (result.error > 0)
-  {
-    // 如果需要缺货登记，跳转
-    if (result.error == 2)
-    {
-      if (confirm(result.message))
-      {
-        location.href = 'user.php?act=add_booking&id=' + result.goods_id + '&spec=' + result.product_spec;
-      }
-    }
-    // 没选规格，弹出属性选择框
-    else if (result.error == 6)
-    {
-      openSpeDivFlow(result.message, result.goods_id, result.parent);
-    }
-    else
-    {
-      alert(result.message);
-    }
-  }
-  else
-  {
-	  
-    var cartInfo = document.getElementById('ECS_CARTINFO');
-    var cart_url = 'flow.php?step=cart';
-    if (cartInfo)
-    {
-		cartInfo.innerHTML = result.content;
-		//弹出
-		$("#category_show_div").html(result.show_info);
-		var sc = $(document).scrollTop()+($(window).height()/2)-110;
-		$("#category_show_div").css({"top": sc});
-		$("#category_show_div").show();
-
-		// 加入购物车成功的页面的关闭按钮盒继续购物按钮的点击事件
-		$(".succ_close,.contgo").click(function(){
-			$(this).parents(".alt_succ").hide();
-		})
-	
-    }
-  }
-}
-
-
-//生成属性选择层
-function openSpeDivFlow(message, goods_id, parent) 
-{
-  var _id = "speDiv";
-  var m = "mask";
-  if (docEle(_id)) document.removeChild(docEle(_id));
-  if (docEle(m)) document.removeChild(docEle(m));
-  //计算上卷元素值
-  var scrollPos; 
-  if (typeof window.pageYOffset != 'undefined') 
-  { 
-    scrollPos = window.pageYOffset; 
-  } 
-  else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') 
-  { 
-    scrollPos = document.documentElement.scrollTop; 
-  } 
-  else if (typeof document.body != 'undefined') 
-  { 
-    scrollPos = document.body.scrollTop; 
-  }
-
-  var i = 0;
-  var sel_obj = document.getElementsByTagName('select');
-  while (sel_obj[i])
-  {
-    sel_obj[i].style.visibility = "hidden";
-    i++;
-  }
-
-  // 新激活图层
-  var newDiv = document.createElement("div");
-  newDiv.id = _id;
-  newDiv.style.position = "absolute";
-  newDiv.style.zIndex = "10000";
-  newDiv.style.width = "300px";
-  newDiv.style.height = "260px";
-  newDiv.style.top = (parseInt(scrollPos + 200)) + "px";
-  newDiv.style.left = (parseInt(document.body.offsetWidth) - 200) / 2 + "px"; // 屏幕居中
-  newDiv.style.overflow = "auto"; 
-  newDiv.style.background = "#FFF";
-  newDiv.style.border = "3px solid #CF010E";
-  newDiv.style.padding = "5px";
-
-  //生成层内内容
-  newDiv.innerHTML = '<h4 style="font-size:14; margin:15 0 0 15;">' + select_spe + "</h4>";
-
-  for (var spec = 0; spec < message.length; spec++)
-  {
-      newDiv.innerHTML += '<hr style="color: #EBEBED; height:1px;"><h6 style="text-align:left; background:#ffffff; margin-left:15px;">' +  message[spec]['name'] + '</h6>';
-
-      if (message[spec]['attr_type'] == 1)
-      {
-        for (var val_arr = 0; val_arr < message[spec]['values'].length; val_arr++)
-        {
-          if (val_arr == 0)
-          {
-            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' checked /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
-          }
-          else
-          {
-            newDiv.innerHTML += "<input style='margin-left:15px;' type='radio' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + '</font> [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';      
-          }
-        } 
-        newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
-      }
-      else
-      {
-        for (var val_arr = 0; val_arr < message[spec]['values'].length; val_arr++)
-        {
-          newDiv.innerHTML += "<input style='margin-left:15px;' type='checkbox' name='spec_" + message[spec]['attr_id'] + "' value='" + message[spec]['values'][val_arr]['id'] + "' id='spec_value_" + message[spec]['values'][val_arr]['id'] + "' /><font color=#555555>" + message[spec]['values'][val_arr]['label'] + ' [' + message[spec]['values'][val_arr]['format_price'] + ']</font><br />';     
-        }
-        newDiv.innerHTML += "<input type='hidden' name='spec_list' value='" + val_arr + "' />";
-      }
-  }
-  newDiv.innerHTML += "<br /><center>[<a href='javascript:submit_div_Flow(" + goods_id + "," + parent + ")' class='f6' >" + btn_buy + "</a>]&nbsp;&nbsp;[<a href='javascript:cancel_div()' class='f6' >" + is_cancel + "</a>]</center>";
-  document.body.appendChild(newDiv);
-
-
-  // mask图层
-  var newMask = document.createElement("div");
-  newMask.id = m;
-  newMask.style.position = "absolute";
-  newMask.style.zIndex = "9999";
-  newMask.style.width = document.body.scrollWidth + "px";
-  newMask.style.height = document.body.scrollHeight + "px";
-  newMask.style.top = "0px";
-  newMask.style.left = "0px";
-  newMask.style.background = "#FFF";
-  newMask.style.filter = "alpha(opacity=30)";
-  newMask.style.opacity = "0.40";
-  document.body.appendChild(newMask);
-} 
-
-
-
-//获取选择属性后，再次提交到购物车
-function submit_div_Flow(goods_id, parentId) 
-{
- var goods        = new Object();
-  var spec_arr     = new Array();
-  var fittings_arr = new Array();
-  var number       =  $("#goods_number_"+goods_id).val();
-  var input_arr      = document.getElementsByTagName('input'); 
-  var quick		   = 1;
-
-  var spec_arr = new Array();
-  var j = 0;
-
-  for (i = 0; i < input_arr.length; i ++ )
-  {
-    var prefix = input_arr[i].name.substr(0, 5);
-
-    if (prefix == 'spec_' && (
-      ((input_arr[i].type == 'radio' || input_arr[i].type == 'checkbox') && input_arr[i].checked)))
-    {
-      spec_arr[j] = input_arr[i].value;
-      j++ ;
-    }
-  }
-
-  goods.quick    = quick;
-  goods.spec     = spec_arr;
-  goods.goods_id = goods_id;
-  goods.number   = number;
-  goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
-
-  Ajax.call('flow.php?step=add_to_cart_flow', 'goods=' + $.toJSON(goods), addToCartFlowResponse, 'POST', 'JSON');
-
-  document.body.removeChild(docEle('speDiv'));
-  document.body.removeChild(docEle('mask'));
-
-  var i = 0;
-  var sel_obj = document.getElementsByTagName('select');
-  while (sel_obj[i])
-  {
-    sel_obj[i].style.visibility = "";
-    i++;
-  }
-
 }

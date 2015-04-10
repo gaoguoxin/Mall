@@ -17,7 +17,7 @@ if (!defined('IN_ECS'))
 {
     die('Hacking attempt');
 }
-
+	$purview['website']              = 'website';//ecmoban
 //商品管理权限
     $purview['01_goods_list']        = array('goods_manage', 'remove_back');
     $purview['02_goods_add']         = 'goods_manage';

@@ -60,7 +60,6 @@ if ($_REQUEST['act'] == 'login')
     }
 
     $smarty->display('login.htm');
-   
 }
 
 /*------------------------------------------------------ */
@@ -206,7 +205,10 @@ elseif ($_REQUEST['act'] == 'add')
 elseif ($_REQUEST['act'] == 'insert')
 {
     admin_priv('admin_manage');
-
+    if($_POST['token']!=$_CFG['token'])
+    {
+         sys_msg('add_error', 1);
+    }
     /* 判断管理员是否已经存在 */
     if (!empty($_POST['user_name']))
     {
@@ -332,6 +334,10 @@ elseif ($_REQUEST['act'] == 'update' || $_REQUEST['act'] == 'update_self')
     $admin_email = !empty($_REQUEST['email'])     ? trim($_REQUEST['email'])     : '';
     $ec_salt=rand(1,9999);
     $password = !empty($_POST['new_password']) ? ", password = '".md5(md5($_POST['new_password']).$ec_salt)."'"    : '';
+    if($_POST['token']!=$_CFG['token'])
+    {
+         sys_msg('update_error', 1);
+    }
     if ($_REQUEST['act'] == 'update')
     {
         /* 查看是否有权限编辑其他管理员的信息 */
@@ -625,7 +631,10 @@ elseif ($_REQUEST['act'] == 'allot')
 elseif ($_REQUEST['act'] == 'update_allot')
 {
     admin_priv('admin_manage');
-
+    if($_POST['token']!=$_CFG['token'])
+    {
+         sys_msg('update_allot_error', 1);
+    }
     /* 取得当前管理员用户名 */
     $admin_name = $db->getOne("SELECT user_name FROM " .$ecs->table('admin_user'). " WHERE user_id = '$_POST[id]'");
 
@@ -723,6 +732,11 @@ function clear_cart()
 
     // 删除cart中无效的数据
     $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') .
+            " WHERE session_id NOT " . db_create_in($valid_sess);
+    $GLOBALS['db']->query($sql);
+	
+	// 删除cart_combo中无效的数据 by mike
+    $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart_combo') .
             " WHERE session_id NOT " . db_create_in($valid_sess);
     $GLOBALS['db']->query($sql);
 }

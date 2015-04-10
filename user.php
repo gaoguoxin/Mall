@@ -25,12 +25,14 @@ $action  = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'default';
 
 $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 $smarty->assign('affiliate', $affiliate);
+
+$smarty->assign('categories',         get_categories_tree());  // 分类树
 $back_act='';
 
 
 // 不需要登录的操作或自己验证是否登录（如ajax处理）的act
 $not_login_arr =
-array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer');
+array('login','act_login','register','act_register','act_edit_password','get_password','send_pwd_email','password', 'signin', 'add_tag', 'collect', 'return_to_cart', 'logout', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email','clear_history','qpassword_name', 'get_passwd_question', 'check_answer','oath' , 'oath_login', 'other_login');
 
 /* 显示页面的action列表 */
 $ui_arr = array('register', 'login', 'profile', 'order_list', 'order_detail', 'address_list', 'collection_list',
@@ -246,7 +248,194 @@ elseif ($action == 'act_register')
         }
     }
 }
+//  第三方登录接口
+elseif($action == 'oath')
+{
+	
+	$type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
+	
+	if($type == "taobao"){
+		header("location:includes/website/tb_index.php");exit;
+	}
+	
+	include_once(ROOT_PATH . 'includes/website/jntoo.php');
+	
+	
 
+	$c = &website($type);
+	if($c)
+	{
+		if (empty($_REQUEST['callblock']))
+		{
+			if (empty($_REQUEST['callblock']) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
+			{
+				$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? 'index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+			}
+			else
+			{
+				$back_act = 'index.php';
+			}
+		}
+		else
+		{
+			$back_act = trim($_REQUEST['callblock']);
+		}
+
+		if($back_act[4] != ':') $back_act = $ecs->url().$back_act;
+		$open = empty($_REQUEST['open']) ? 0 : intval($_REQUEST['open']);
+
+		$url = $c->login($ecs->url().'user.php?act=oath_login&type='.$type.'&callblock='.urlencode($back_act).'&open='.$open);
+		if(!$url)
+		{
+			show_message( $c->get_error() , '首页', $ecs->url() , 'error');
+		}
+		header('Location: '.$url);
+	}
+	else
+	{
+		show_message('服务器尚未注册该插件！' , '首页',$ecs->url() , 'error');
+	}
+}
+
+
+
+//  处理第三方登录接口
+elseif($action == 'oath_login')
+{
+	$type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
+	
+	include_once(ROOT_PATH . 'includes/website/jntoo.php');
+	$c = &website($type);
+	if($c)
+	{
+		$access = $c->getAccessToken();
+		if(!$access)
+		{
+			show_message( $c->get_error() , '首页', $ecs->url() , 'error');
+		}
+		$c->setAccessToken($access);
+		$info = $c->getMessage();
+		if(!$info)
+		{
+			show_message($c->get_error() , '首页' , $ecs->url() , 'error' , false);
+		}
+		if(!$info['user_id'])
+			show_message($c->get_error() , '首页' , $ecs->url() , 'error' , false);
+
+
+		$info_user_id = $type .'_'.$info['user_id']; //  加个标识！！！防止 其他的标识 一样  // 以后的ID 标识 将以这种形式 辨认
+		$info['name'] = str_replace("'" , "" , $info['name']); // 过滤掉 逗号 不然出错  很难处理   不想去  搞什么编码的了
+		if(!$info['user_id'])
+			show_message($c->get_error() , '首页' , $ecs->url() , 'error' , false);
+
+
+		$sql = 'SELECT user_name,password,aite_id FROM '.$ecs->table('users').' WHERE aite_id = \''.$info_user_id.'\' OR aite_id=\''.$info['user_id'].'\'';
+
+		$count = $db->getRow($sql);
+		if(!$count)   // 没有当前数据
+		{
+			if($user->check_user($info['name']))  // 重名处理
+			{
+				$info['name'] = $info['name'].'_'.$type.(rand(10000,99999));
+			}
+			$user_pass = $user->compile_password(array('password'=>$info['user_id']));
+			$sql = 'INSERT INTO '.$ecs->table('users').'(user_name , password, aite_id , sex , reg_time , user_rank , is_validated) VALUES '.
+					"('$info[name]' , '$user_pass' , '$info_user_id' , '$info[sex]' , '".gmtime()."' , '$info[rank_id]' , '1')" ;
+			$db->query($sql);
+		}
+		else
+		{
+			$sql = '';
+			if($count['aite_id'] == $info['user_id'])
+			{
+				$sql = 'UPDATE '.$ecs->table('users')." SET aite_id = '$info_user_id' WHERE aite_id = '$count[aite_id]'";
+				$db->query($sql);
+			}
+			if($info['name'] != $count['user_name'])   // 这段可删除
+			{
+				if($user->check_user($info['name']))  // 重名处理
+				{
+					$info['name'] = $info['name'].'_'.$type.(rand()*1000);
+				}
+				$sql = 'UPDATE '.$ecs->table('users')." SET user_name = '$info[name]' WHERE aite_id = '$info_user_id'";
+				$db->query($sql);
+			}
+		}
+		$user->set_session($info['name']);
+		$user->set_cookie($info['name']);
+		update_user_info();
+		recalculate_price();
+
+		if(!empty($_REQUEST['open']))
+		{
+			die('<script>window.opener.window.location.reload(); window.close();</script>');
+		}
+		else
+		{
+			ecs_header('Location: '.$_REQUEST['callblock']);
+
+		}
+
+	}
+
+}
+
+//  处理其它登录接口
+elseif($action == 'other_login')
+{
+	$type = empty($_REQUEST['type']) ?  '' : $_REQUEST['type'];
+	session_start();
+	$info = $_SESSION['user_info'];
+
+	if(empty($info)){
+		show_message("非法访问或请求超时！" , '首页' , $ecs->url() , 'error' , false);
+	}
+	if(!$info['user_id'])
+		show_message("非法访问或访问出错，请联系管理员！", '首页' , $ecs->url() , 'error' , false);
+
+
+	$info_user_id = $type .'_'.$info['user_id']; //  加个标识！！！防止 其他的标识 一样  // 以后的ID 标识 将以这种形式 辨认
+	$info['name'] = str_replace("'" , "" , $info['name']); // 过滤掉 逗号 不然出错  很难处理   不想去  搞什么编码的了
+
+
+	$sql = 'SELECT user_name,password,aite_id FROM '.$ecs->table('users').' WHERE aite_id = \''.$info_user_id.'\' OR aite_id=\''.$info['user_id'].'\'';
+
+	$count = $db->getRow($sql);
+	$login_name = $info['name'];
+	if(!$count)   // 没有当前数据
+	{
+		if($user->check_user($info['name']))  // 重名处理
+		{
+			$info['name'] = $info['name'].'_'.$type.(rand()*1000);
+		}
+		$login_name = $info['name'];
+		$user_pass = $user->compile_password(array('password'=>$info['user_id']));
+		$sql = 'INSERT INTO '.$ecs->table('users').'(user_name , password, aite_id , sex , reg_time , user_rank , is_validated) VALUES '.
+				"('$info[name]' , '$user_pass' , '$info_user_id' , '$info[sex]' , '".gmtime()."' , '$info[rank_id]' , '1')" ;
+		$db->query($sql);
+	}
+	else
+	{
+		$login_name = $count['user_name'];
+		$sql = '';
+		if($count['aite_id'] == $info['user_id'])
+		{
+			$sql = 'UPDATE '.$ecs->table('users')." SET aite_id = '$info_user_id' WHERE aite_id = '$count[aite_id]'";
+			$db->query($sql);
+		}
+	}
+	
+	
+	
+	$user->set_session($login_name);
+	$user->set_cookie($login_name);
+	update_user_info();
+	recalculate_price();
+
+	$redirect_url =  "http://".$_SERVER["HTTP_HOST"].str_replace("user.php", "index.php", $_SERVER["REQUEST_URI"]);
+	header('Location: '.$redirect_url);
+
+}
 /* 验证用户注册邮件 */
 elseif ($action == 'validate_email')
 {
@@ -305,7 +494,7 @@ elseif ($action == 'login')
     {
         if (empty($back_act) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
         {
-            $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
+           $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
         }
         else
         {
@@ -313,9 +502,7 @@ elseif ($action == 'login')
         }
 
     }
-	if(!empty($_REQUEST['back_url'])){
-		$back_act = trim($_REQUEST['back_url']);
-	}
+
 
     $captcha = intval($_CFG['captcha']);
     if (($captcha & CAPTCHA_LOGIN) && (!($captcha & CAPTCHA_LOGIN_FAIL) || (($captcha & CAPTCHA_LOGIN_FAIL) && $_SESSION['login_fail'] > 2)) && gd_version() > 0)

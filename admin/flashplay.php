@@ -58,6 +58,7 @@ if ($_REQUEST['act']== 'list')
     $smarty->assign('flashtpls', get_flash_templates($flash_dir));
     $smarty->assign('current_flashtpl', $_CFG['flash_theme']);
     $smarty->assign('playerdb', $playerdb);
+
     $smarty->display('flashplay_list.htm');
 }
 elseif($_REQUEST['act']== 'del')
@@ -102,7 +103,7 @@ elseif ($_REQUEST['act'] == 'add')
         $url = isset($_GET['url']) ? $_GET['url'] : 'http://';
         $src = isset($_GET['src']) ? $_GET['src'] : '';
         $sort = 0;
-        $rt = array('act'=>'add','img_url'=>$url,'img_src'=>$src, 'img_sort'=>$sort);
+        $rt = array('act'=>'add','img_url'=>$url,'img_src'=>$src, 'img_sort'=>$sort ,'width_screen' => $width_screen); //周欢改
         $width_height = get_width_height();
         assign_query_info();
         if(isset($width_height['width'])|| isset($width_height['height']))
@@ -160,7 +161,7 @@ elseif ($_REQUEST['act'] == 'add')
         $flashdb = get_flash_xml();
 
         // 插入新数据
-        array_unshift($flashdb, array('src'=>$src, 'url'=>$_POST['img_url'], 'text'=>$_POST['img_text'] ,'sort'=>$_POST['img_sort']));
+        array_unshift($flashdb, array('src'=>$src, 'url'=>$_POST['img_url'], 'text'=>$_POST['img_text'] ,'sort'=>$_POST['img_sort'] ,'width_screen'=>$_POST['width_screen'])); //周欢改
 
         // 实现排序
         $flashdb_sort   = array();
@@ -204,9 +205,11 @@ elseif ($_REQUEST['act'] == 'edit')
         $rt['img_src'] = $rt['src'];
         $rt['img_txt'] = $rt['text'];
         $rt['img_sort'] = empty($rt['sort']) ? 0 : $rt['sort'];
+		$rt['width_screen'] = empty($rt['width_screen']) ? 0 : $rt['width_screen']; //周欢改
 
         $rt['id'] = $id;
         $smarty->assign('action_link', array('text' => $_LANG['go_url'], 'href' => 'flashplay.php?act=list'));
+
         $smarty->assign('rt', $rt);
         $smarty->assign('ur_here', $_LANG['edit_picad']);
         $smarty->display('flashplay_add.htm');
@@ -259,7 +262,7 @@ elseif ($_REQUEST['act'] == 'edit')
         {
             @unlink(ROOT_PATH . $rt['src']);
         }
-        $flashdb[$id] = array('src'=>$src,'url'=>$_POST['img_url'],'text'=>$_POST['img_text'],'sort'=>$_POST['img_sort']);
+        $flashdb[$id] = array('src'=>$src,'url'=>$_POST['img_url'],'text'=>$_POST['img_text'],'sort'=>$_POST['img_sort'],'width_screen'=>$_POST['width_screen']); //周欢改
 
         // 实现排序
         $flashdb_sort   = array();
@@ -276,6 +279,7 @@ elseif ($_REQUEST['act'] == 'edit')
         unset($flashdb, $flashdb_sort);
 
         put_flash_xml($_flashdb);
+		
         set_flash_data($_CFG['flash_theme'], $error_msg = '');
         $links[] = array('text' => $_LANG['go_url'], 'href' => 'flashplay.php?act=list');
         sys_msg($_LANG['edit_ok'], 0, $links);
@@ -732,7 +736,7 @@ function get_flash_xml()
     {
 
         // 兼容v2.7.0及以前版本
-        if (!preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"\ssort="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER))
+        if (!preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"\ssort="([^"]*)"\swidth_screen="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER))
         {
             preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER);
         }
@@ -742,7 +746,8 @@ function get_flash_xml()
             foreach ($t as $key => $val)
             {
                 $val[4] = isset($val[4]) ? $val[4] : 0;
-                $flashdb[] = array('src'=>$val[1],'url'=>$val[2],'text'=>$val[3],'sort'=>$val[4]);
+				$val[5] = isset($val[5]) ? $val[5] : 0;
+                $flashdb[] = array('src'=>$val[1],'url'=>$val[2],'text'=>$val[3],'sort'=>$val[4],'width_screen'=>$val[5]);
             }
         }
     }
@@ -756,7 +761,7 @@ function put_flash_xml($flashdb)
         $xml = '<?xml version="1.0" encoding="' . EC_CHARSET . '"?><bcaster>';
         foreach ($flashdb as $key => $val)
         {
-            $xml .= '<item item_url="' . $val['src'] . '" link="' . $val['url'] . '" text="' . $val['text'] . '" sort="' . $val['sort'] . '"/>';
+            $xml .= '<item item_url="' . $val['src'] . '" link="' . $val['url'] . '" text="' . $val['text'] . '" sort="' . $val['sort'] .  '" width_screen="' . $val['width_screen'] . '"/>';
         }
         $xml .= '</bcaster>';
         file_put_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml', $xml);

@@ -156,15 +156,17 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
         {
             $last_choose = explode('|', $_COOKIE['ECSCP']['last_choose']);
         }
+
         $goods = array(
             'goods_id'      => 0,
             'goods_desc'    => '',
+			'packing_list'  => '',
+			'customer_service'  => '',
             'cat_id'        => $last_choose[0],
             'brand_id'      => $last_choose[1],
             'is_on_sale'    => '1',
             'is_alone_sale' => '1',
             'is_shipping' => '0',
-			'is_pifa' => '0',
             'other_cat'     => array(), // 扩展分类
             'goods_type'    => 0,       // 商品类型
             'shop_price'    => 0,
@@ -229,11 +231,12 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             $goods = array(
                 'goods_id'      => 0,
                 'goods_desc'    => '',
+				'packing_list'  => '',
+				'customer_service'  => '',
                 'cat_id'        => 0,
                 'is_on_sale'    => '1',
                 'is_alone_sale' => '1',
                 'is_shipping' => '0',
-				'is_pifa' => '0',
                 'other_cat'     => array(), // 扩展分类
                 'goods_type'    => 0,       // 商品类型
                 'shop_price'    => 0,
@@ -414,6 +417,10 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
     /* 创建 html editor */
     create_html_editor('goods_desc', $goods['goods_desc']);
+	/* 创建 html editor */
+    create_html_editor2('packing_list', $goods['packing_list']);
+	/* 创建 html editor */
+    create_html_editor3('customer_service', $goods['customer_service']);
 
     /* 模板赋值 */
     $smarty->assign('code',    $code);
@@ -437,8 +444,15 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     {
         $smarty->assign('member_price_list', get_member_price_list($_REQUEST['goods_id']));
     }
+	
+	foreach($group_goods_list as $key => $value)
+	{
+		$group_goods_list[$key]['goods_name'] = '[套餐'.$value['group_id'].']'.$value['goods_name'];
+	}
+	
     $smarty->assign('link_goods_list', $link_goods_list);
     $smarty->assign('group_goods_list', $group_goods_list);
+
     $smarty->assign('goods_article_list', $goods_article_list);
     $smarty->assign('img_list', $img_list);
     $smarty->assign('goods_type_list', goods_type_list($goods['goods_type']));
@@ -637,9 +651,14 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         {
             $original_img   = $image->upload_image($_FILES['goods_img']); // 原始图片
         }
-        elseif (copy(trim($_POST['goods_img_url']), ROOT_PATH . 'temp/' . basename($_POST['goods_img_url'])))
+        elseif ($_POST['goods_img_url'])
         {
-            $original_img = 'temp/' . basename($_POST['goods_img_url']);
+            
+            if(preg_match('/(.jpg|.png|.gif|.jpeg)$/',$_POST['goods_img_url']) && copy(trim($_POST['goods_img_url']), ROOT_PATH . 'temp/' . basename($_POST['goods_img_url'])))
+            {
+                  $original_img = 'temp/' . basename($_POST['goods_img_url']);
+            }
+            
         }
 
         if ($original_img === false)
@@ -806,7 +825,6 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $is_on_sale = isset($_POST['is_on_sale']) ? 1 : 0;
     $is_alone_sale = isset($_POST['is_alone_sale']) ? 1 : 0;
     $is_shipping = isset($_POST['is_shipping']) ? 1 : 0;
-	$is_pifa = isset($_POST['is_pifa']) ? 1 : 0;
     $goods_number = isset($_POST['goods_number']) ? $_POST['goods_number'] : 0;
     $warn_number = isset($_POST['warn_number']) ? $_POST['warn_number'] : 0;
     $goods_type = isset($_POST['goods_type']) ? $_POST['goods_type'] : 0;
@@ -827,17 +845,18 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     {
         if ($code == '')
         {
+			
             $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, goods_sn, " .
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
-                    "is_on_sale, is_alone_sale, is_shipping,is_pifa, goods_desc, add_time, last_update, goods_type, rank_integral, suppliers_id)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, packing_list, customer_service, add_time, last_update, goods_type, rank_integral, suppliers_id)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
-                    " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping,$is_pifa, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral', '$suppliers_id')";
+                    " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
+                    " '$_POST[goods_desc]', '$_POST[packing_list]', '$_POST[customer_service]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral', '$suppliers_id')";
         }
         else
         {
@@ -845,13 +864,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
-                    "is_on_sale, is_alone_sale, is_shipping,is_pifa, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, packing_list, customer_service,add_time, last_update, goods_type, extension_code, rank_integral)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
-                    " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping,$is_pifa, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral')";
+                    " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
+                    " '$_POST[goods_desc]', '$_POST[packing_list]', '$_POST[customer_service]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral')";
         }
     }
     else
@@ -914,8 +933,9 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "is_on_sale = '$is_on_sale', " .
                 "is_alone_sale = '$is_alone_sale', " .
                 "is_shipping = '$is_shipping', " .
-				"is_pifa = '$is_pifa', " .
                 "goods_desc = '$_POST[goods_desc]', " .
+				"packing_list = '$_POST[packing_list]', " .
+				"customer_service = '$_POST[customer_service]', " .
                 "last_update = '". gmtime() ."', ".
                 "goods_type = '$goods_type' " .
                 "WHERE goods_id = '$_REQUEST[goods_id]' LIMIT 1";
@@ -936,7 +956,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
     /* 处理属性 */
-    if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
+	/*模板堂修改 start by zhouH*/
+    if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list']) && isset($_POST['attr_img_id'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])  && empty($_POST['attr_img_id'])))/*模板堂修改 end by zhouH*/
     {
         // 取得原有的属性值
         $goods_attr_list = array();
@@ -972,12 +993,16 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         {
             $goods_attr_list[$row['attr_id']][$row['attr_value']] = array('sign' => 'delete', 'goods_attr_id' => $row['goods_attr_id']);
         }
+		
         // 循环现有的，根据原有的做相应处理
         if(isset($_POST['attr_id_list']))
         {
             foreach ($_POST['attr_id_list'] AS $key => $attr_id)
             {
                 $attr_value = $_POST['attr_value_list'][$key];
+				/*模板堂修改 start by zhouH*/
+				$img_id = $_POST['attr_img_id'][$key];	
+				/*模板堂修改 end by zhouH*/			
                 $attr_price = $_POST['attr_price_list'][$key];
                 if (!empty($attr_value))
                 {
@@ -986,12 +1011,18 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                         // 如果原来有，标记为更新
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+						/*模板堂修改 start by zhouH*/
+						$goods_attr_list[$attr_id][$attr_value]['img_id'] = $img_id;
+						/*模板堂修改 end by zhouH*/	
                     }
                     else
                     {
                         // 如果原来没有，标记为新增
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+						/*模板堂修改 start by zhouH*/
+						$goods_attr_list[$attr_id][$attr_value]['img_id'] = $img_id;
+						/*模板堂修改 end by zhouH*/
                     }
                     $val_arr = explode(' ', $attr_value);
                     foreach ($val_arr AS $k => $v)
@@ -1017,12 +1048,15 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
             {
                 if ($info['sign'] == 'insert')
                 {
-                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price)".
-                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]')";
+					/*模板堂修改 start by zhouH*/
+                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price ,img_id)".
+                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]' ,'$info[img_id]')";
+					/*模板堂修改 end by zhouH*/
                 }
                 elseif ($info['sign'] == 'update')
                 {
-                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+					/*模板堂修改 start by zhouH*/
+                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]', img_id = '$info[img_id]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";/*模板堂修改 end by zhouH*/
                 }
                 else
                 {
@@ -1402,6 +1436,64 @@ elseif ($_REQUEST['act'] == 'check_goods_sn')
     }
     make_json_result('');
 }
+/* ec模板堂修改 by zhouH start */
+elseif ($_REQUEST['act'] == 'get_goods_gallery')
+{
+    check_authz_json('goods_manage');
+
+    $goods_id = intval($_REQUEST['goods_id']);
+	$on_img_id = intval($_REQUEST['img_id']);
+  
+  	$result = "<ul>";
+    if(!empty($goods_id))
+    {
+        $sql="SELECT img_id,thumb_url FROM ". $ecs->table('goods_gallery')."WHERE goods_id='$goods_id'";
+		$res = $db->getAll($sql);
+  
+		foreach($res as $idx => $row)
+		{
+			if($row['img_id'] == $on_img_id  && $on_img_id != 0)
+			{
+				$result .= '<li id="gallery_'.$row['img_id'].'" onClick="gallery_on(this,'.$row['img_id'].')" class="on"><img src="../'.$row['thumb_url'].'" width="120" /><i><img src="images/gallery_yes.png" width="30" height="30"></i></li>';
+			}
+			else
+			{
+				$result .= '<li id="gallery_'.$row['img_id'].'" onClick="gallery_on(this,'.$row['img_id'].')"><img src="../'.$row['thumb_url'].'" width="120" /><i><img src="images/gallery_yes.png" width="30" height="30"></i></li>';	
+			}
+			
+		}
+		
+		
+    }
+	else
+	{
+		make_json_error("商品ID不存在!");	
+	}
+	$result .= "</ul>";
+
+    make_json_result($result);
+}
+elseif ($_REQUEST['act'] == 'insert_gallery_attr')
+{
+    check_authz_json('goods_manage');
+
+    $gallery_id = intval($_REQUEST['gallery_id']);
+  
+  
+    if(!empty($gallery_id))
+    {
+        $sql="SELECT img_id FROM ". $ecs->table('goods_gallery')."WHERE img_id='$gallery_id'";
+		$img_id = $db->getOne($sql);
+  		$result = $img_id;
+    }
+	else
+	{
+		make_json_error("此相册图片不存在!");	
+	}
+
+    make_json_result($result);
+}
+/* ec模板堂修改 by zhouH end */
 elseif ($_REQUEST['act'] == 'check_products_goods_sn')
 {
     check_authz_json('goods_manage');
@@ -1983,11 +2075,12 @@ elseif ($_REQUEST['act'] == 'add_group_goods')
     $arguments  = $json->decode($_GET['JSON']);
     $goods_id   = $arguments[0];
     $price      = $arguments[1];
+    $group_id      = $arguments[2];//by mike add
 
     foreach ($fittings AS $val)
     {
-        $sql = "INSERT INTO " . $ecs->table('group_goods') . " (parent_id, goods_id, goods_price, admin_id) " .
-                "VALUES ('$goods_id', '$val', '$price', '$_SESSION[admin_id]')";
+        $sql = "INSERT INTO " . $ecs->table('group_goods') . " (parent_id, goods_id, goods_price, admin_id, group_id) " .
+                "VALUES ('$goods_id', '$val', '$price', '$_SESSION[admin_id]', '$group_id')";//by mike add
         $db->query($sql, 'SILENT');
     }
 
@@ -1997,7 +2090,7 @@ elseif ($_REQUEST['act'] == 'add_group_goods')
     foreach ($arr AS $val)
     {
         $opt[] = array('value'      => $val['goods_id'],
-                        'text'      => $val['goods_name'],
+                        'text'      => '[套餐'.$val['group_id'].']'.$val['goods_name'],
                         'data'      => '');
     }
 
@@ -2035,7 +2128,7 @@ elseif ($_REQUEST['act'] == 'drop_group_goods')
     foreach ($arr AS $val)
     {
         $opt[] = array('value'      => $val['goods_id'],
-                        'text'      => $val['goods_name'],
+                        'text'      => '[套餐'.$val['group_id'].']'.$val['goods_name'],
                         'data'      => '');
     }
 

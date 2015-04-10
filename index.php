@@ -103,6 +103,8 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('page_title',      $position['title']);    // 页面标题
     $smarty->assign('ur_here',         $position['ur_here']);  // 当前位置
 
+
+
     /* meta information */
     $smarty->assign('keywords',        htmlspecialchars($_CFG['shop_keywords']));
     $smarty->assign('description',     htmlspecialchars($_CFG['shop_desc']));
@@ -111,6 +113,7 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('feed_url',        ($_CFG['rewrite'] == 1) ? 'feed.xml' : 'feed.php'); // RSS URL
 
     $smarty->assign('categories',      get_categories_tree()); // 分类树
+
     $smarty->assign('helps',           get_shop_help());       // 网店帮助
     $smarty->assign('top_goods',       get_top10());           // 销售排行
 
@@ -126,6 +129,8 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('group_buy_goods', index_get_group_buy());      // 团购商品
     $smarty->assign('auction_list',    index_get_auction());        // 拍卖活动
     $smarty->assign('shop_notice',     $_CFG['shop_notice']);       // 商店公告
+	$smarty->assign('script_name',     'index');  
+	$smarty->assign('index_comments',     get_comments($num));  
 
     /* 首页主广告设置 */
     $smarty->assign('index_ad',     $_CFG['index_ad']);
@@ -136,18 +141,37 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
         $smarty->assign('ad', $ad);
     }
 
+
+	/*周欢改 start*/
+
+	$xml_array=simplexml_load_file(ROOT_PATH . DATA_DIR .'/flash_data.xml'); //将XML中的数据,读取到数组对象中 
+	$index_ad_w = array();
+	$index_ad_s = array();
+	foreach($xml_array as $key => $val)
+	{
+		if($val['width_screen'] == 0)
+		{
+			$index_ad_w[] = array('src'=>$val['item_url'],'url'=>$val['link'],'text'=>$val['text'],'sort'=>$val['sort'],'width_screen'=>$val['width_screen']);		
+		}
+		else
+		{
+			$index_ad_s[] = array('src'=>$val['item_url'],'url'=>$val['link'],'text'=>$val['text'],'sort'=>$val['sort'],'width_screen'=>$val['width_screen']);		
+		}
+	}
+	
+ 	$smarty->assign('index_ad_w',       $index_ad_w);
+	$smarty->assign('index_ad_w_count',      count($index_ad_w));
+
+	$smarty->assign('index_ad_s',       $index_ad_s);
+	$smarty->assign('index_ad_s_count',      count($index_ad_s));
+	
+	/*周欢改 end*/
+
     /* links */
     $links = index_get_links();
     $smarty->assign('img_links',       $links['img']);
     $smarty->assign('txt_links',       $links['txt']);
     $smarty->assign('data_dir',        DATA_DIR);       // 数据目录
-	
- 
-$smarty->assign("flash",get_flash_xml());
-$smarty->assign('flash_count',count(get_flash_xml()));
-
-
-
 
     /* 首页推荐分类 */
     $cat_recommend_res = $db->getAll("SELECT c.cat_id, c.cat_name, cr.recommend_type FROM " . $ecs->table("cat_recommend") . " AS cr INNER JOIN " . $ecs->table("category") . " AS c ON cr.cat_id=c.cat_id");
@@ -364,30 +388,27 @@ function index_get_links()
     return $links;
 }
 
-function get_flash_xml()
+function get_comments($num)
 {
-    $flashdb = array();
-    if (file_exists(ROOT_PATH . DATA_DIR . '/flash_data.xml'))
-    {
-
-        // 兼容v2.7.0及以前版本
-        if (!preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"\ssort="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER))
-        {
-            preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER);
-        }
-
-        if (!empty($t))
-        {
-            foreach ($t as $key => $val)
-            {
-                $val[4] = isset($val[4]) ? $val[4] : 0;
-                $flashdb[] = array('src'=>$val[1],'url'=>$val[2],'text'=>$val[3],'sort'=>$val[4]);
-				
-				//print_r($flashdb);
-            }
-        }
-    }
-    return $flashdb;
+   $sql = 'SELECT a.*,b.goods_id,b.goods_thumb,b.goods_name FROM '. $GLOBALS['ecs']->table('comment') .
+            ' AS a,'. $GLOBALS['ecs']->table('goods') .'AS b WHERE a.status = 1 AND a.parent_id = 0 and a.comment_type=0 and a.id_value=b.goods_id '.
+            ' ORDER BY a.add_time DESC';
+  if ($num > 0)
+  {
+   $sql .= ' LIMIT ' . $num;
+  }
+        
+  $res = $GLOBALS['db']->getAll($sql);
+  $comments = array();
+  foreach ($res AS $idx => $row)
+  {
+   $comments[$idx]['add_time']      = local_date($GLOBALS['_CFG']['time_format'], $row['add_time']);
+   $comments[$idx]['content']       = $row['content'];
+   $comments[$idx]['id_value']      = $row['id_value'];
+   $comments[$idx]['goods_thumb']  	= get_image_path($row['goods_id'], $row['goods_thumb'], true);
+   $comments[$idx]['goods_name']    = $row['goods_name'];
+   $comments[$idx]['url']           = build_uri('goods', array('gid'=>$row['goods_id']), $row['goods_name']);
+  }
+  return $comments;
 }
-
 ?>

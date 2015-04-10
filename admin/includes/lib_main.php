@@ -322,6 +322,34 @@ function create_html_editor($input_name, $input_value = '')
     $smarty->assign('FCKeditor', $FCKeditor);
 }
 
+function create_html_editor2($input_name, $input_value = '')
+{
+    global $smarty;
+
+    $editor = new FCKeditor($input_name);
+    $editor->BasePath   = '../includes/fckeditor/';
+    $editor->ToolbarSet = 'Normal';
+    $editor->Width      = '100%';
+    $editor->Height     = '320';
+    $editor->Value      = $input_value;
+    $FCKeditor = $editor->CreateHtml();
+    $smarty->assign('FCKeditor2', $FCKeditor);
+}
+
+function create_html_editor3($input_name, $input_value = '')
+{
+    global $smarty;
+
+    $editor = new FCKeditor($input_name);
+    $editor->BasePath   = '../includes/fckeditor/';
+    $editor->ToolbarSet = 'Normal';
+    $editor->Width      = '100%';
+    $editor->Height     = '320';
+    $editor->Value      = $input_value;
+    $FCKeditor = $editor->CreateHtml();
+    $smarty->assign('FCKeditor3', $FCKeditor);
+}
+
 /**
  * 取得商品列表：用于把商品添加到组合、关联类、赠品类
  * @param   object  $filters    过滤条件

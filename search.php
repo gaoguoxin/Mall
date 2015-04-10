@@ -381,7 +381,7 @@ else
     }
 
     /* 查询商品 */
-    $sql = "SELECT g.goods_id, g.goods_name, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ".
+    $sql = "SELECT g.goods_id, g.goods_name, g.market_price, g.is_new,g.comments_number,g.sales_volume, g.is_best, g.is_hot, g.shop_price AS org_price, ".
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, ".
                 "g.promote_price, g.promote_start_date, g.promote_end_date, g.goods_thumb, g.goods_img, g.goods_brief, g.goods_type ".
             "FROM " .$ecs->table('goods'). " AS g ".
@@ -439,7 +439,18 @@ else
         {
             $arr[$row['goods_id']]['goods_name'] = $row['goods_name'];
         }
+		
         $arr[$row['goods_id']]['type']          = $row['goods_type'];
+		
+		$arr[$row['goods_id']]['comments_number']          = $row['comments_number'];
+		$arr[$row['goods_id']]['sales_volume']          = $row['sales_volume'];
+		
+		$arr[$row['goods_id']]['is_new']      = $row['goods_brief'];
+		$arr[$row['goods_id']]['is_best']      = $row['sales_volume'];
+		$arr[$row['goods_id']]['is_hot']      = $row['comments_number'];
+		$arr[$row['goods_id']]['org_promote_price']      = $row['promote_price'];
+		
+		
         $arr[$row['goods_id']]['market_price']  = price_format($row['market_price']);
         $arr[$row['goods_id']]['shop_price']    = price_format($row['shop_price']);
         $arr[$row['goods_id']]['promote_price'] = ($promote_price > 0) ? price_format($promote_price) : '';

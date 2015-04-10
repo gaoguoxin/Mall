@@ -153,7 +153,7 @@ function assign_ur_here($cat = 0, $str = '')
     }
 
     /* 初始化“页面标题”和“当前位置” */
-    $page_title = $GLOBALS['_CFG']['shop_title'];
+    $page_title = $GLOBALS['_CFG']['shop_title'] . ' - ' . 'Powered by ECShop';
     $ur_here    = '<a href=".">' . $GLOBALS['_LANG']['home'] . '</a>';
 
     /* 根据文件名分别处理中间的部分 */
@@ -520,9 +520,6 @@ function assign_pager($app, $cat, $record_count, $size, $sort, $order, $page = 1
         case 'exchange':
             $uri_args = array('cid' => $cat, 'integral_min'=>$price_min, 'integral_max'=>$price_max, 'sort' => $sort, 'order' => $order, 'display' => $display_type);
             break;
-        case 'pifa':
-            $uri_args = array('acid' => $cat, 'sort' => $sort, 'order' => $order,'filter_attr'=>$filter_attr);
-            break;			
     }
     /* 分页样式 */
     $pager['styleid'] = isset($GLOBALS['_CFG']['page_style'])? intval($GLOBALS['_CFG']['page_style']) : 0;
@@ -620,8 +617,7 @@ function assign_pager($app, $cat, $record_count, $size, $sort, $order, $page = 1
             $pager['search'][$key] = $row;
         }
     }
-
-    $GLOBALS['smarty']->assign('pager', $pager);
+	$GLOBALS['smarty']->assign('pager', $pager);
 }
 
 /**
@@ -1486,7 +1482,7 @@ function show_message($content, $links = '', $hrefs = '', $type = 'info', $auto_
     {
         $GLOBALS['smarty']->assign('helps', get_shop_help()); // 网店帮助
     }
-
+	$GLOBALS['smarty']->assign('categories',         get_categories_tree());  // 分类树
     $GLOBALS['smarty']->assign('auto_redirect', $auto_redirect);
     $GLOBALS['smarty']->assign('message', $msg);
     $GLOBALS['smarty']->display('message.dwt');
@@ -1609,19 +1605,24 @@ function assign_comment($id, $type, $page = 1)
         $arr[$row['comment_id']]['add_time'] = local_date($GLOBALS['_CFG']['time_format'], $row['add_time']);
     }
     /* 取得已有回复的评论 */
+
     if ($ids)
     {
         $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('comment') .
                 " WHERE parent_id IN( $ids )";
         $res = $GLOBALS['db']->query($sql);
+	
         while ($row = $GLOBALS['db']->fetch_array($res))
         {
+
             $arr[$row['parent_id']]['re_content']  = nl2br(str_replace('\n', '<br />', htmlspecialchars($row['content'])));
             $arr[$row['parent_id']]['re_add_time'] = local_date($GLOBALS['_CFG']['time_format'], $row['add_time']);
             $arr[$row['parent_id']]['re_email']    = $row['email'];
             $arr[$row['parent_id']]['re_username'] = $row['user_name'];
         }
     }
+	
+	
     /* 分页样式 */
     //$pager['styleid'] = isset($GLOBALS['_CFG']['page_style'])? intval($GLOBALS['_CFG']['page_style']) : 0;
     $pager['page']         = $page;
@@ -1840,6 +1841,9 @@ function article_categories_tree($cat_id = 0)
 
     return $cat_arr;
 }
+
+
+
 
 /**
  * 获得指定文章分类的所有上级分类
